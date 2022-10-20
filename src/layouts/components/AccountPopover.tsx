@@ -1,8 +1,19 @@
-import { Avatar, Box, Divider, IconButton, MenuItem, Stack, Typography } from '@mui/material';
+import {
+  Avatar,
+  Box,
+  Button,
+  Divider,
+  IconButton,
+  MenuItem,
+  Stack,
+  Typography,
+} from '@mui/material';
 import { alpha } from '@mui/material/styles';
 import { Fragment, useRef, useState } from 'react';
-import { Link as RouterLink, useNavigate } from 'react-router-dom';
+import { Link as RouterLink } from 'react-router-dom';
 import MenuPopover from '~/components/MenuPopover';
+import { signOut } from '~/redux/features/authSlice';
+import { useAppDispatch, useAppSelector } from '~/redux/hooks';
 
 const MENU_OPTIONS = [
   {
@@ -18,8 +29,9 @@ const MENU_OPTIONS = [
 ];
 
 export default function AccountPopover() {
+  const dispatch = useAppDispatch();
+  const user = useAppSelector((state) => state.auth.data);
   const anchorRef = useRef(null);
-  const navigate = useNavigate();
   const [open, setOpen] = useState(null);
 
   const handleOpen = (event: any) => {
@@ -27,77 +39,81 @@ export default function AccountPopover() {
   };
 
   const handleClose = () => {
-    setOpen(null);
-    navigate('/login');
+    dispatch(signOut());
+    localStorage.removeItem('access_token');
+    window.location.reload();
   };
 
   return (
     <Fragment>
-      <IconButton
-        ref={anchorRef}
-        onClick={handleOpen}
-        sx={{
-          p: 0,
-          ...(Boolean(open) && {
-            '&:before': {
-              zIndex: 1,
-              content: "''",
-              width: '100%',
-              height: '100%',
-              borderRadius: '50%',
-              position: 'absolute',
-              bgcolor: (theme) => alpha(theme.palette.grey[900], 0.8),
-            },
-          }),
-        }}
-      >
-        <Avatar src="/static/utc2icon.png" alt="photoURL" />
-      </IconButton>
+      {!user ? (
+        <Button to="/login" size="large" variant="contained" component={RouterLink}>
+          Getting Started
+        </Button>
+      ) : (
+        <Fragment>
+          <IconButton
+            ref={anchorRef}
+            onClick={handleOpen}
+            sx={{
+              p: 0,
+              ...(Boolean(open) && {
+                '&:before': {
+                  zIndex: 1,
+                  content: "''",
+                  width: '100%',
+                  height: '100%',
+                  borderRadius: '50%',
+                  position: 'absolute',
+                  bgcolor: (theme) => alpha(theme.palette.grey[900], 0.8),
+                },
+              }),
+            }}
+          >
+            <Avatar src={user.avatar || '/static/avatars/avatar_default.jpg'} alt="avatar" />
+          </IconButton>
 
-      <MenuPopover
-        open={Boolean(open)}
-        anchorEl={open}
-        onClose={handleClose}
-        sx={{
-          p: 0,
-          mt: 1.5,
-          ml: 0.75,
-          '& .MuiMenuItem-root': {
-            typography: 'body2',
-            borderRadius: 0.75,
-          },
-        }}
-      >
-        <Box sx={{ my: 1.5, px: 2.5 }}>
-          <Typography variant="subtitle2" noWrap>
-            {'Nguyễn Thanh Hòa'}
-          </Typography>
-          <Typography variant="body2" sx={{ color: 'text.secondary' }} noWrap>
-            {'email@gmail.com'}
-          </Typography>
-        </Box>
+          <MenuPopover
+            open={Boolean(open)}
+            anchorEl={open}
+            onClose={() => setOpen(null)}
+            sx={{
+              p: 0,
+              mt: 1.5,
+              ml: 0.75,
+              '& .MuiMenuItem-root': {
+                typography: 'body2',
+                borderRadius: 0.75,
+              },
+            }}
+          >
+            <Box sx={{ my: 1.5, px: 2.5 }}>
+              <Typography variant="subtitle2" noWrap>
+                {user.fullName}
+              </Typography>
+              <Typography variant="body2" sx={{ color: 'text.secondary' }} noWrap>
+                {user.email}
+              </Typography>
+            </Box>
 
-        <Divider sx={{ borderStyle: 'dashed' }} />
+            <Divider sx={{ borderStyle: 'dashed' }} />
 
-        <Stack sx={{ p: 1 }}>
-          {MENU_OPTIONS.map((option) => (
-            <MenuItem
-              key={option.label}
-              to={option.linkTo}
-              component={RouterLink}
-              onClick={handleClose}
-            >
-              {option.label}
+            <Stack sx={{ p: 1 }}>
+              {MENU_OPTIONS.map((option) => (
+                <MenuItem key={option.label} to={option.linkTo} component={RouterLink}>
+                  {option.label}
+                </MenuItem>
+              ))}
+            </Stack>
+
+            <Divider sx={{ borderStyle: 'dashed' }} />
+
+            <MenuItem onClick={handleClose} sx={{ m: 1 }} component={Button}>
+              Logout
             </MenuItem>
-          ))}
-        </Stack>
-
-        <Divider sx={{ borderStyle: 'dashed' }} />
-
-        <MenuItem onClick={handleClose} sx={{ m: 1 }}>
-          Logout
-        </MenuItem>
-      </MenuPopover>
+          </MenuPopover>
+        </Fragment>
+      )}
     </Fragment>
   );
 }
