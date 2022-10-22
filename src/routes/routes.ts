@@ -1,14 +1,14 @@
-import { HomePage, LoginPage, RegisterPage } from '~/page';
-import { Route } from '~/routes';
+import { HomePage, LoginPage, RegisterPage } from "~/page";
+import { Route } from "~/routes";
 
 export const ROUTES_PATH = {
-  HOME: 'home',
-  LOGIN: 'login',
-  REGISTER: 'register',
+  HOME: "home",
+  LOGIN: "login",
+  REGISTER: "register",
 };
 export const ROLES = {
-  ADMIN: 'admin',
-  USER: 'user',
+  ADMIN: "admin",
+  USER: "user",
 };
 
 const authRoutes: Route[] = [

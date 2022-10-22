@@ -1,5 +1,5 @@
-import { Icon, IconifyIcon } from '@iconify/react';
-import { Box } from '@mui/material';
+import { Icon, IconifyIcon } from "@iconify/react";
+import { Box } from "@mui/material";
 
 interface IconifyProps {
   icon: string | IconifyIcon;
