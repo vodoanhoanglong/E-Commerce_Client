@@ -1,10 +1,10 @@
-import { createSlice } from '@reduxjs/toolkit';
-import { User } from '~/models';
+import { createSlice } from "@reduxjs/toolkit";
+import { User } from "~/models";
 
 const initialState: { data: User | null } = { data: null };
 
 const authSlice = createSlice({
-  name: 'user',
+  name: "user",
   initialState,
   reducers: {
     setUser: (state, action) => {

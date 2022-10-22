@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 interface IHelmetProps {
   title: string;
@@ -6,7 +6,7 @@ interface IHelmetProps {
 }
 
 function Helmet({ title, children }: IHelmetProps) {
-  document.title = title + ' - Tiki Fake';
+  document.title = title + " - Tiki Fake";
 
   React.useEffect(() => {
     window.scrollTo(0, 0);

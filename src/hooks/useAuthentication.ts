@@ -1,16 +1,16 @@
-import { RegisterFormInput } from './../models/auth';
-import { useMutation } from '@apollo/client';
-import { useState } from 'react';
-import { useNavigate } from 'react-router';
+import { RegisterFormInput } from "./../models/auth";
+import { useMutation } from "@apollo/client";
+import { useState } from "react";
+import { useNavigate } from "react-router";
 
-import { LOGIN, REGISTER } from '~/graphql/mutations';
+import { LOGIN, REGISTER } from "~/graphql/mutations";
 
-import { LoginFormInput, AuthOutput } from '~/models';
+import { LoginFormInput, AuthOutput } from "~/models";
 
 export default function useAuthentication() {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
-  const [errors, setErrors] = useState('');
+  const [errors, setErrors] = useState("");
   const [login] = useMutation<{ login: AuthOutput }>(LOGIN);
   const [register] = useMutation<{ createUser: AuthOutput }>(REGISTER);
 
@@ -21,9 +21,9 @@ export default function useAuthentication() {
         ...value,
       },
       onCompleted: ({ login: res }) => {
-        localStorage.setItem('access_token', res.token);
+        localStorage.setItem("access_token", res.token);
         setLoading(false);
-        navigate('/');
+        navigate("/");
       },
       onError: (err) => {
         setErrors(err.message);
@@ -41,9 +41,9 @@ export default function useAuthentication() {
         fullName: `${value.firstName} ${value.lastName}`,
       },
       onCompleted: ({ createUser: res }) => {
-        localStorage.setItem('access_token', res.token);
+        localStorage.setItem("access_token", res.token);
         setLoading(false);
-        navigate('/');
+        navigate("/");
       },
       onError: (err) => {
         setErrors(err.message);

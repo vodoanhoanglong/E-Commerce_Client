@@ -1,1 +1,1 @@
-export * from './authMutation';
+export * from "./authMutation";
