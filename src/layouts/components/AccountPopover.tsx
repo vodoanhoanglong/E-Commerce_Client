@@ -1,30 +1,21 @@
-import {
-  Avatar,
-  Box,
-  Button,
-  Divider,
-  IconButton,
-  MenuItem,
-  Stack,
-  Typography,
-} from '@mui/material';
-import { alpha } from '@mui/material/styles';
-import { Fragment, useRef, useState } from 'react';
-import { Link as RouterLink } from 'react-router-dom';
-import MenuPopover from '~/components/MenuPopover';
-import { signOut } from '~/redux/features/authSlice';
-import { useAppDispatch, useAppSelector } from '~/redux/hooks';
+import { Avatar, Box, Button, Divider, IconButton, MenuItem, Stack, Typography } from "@mui/material";
+import { alpha } from "@mui/material/styles";
+import { Fragment, useRef, useState } from "react";
+import { Link as RouterLink } from "react-router-dom";
+import MenuPopover from "~/components/MenuPopover";
+import { signOut } from "~/redux/features/authSlice";
+import { useAppDispatch, useAppSelector } from "~/redux/hooks";
 
 const MENU_OPTIONS = [
   {
-    label: 'Home',
-    icon: 'eva:home-fill',
-    linkTo: '/',
+    label: "Home",
+    icon: "eva:home-fill",
+    linkTo: "/",
   },
   {
-    label: 'Profile',
-    icon: 'eva:person-fill',
-    linkTo: '#',
+    label: "Profile",
+    icon: "eva:person-fill",
+    linkTo: "#",
   },
 ];
 
@@ -40,7 +31,7 @@ export default function AccountPopover() {
 
   const handleClose = () => {
     dispatch(signOut());
-    localStorage.removeItem('access_token');
+    localStorage.removeItem("access_token");
     window.location.reload();
   };
 
@@ -58,19 +49,19 @@ export default function AccountPopover() {
             sx={{
               p: 0,
               ...(Boolean(open) && {
-                '&:before': {
+                "&:before": {
                   zIndex: 1,
                   content: "''",
-                  width: '100%',
-                  height: '100%',
-                  borderRadius: '50%',
-                  position: 'absolute',
+                  width: "100%",
+                  height: "100%",
+                  borderRadius: "50%",
+                  position: "absolute",
                   bgcolor: (theme) => alpha(theme.palette.grey[900], 0.8),
                 },
               }),
             }}
           >
-            <Avatar src={user.avatar || '/static/avatars/avatar_default.jpg'} alt="avatar" />
+            <Avatar src={user.avatar || "/static/avatars/avatar_default.jpg"} alt="avatar" />
           </IconButton>
 
           <MenuPopover
@@ -81,8 +72,8 @@ export default function AccountPopover() {
               p: 0,
               mt: 1.5,
               ml: 0.75,
-              '& .MuiMenuItem-root': {
-                typography: 'body2',
+              "& .MuiMenuItem-root": {
+                typography: "body2",
                 borderRadius: 0.75,
               },
             }}
@@ -91,12 +82,12 @@ export default function AccountPopover() {
               <Typography variant="subtitle2" noWrap>
                 {user.fullName}
               </Typography>
-              <Typography variant="body2" sx={{ color: 'text.secondary' }} noWrap>
+              <Typography variant="body2" sx={{ color: "text.secondary" }} noWrap>
                 {user.email}
               </Typography>
             </Box>
 
-            <Divider sx={{ borderStyle: 'dashed' }} />
+            <Divider sx={{ borderStyle: "dashed" }} />
 
             <Stack sx={{ p: 1 }}>
               {MENU_OPTIONS.map((option) => (
@@ -106,7 +97,7 @@ export default function AccountPopover() {
               ))}
             </Stack>
 
-            <Divider sx={{ borderStyle: 'dashed' }} />
+            <Divider sx={{ borderStyle: "dashed" }} />
 
             <MenuItem onClick={handleClose} sx={{ m: 1 }} component={Button}>
               Logout

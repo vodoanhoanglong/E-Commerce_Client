@@ -1,16 +1,16 @@
-import { Link as RouterLink } from 'react-router-dom';
-import { styled } from '@mui/material/styles';
-import { Button, Typography, Container, Box } from '@mui/material';
+import { Link as RouterLink } from "react-router-dom";
+import { styled } from "@mui/material/styles";
+import { Button, Typography, Container, Box } from "@mui/material";
 
-import Page from '~/components/Page';
+import Page from "~/components/Page";
 
-const ContentStyle = styled('div')(({ theme }) => ({
+const ContentStyle = styled("div")(({ theme }) => ({
   maxWidth: 480,
-  margin: 'auto',
-  minHeight: '100vh',
-  display: 'flex',
-  justifyContent: 'center',
-  flexDirection: 'column',
+  margin: "auto",
+  minHeight: "100vh",
+  display: "flex",
+  justifyContent: "center",
+  flexDirection: "column",
   padding: theme.spacing(12, 0),
 }));
 
@@ -18,19 +18,17 @@ export default function Page500() {
   return (
     <Page title="404 Page Not Found">
       <Container>
-        <ContentStyle sx={{ textAlign: 'center', alignItems: 'center' }}>
+        <ContentStyle sx={{ textAlign: "center", alignItems: "center" }}>
           <Typography variant="h3" paragraph>
             500 Internal Server Error
           </Typography>
 
-          <Typography sx={{ color: 'text.secondary' }}>
-            There was an error, please try again later.
-          </Typography>
+          <Typography sx={{ color: "text.secondary" }}>There was an error, please try again later.</Typography>
 
           <Box
             component="img"
             src="/static/illustrations/illustration_500.svg"
-            sx={{ height: 260, mx: 'auto', my: { xs: 5, sm: 10 } }}
+            sx={{ height: 260, mx: "auto", my: { xs: 5, sm: 10 } }}
           />
 
           <Button to="/" size="large" variant="contained" component={RouterLink}>

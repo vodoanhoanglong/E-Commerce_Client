@@ -64,7 +64,7 @@
     "build": "react-app-rewired build",
     "test": "react-app-rewired test",
     "prepare": "husky install",
-    "lint": "eslint '*/**/*.{json,ts}' --fix"
+    "lint": "eslint '*/**/*.{tsx,ts}' --fix"
   },
   "browserslist": {
     "production": [

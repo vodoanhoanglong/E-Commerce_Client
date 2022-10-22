@@ -1,6 +1,6 @@
-import { Stack, Button, Divider, Typography } from '@mui/material';
-import { Fragment } from 'react';
-import Iconify from '~/components/Iconify';
+import { Stack, Button, Divider, Typography } from "@mui/material";
+import { Fragment } from "react";
+import Iconify from "~/components/Iconify";
 
 export default function AuthSocial() {
   return (
@@ -20,7 +20,7 @@ export default function AuthSocial() {
       </Stack>
 
       <Divider sx={{ my: 3 }}>
-        <Typography variant="body2" sx={{ color: 'text.secondary' }}>
+        <Typography variant="body2" sx={{ color: "text.secondary" }}>
           OR
         </Typography>
       </Divider>

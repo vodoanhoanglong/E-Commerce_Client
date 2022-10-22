@@ -1,5 +1,5 @@
-import { Checkbox, FormControlLabel, FormGroup } from '@mui/material';
-import { Controller, FieldValues, useFormContext } from 'react-hook-form';
+import { Checkbox, FormControlLabel, FormGroup } from "@mui/material";
+import { Controller, FieldValues, useFormContext } from "react-hook-form";
 
 interface RHFCheckboxProps {
   name: string;

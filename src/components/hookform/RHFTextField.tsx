@@ -1,5 +1,5 @@
-import { useFormContext, Controller } from 'react-hook-form';
-import { TextField } from '@mui/material';
+import { useFormContext, Controller } from "react-hook-form";
+import { TextField } from "@mui/material";
 
 interface RHFTextFieldProps {
   name: string;
@@ -19,7 +19,7 @@ export default function RHFTextField({ name, ...other }: RHFTextFieldProps) {
         <TextField
           {...field}
           fullWidth
-          value={typeof field.value === 'number' && field.value === 0 ? '' : field.value}
+          value={typeof field.value === "number" && field.value === 0 ? "" : field.value}
           error={!!error}
           helperText={error?.message}
           autoComplete="off"
