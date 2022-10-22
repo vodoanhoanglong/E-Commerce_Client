@@ -5,17 +5,19 @@ import { Provider as ReduxProvider } from 'react-redux';
 import {
   createBrowserRouter,
   createRoutesFromElements,
+  Navigate,
   Route,
   RouterProvider,
 } from 'react-router-dom';
 
-import reportWebVitals from './reportWebVitals';
 import client from '~/app/apolloClient';
-import ThemeProvider from './theme';
-import { store } from './app/store';
+import { Page404 } from '~/page';
+import { store } from '~/redux/store';
+import { authRoutes, publicRoutes } from '~/routes';
+import ThemeProvider from '~/theme';
 import { AuthLayout, MainLayout } from './layouts';
-import { Page404 } from './page';
-import { authRoutes, publicRoutes } from './routes';
+import reportWebVitals from './reportWebVitals';
+
 import './index.scss';
 
 const container = document.getElementById('root')!;
@@ -25,6 +27,7 @@ const router = createBrowserRouter(
   createRoutesFromElements(
     <Fragment>
       <Route path="/" element={<MainLayout />}>
+        <Route index element={<Navigate to="/home" />} />
         {publicRoutes.map((route, index) => (
           <Route key={index} path={route.path} element={<route.element />} />
         ))}

@@ -3,7 +3,7 @@ import { setContext } from "@apollo/client/link/context";
 
 const httpLink = createHttpLink({
   uri: process.env.REACT_APP_GRAPHQL_ENDPOINT,
-  credentials: "same-origin",
+  credentials: "include",
 });
 const authLink = setContext((_, { headers }) => {
   const token = localStorage.getItem("access_token");

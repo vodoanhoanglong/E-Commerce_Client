@@ -1,20 +1,20 @@
 import { FormProvider as Form, UseFormReturn } from 'react-hook-form';
 
-type TFormData = {
+interface IFormData {
   email: string;
   password: string;
   firstName?: string;
   lastName?: string;
-  remember?: boolean;
-};
+  repassword?: string;
+}
 
-interface IProps {
+interface IFormProps {
   children: React.ReactNode;
-  methods: UseFormReturn<TFormData, any>;
+  methods: UseFormReturn<IFormData, any>;
   onSubmit?: () => void;
 }
 
-export default function FormProvider({ children, onSubmit, methods }: IProps) {
+export default function FormProvider({ children, onSubmit, methods }: IFormProps) {
   return (
     <Form {...methods}>
       <form onSubmit={onSubmit}>{children}</form>

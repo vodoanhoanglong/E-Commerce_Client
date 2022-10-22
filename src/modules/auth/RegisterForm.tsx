@@ -3,17 +3,11 @@ import { LoadingButton } from '@mui/lab';
 import { IconButton, InputAdornment, Stack } from '@mui/material';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { useNavigate } from 'react-router-dom';
 import * as Yup from 'yup';
 import { FormProvider, RHFTextField } from '~/components/hookform';
 import Iconify from '~/components/Iconify';
-
-interface IRegisterForm {
-  firstName?: string;
-  lastName?: string;
-  email: string;
-  password: string;
-}
+import useAuthentication from '~/hooks/useAuthentication';
+import { RegisterFormInput } from '~/models';
 
 const RegisterSchema = Yup.object({
   firstName: Yup.string().required('First name required'),
@@ -34,28 +28,21 @@ const defaultValues = {
 };
 
 export default function RegisterForm() {
-  const navigate = useNavigate();
-
-  const [showPassword, setShowPassword] = useState(false);
-  const [showConfirm, setShowConfirm] = useState(false);
-  const methods = useForm<IRegisterForm>({
+  const { loading, handleRegister } = useAuthentication();
+  const methods = useForm<RegisterFormInput>({
     resolver: yupResolver(RegisterSchema),
     defaultValues,
   });
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirm, setShowConfirm] = useState(false);
 
   const {
     handleSubmit,
     formState: { isSubmitting },
   } = methods;
 
-  const onSubmit = async (value: IRegisterForm) => {
-    // TODO: Call Register API
-    console.log(value);
-    navigate('/', { replace: true });
-  };
-
   return (
-    <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)}>
+    <FormProvider methods={methods} onSubmit={handleSubmit(handleRegister)}>
       <Stack spacing={3}>
         <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2}>
           <RHFTextField name="firstName" label="First name" />
@@ -97,7 +84,7 @@ export default function RegisterForm() {
           size="large"
           type="submit"
           variant="contained"
-          loading={isSubmitting}
+          loading={isSubmitting || loading}
         >
           Register
         </LoadingButton>

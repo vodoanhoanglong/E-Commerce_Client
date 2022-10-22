@@ -3,21 +3,16 @@ import { LoadingButton } from '@mui/lab';
 import { IconButton, InputAdornment, Link, Stack } from '@mui/material';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { useNavigate } from 'react-router-dom';
 import * as Yup from 'yup';
-import { Iconify } from '~/components';
-import { FormProvider, RHFCheckbox, RHFTextField } from '~/components/hookform';
 
-interface ILoginForm {
-  email: string;
-  password: string;
-  remember?: boolean;
-}
+import { Iconify } from '~/components';
+import { FormProvider, RHFTextField } from '~/components/hookform';
+import useAuthentication from '~/hooks/useAuthentication';
+import { LoginFormInput } from '~/models';
 
 const defaultValues = {
   email: '',
   password: '',
-  remember: true,
 };
 const LoginSchema = Yup.object({
   email: Yup.string().email('Email must be a valid email address!').required('Email is required!'),
@@ -25,10 +20,9 @@ const LoginSchema = Yup.object({
 });
 
 export default function LoginForm() {
-  const navigate = useNavigate();
-
+  const { loading, handleLogin } = useAuthentication();
   const [showPassword, setShowPassword] = useState(false);
-  const methods = useForm<ILoginForm>({
+  const methods = useForm<LoginFormInput>({
     resolver: yupResolver(LoginSchema),
     defaultValues,
   });
@@ -38,14 +32,8 @@ export default function LoginForm() {
     formState: { isSubmitting },
   } = methods;
 
-  const onSubmit = async (value: ILoginForm) => {
-    // TODO: Call Login API
-    console.log(value);
-    navigate('/', { replace: true });
-  };
-
   return (
-    <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)}>
+    <FormProvider methods={methods} onSubmit={handleSubmit(handleLogin)}>
       <Stack spacing={3}>
         <RHFTextField name="email" label="Email address" />
 
@@ -65,8 +53,7 @@ export default function LoginForm() {
         />
       </Stack>
 
-      <Stack direction="row" alignItems="center" justifyContent="space-between" sx={{ my: 2 }}>
-        <RHFCheckbox name="remember" label="Remember me" />
+      <Stack direction="row" alignItems="center" justifyContent="end" sx={{ my: 2 }}>
         <Link variant="subtitle2" underline="hover" sx={{ cursor: 'pointer' }}>
           Forgot password?
         </Link>
@@ -77,7 +64,7 @@ export default function LoginForm() {
         size="large"
         type="submit"
         variant="contained"
-        loading={isSubmitting}
+        loading={isSubmitting || loading}
       >
         SIGN IN
       </LoadingButton>
