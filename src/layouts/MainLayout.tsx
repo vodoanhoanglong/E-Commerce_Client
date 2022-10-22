@@ -3,7 +3,7 @@ import { CircularProgress } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import { useLayoutEffect } from "react";
 import { Outlet } from "react-router";
-import { GET_USERS } from "~/graphql/queries";
+import { GET_CURRENT_USER } from "~/graphql/queries";
 import { User } from "~/models";
 import { setUser } from "~/redux/features/authSlice";
 import { useAppDispatch, useAppSelector } from "~/redux/hooks";
@@ -34,7 +34,7 @@ const LoadingWrapperStyle = styled("div")(() => ({
 function MainLayout() {
   const dispath = useAppDispatch();
   const user = useAppSelector((state) => state.auth.data);
-  const [reloadUser, { loading }] = useLazyQuery<{ getUsers: [User] }>(GET_USERS);
+  const [reloadUser, { loading }] = useLazyQuery<{ getUsers: [User] }>(GET_CURRENT_USER);
 
   useLayoutEffect(() => {
     if (!user) {
