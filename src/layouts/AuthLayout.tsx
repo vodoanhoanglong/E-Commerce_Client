@@ -3,7 +3,7 @@ import styled from "@emotion/styled";
 import { CircularProgress, Container } from "@mui/material";
 import { useLayoutEffect } from "react";
 import { Outlet, useNavigate } from "react-router";
-import { GET_USERS } from "~/graphql/queries";
+import { GET_CURRENT_USER } from "~/graphql/queries";
 import { User } from "~/models";
 import { setUser } from "~/redux/features/authSlice";
 import { useAppDispatch } from "~/redux/hooks";
@@ -25,13 +25,13 @@ const LoadingWrapperStyle = styled("div")(() => ({
 function AuthLayout() {
   const dispath = useAppDispatch();
   const navigate = useNavigate();
-  const [reloadUser, { loading }] = useLazyQuery<{ getUsers: [User] }>(GET_USERS);
+  const [reloadUser, { loading }] = useLazyQuery<{ getCurrentUser: User }>(GET_CURRENT_USER);
 
   useLayoutEffect(() => {
     if (localStorage.getItem("access_token")) {
       reloadUser({
-        onCompleted: ({ getUsers }) => {
-          dispath(setUser(getUsers[0]));
+        onCompleted: ({ getCurrentUser }) => {
+          dispath(setUser(getCurrentUser));
           navigate("/");
         },
         onError: (err) => {
