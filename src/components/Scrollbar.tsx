@@ -1,35 +1,35 @@
-import SimpleBarReact from 'simplebar-react';
-import { alpha, styled } from '@mui/material/styles';
+import SimpleBarReact from "simplebar-react";
+import { alpha, styled } from "@mui/material/styles";
 
 interface ScrollbarProps {
   children: React.ReactNode;
   sx?: object;
 }
 
-const RootStyle = styled('div')(() => ({
+const RootStyle = styled("div")(() => ({
   flexGrow: 1,
-  height: '100%',
-  overflow: 'hidden',
+  height: "100%",
+  overflow: "hidden",
 }));
 
 const SimpleBarStyle = styled(SimpleBarReact)(({ theme }) => ({
-  maxHeight: '100%',
-  '& .simplebar-scrollbar': {
-    '&:before': {
+  maxHeight: "100%",
+  "& .simplebar-scrollbar": {
+    "&:before": {
       backgroundColor: alpha(theme.palette.grey[600], 0.48),
     },
-    '&.simplebar-visible:before': {
+    "&.simplebar-visible:before": {
       opacity: 1,
     },
   },
-  '& .simplebar-track.simplebar-vertical': {
+  "& .simplebar-track.simplebar-vertical": {
     width: 10,
   },
-  '& .simplebar-track.simplebar-horizontal .simplebar-scrollbar': {
+  "& .simplebar-track.simplebar-horizontal .simplebar-scrollbar": {
     height: 6,
   },
-  '& .simplebar-mask': {
-    zIndex: 'inherit',
+  "& .simplebar-mask": {
+    zIndex: "inherit",
   },
 }));
 

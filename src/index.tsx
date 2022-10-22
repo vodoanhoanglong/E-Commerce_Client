@@ -1,26 +1,20 @@
-import { ApolloProvider } from '@apollo/client';
-import { Fragment } from 'react';
-import { createRoot } from 'react-dom/client';
-import { Provider as ReduxProvider } from 'react-redux';
-import {
-  createBrowserRouter,
-  createRoutesFromElements,
-  Navigate,
-  Route,
-  RouterProvider,
-} from 'react-router-dom';
+import { ApolloProvider } from "@apollo/client";
+import { Fragment } from "react";
+import { createRoot } from "react-dom/client";
+import { Provider as ReduxProvider } from "react-redux";
+import { createBrowserRouter, createRoutesFromElements, Navigate, Route, RouterProvider } from "react-router-dom";
 
-import client from '~/app/apolloClient';
-import { Page404 } from '~/page';
-import { store } from '~/redux/store';
-import { authRoutes, publicRoutes } from '~/routes';
-import ThemeProvider from '~/theme';
-import { AuthLayout, MainLayout } from './layouts';
-import reportWebVitals from './reportWebVitals';
+import client from "~/app/apolloClient";
+import { Page404 } from "~/page";
+import { store } from "~/redux/store";
+import { authRoutes, publicRoutes } from "~/routes";
+import ThemeProvider from "~/theme";
+import { AuthLayout, MainLayout } from "./layouts";
+import reportWebVitals from "./reportWebVitals";
 
-import './index.scss';
+import "./index.scss";
 
-const container = document.getElementById('root')!;
+const container = document.getElementById("root") as HTMLElement;
 const root = createRoot(container);
 
 const router = createBrowserRouter(
