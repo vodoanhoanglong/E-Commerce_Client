@@ -34,13 +34,13 @@ const LoadingWrapperStyle = styled("div")(() => ({
 function MainLayout() {
   const dispath = useAppDispatch();
   const user = useAppSelector((state) => state.auth.data);
-  const [reloadUser, { loading }] = useLazyQuery<{ getUsers: [User] }>(GET_CURRENT_USER);
+  const [reloadUser, { loading }] = useLazyQuery<{ getCurrentUser: User }>(GET_CURRENT_USER);
 
   useLayoutEffect(() => {
     if (!user) {
       reloadUser({
-        onCompleted: ({ getUsers }) => {
-          dispath(setUser(getUsers[0]));
+        onCompleted: ({ getCurrentUser }) => {
+          dispath(setUser(getCurrentUser));
         },
         onError: (err) => {
           console.error(err.message);

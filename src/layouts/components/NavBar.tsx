@@ -2,8 +2,8 @@ import { AppBar, Box, Stack, Toolbar } from "@mui/material";
 import { alpha, styled } from "@mui/material/styles";
 
 import AccountPopover from "./AccountPopover";
+import NavigationLink from "./NavigationLink";
 import NotificationsPopover from "./NotificationsPopover";
-import Searchbar from "./SearchBar";
 
 const APPBAR_HEIGHT = 64;
 const RootStyle = styled(AppBar)(({ theme }: any) => ({
@@ -21,7 +21,7 @@ export default function Navbar() {
   return (
     <RootStyle>
       <ToolbarStyle>
-        <Searchbar />
+        <NavigationLink />
         <Box sx={{ flexGrow: 1 }} />
         <Stack direction="row" alignItems="center" spacing={{ xs: 0.5, sm: 1.5 }}>
           <NotificationsPopover />
