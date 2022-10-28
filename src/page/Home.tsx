@@ -1,11 +1,7 @@
-import { Page } from "~/components";
+import ProductPage from "~/modules/Products/ProductPage";
 
 function Home() {
-  return (
-    <Page title="Trang chủ">
-      <div>Home Page</div>
-    </Page>
-  );
+  return <ProductPage />;
 }
 
 export default Home;
