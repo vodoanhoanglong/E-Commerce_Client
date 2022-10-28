@@ -31,6 +31,7 @@ export default function AccountPopover() {
 
   const handleClose = () => {
     dispatch(signOut());
+    setOpen(null);
     localStorage.removeItem("access_token");
     window.location.reload();
   };
