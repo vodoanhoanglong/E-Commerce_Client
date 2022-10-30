@@ -1,5 +1,7 @@
+import ProductPage from "~/modules/Products/ProductPage";
+
 function Product() {
-  return <div></div>;
+  return <ProductPage />;
 }
 
 export default Product;
