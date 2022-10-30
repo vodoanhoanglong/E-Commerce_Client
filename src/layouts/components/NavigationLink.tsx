@@ -1,11 +1,11 @@
 import { Box, Tab, Tabs } from "@mui/material";
-import { SyntheticEvent, useState } from "react";
-import { Link } from "react-router-dom";
+import { SyntheticEvent, useEffect, useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 
 const MAIN_LINK = [
   {
     display: "Trang chủ",
-    path: "/",
+    path: "/home",
   },
   {
     display: "Sản phẩm",
@@ -22,10 +22,16 @@ function LinkTab(props: LinkTabProps) {
 }
 
 function NavigationLink() {
+  const { pathname } = useLocation();
   const [value, setValue] = useState(0);
   const handleChange = (event: SyntheticEvent, newValue: number) => {
     setValue(newValue);
   };
+  useEffect(() => {
+    const index = MAIN_LINK.findIndex((link) => link.path === pathname);
+    setValue(index);
+  }, [pathname]);
+
   return (
     <Box sx={{ height: "100%" }}>
       <Tabs value={value} onChange={handleChange}>
