@@ -1,6 +1,3 @@
-import { sub } from "date-fns";
-import React, { useRef, useState } from "react";
-// @mui
 import {
   Avatar,
   Badge,
@@ -16,6 +13,8 @@ import {
   Tooltip,
   Typography,
 } from "@mui/material";
+import { sub } from "date-fns";
+import React, { useRef, useState } from "react";
 import { Iconify, MenuPopover, Scrollbar } from "~/components";
 import { fToNow } from "~/utils/formatTime";
 
@@ -41,17 +40,55 @@ const NOTIFICATIONS = [
     avatar: "https://picsum.photos/200",
     type: "order_shipped",
     createdAt: sub(new Date(), { days: 3, hours: 3, minutes: 30 }),
-    isUnRead: false,
+    isUnRead: true,
   },
 ];
 
-export default function NotificationsPopover() {
+const NotificationItem = ({ notification }: NotificationItemProps) => (
+  <ListItemButton
+    sx={{
+      py: 1.5,
+      px: 2.5,
+      mt: "1px",
+      ...(notification.isUnRead && {
+        bgcolor: "action.selected",
+      }),
+    }}
+  >
+    <ListItemAvatar>
+      <Avatar sx={{ bgcolor: "background.neutral" }} src={notification.avatar} />
+    </ListItemAvatar>
+    <ListItemText
+      primary={
+        <Typography variant="subtitle2">
+          {notification.title}
+          <Typography component="span" variant="body2" sx={{ color: "text.secondary" }}>
+            &nbsp; {notification.description}
+          </Typography>
+        </Typography>
+      }
+      secondary={
+        <Typography
+          variant="caption"
+          sx={{
+            mt: 0.5,
+            display: "flex",
+            alignItems: "center",
+            color: "text.disabled",
+          }}
+        >
+          <Iconify icon="eva:clock-outline" sx={{ mr: 0.5, width: 16, height: 16 }} />
+          {fToNow(notification.createdAt)}
+        </Typography>
+      }
+    />
+  </ListItemButton>
+);
+
+function NotificationsPopover() {
   const anchorRef = useRef(null);
-
   const [notifications, setNotifications] = useState(NOTIFICATIONS);
-
   const totalUnRead = notifications.filter((item) => item.isUnRead === true).length;
-
   const [open, setOpen] = useState(null);
 
   const handleOpen = (event: any) => {
@@ -88,7 +125,7 @@ export default function NotificationsPopover() {
         open={Boolean(open)}
         anchorEl={open}
         onClose={handleClose}
-        sx={{ width: 360, p: 0, mt: 1.5, ml: 0.75 }}
+        sx={{ width: 400, p: 0, mt: 1.5, ml: 0.75 }}
       >
         <Box sx={{ display: "flex", alignItems: "center", py: 2, px: 2.5 }}>
           <Box sx={{ flexGrow: 1 }}>
@@ -149,82 +186,4 @@ export default function NotificationsPopover() {
   );
 }
 
-function NotificationItem({ notification }: NotificationItemProps) {
-  const { avatar, title } = renderContent(notification);
-
-  return (
-    <ListItemButton
-      sx={{
-        py: 1.5,
-        px: 2.5,
-        mt: "1px",
-        ...(notification.isUnRead && {
-          bgcolor: "action.selected",
-        }),
-      }}
-    >
-      <ListItemAvatar>
-        <Avatar sx={{ bgcolor: "background.neutral" }}>{avatar}</Avatar>
-      </ListItemAvatar>
-      <ListItemText
-        primary={title}
-        secondary={
-          <Typography
-            variant="caption"
-            sx={{
-              mt: 0.5,
-              display: "flex",
-              alignItems: "center",
-              color: "text.disabled",
-            }}
-          >
-            <Iconify icon="eva:clock-outline" sx={{ mr: 0.5, width: 16, height: 16 }} />
-            {fToNow(notification.createdAt)}
-          </Typography>
-        }
-      />
-    </ListItemButton>
-  );
-}
-
-// ----------------------------------------------------------------------
-
-function renderContent(notification: NotificationContent) {
-  const title = (
-    <Typography variant="subtitle2">
-      {notification.title}
-      <Typography component="span" variant="body2" sx={{ color: "text.secondary" }}>
-        &nbsp; {notification.description}
-      </Typography>
-    </Typography>
-  );
-
-  if (notification.type === "order_placed") {
-    return {
-      avatar: <img alt={notification.title} src="/static/icons/ic_notification_package.svg" />,
-      title,
-    };
-  }
-  if (notification.type === "order_shipped") {
-    return {
-      avatar: <img alt={notification.title} src="/static/icons/ic_notification_shipping.svg" />,
-      title,
-    };
-  }
-  if (notification.type === "mail") {
-    return {
-      avatar: <img alt={notification.title} src="/static/icons/ic_notification_mail.svg" />,
-      title,
-    };
-  }
-  if (notification.type === "chat_message") {
-    return {
-      avatar: <img alt={notification.title} src="/static/icons/ic_notification_chat.svg" />,
-      title,
-    };
-  }
-  return {
-    avatar: notification.avatar ? <img alt={notification.title} src={notification.avatar} /> : null,
-    title,
-  };
-}
+export default NotificationsPopover;

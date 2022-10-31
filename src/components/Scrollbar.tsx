@@ -1,15 +1,16 @@
+import { alpha, styled, SxProps, Theme } from "@mui/material/styles";
 import SimpleBarReact from "simplebar-react";
-import { alpha, styled } from "@mui/material/styles";
 
 interface ScrollbarProps {
   children: React.ReactNode;
-  sx?: object;
+  sx?: SxProps<Theme> | undefined;
 }
 
 const RootStyle = styled("div")(() => ({
   flexGrow: 1,
   height: "100%",
-  overflow: "hidden",
+  userSelect: "none",
+  overflow: "hidden overlay",
 }));
 
 const SimpleBarStyle = styled(SimpleBarReact)(({ theme }) => ({
@@ -30,6 +31,9 @@ const SimpleBarStyle = styled(SimpleBarReact)(({ theme }) => ({
   },
   "& .simplebar-mask": {
     zIndex: "inherit",
+  },
+  "& .simplebar-placeholder": {
+    height: "2.5rem !important",
   },
 }));
 
