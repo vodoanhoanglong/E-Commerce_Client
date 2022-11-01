@@ -40,7 +40,7 @@ function Counter() {
         <CounterButton disabled>
           <Iconify icon="eva:minus-fill" />
         </CounterButton>
-        <CounterValue type="number" value={value} required />
+        <CounterValue type="number" value={value} required onChange={(e) => setValue(Number(e.target.value))} />
         <CounterButton onClick={() => setValue((prev) => prev + 1)}>
           <Iconify icon="eva:plus-fill" />
         </CounterButton>
