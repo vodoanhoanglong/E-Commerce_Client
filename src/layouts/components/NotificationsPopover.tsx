@@ -47,9 +47,9 @@ const NOTIFICATIONS = [
 const NotificationItem = ({ notification }: NotificationItemProps) => (
   <ListItemButton
     sx={{
-      py: 1.5,
+      py: 1,
       px: 2.5,
-      mt: "1px",
+      borderBottom: (theme) => `dashed 1px ${theme.palette.divider}`,
       ...(notification.isUnRead && {
         bgcolor: "action.selected",
       }),
@@ -125,7 +125,7 @@ function NotificationsPopover() {
         open={Boolean(open)}
         anchorEl={open}
         onClose={handleClose}
-        sx={{ width: 400, p: 0, mt: 1.5, ml: 0.75 }}
+        sx={{ width: 425, p: 0, mt: 1.5, ml: 0.75 }}
       >
         <Box sx={{ display: "flex", alignItems: "center", py: 2, px: 2.5 }}>
           <Box sx={{ flexGrow: 1 }}>
@@ -146,7 +146,7 @@ function NotificationsPopover() {
 
         <Divider sx={{ borderStyle: "dashed" }} />
 
-        <Scrollbar sx={{ height: { xs: 340, sm: "auto" } }}>
+        <Scrollbar sx={{ maxHeight: 360 }}>
           <List
             disablePadding
             subheader={
@@ -159,7 +159,6 @@ function NotificationsPopover() {
               <NotificationItem key={notification.id} notification={notification} />
             ))}
           </List>
-
           <List
             disablePadding
             subheader={
