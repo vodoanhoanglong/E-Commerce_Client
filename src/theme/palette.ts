@@ -1,5 +1,39 @@
 import { alpha } from "@mui/material/styles";
 
+interface IBaseColors {
+  lighter: string;
+  light: string;
+  main: string;
+  dark: string;
+  darker: string;
+  contrastText: string;
+}
+export interface IPalette {
+  common: { black: string; white: string };
+  primary: IBaseColors;
+  secondary: IBaseColors;
+  info: IBaseColors;
+  success: IBaseColors;
+  warning: IBaseColors;
+  error: IBaseColors;
+  grey: typeof GREY;
+  text: { primary: string; secondary: string; disabled: string };
+  background: { paper: string; default: string; neutral: string };
+  divider: string;
+  gradients: typeof GRADIENTS;
+  chart: typeof CHART_COLORS;
+  action: {
+    active: string;
+    hover: string;
+    selected: string;
+    disabled: string;
+    disabledBackground: string;
+    focus: string;
+    hoverOpacity: 0.08;
+    disabledOpacity: 0.48;
+  };
+}
+
 function createGradient(color1: string, color2: string) {
   return `linear-gradient(to bottom, ${color1}, ${color2})`;
 }
@@ -121,5 +155,4 @@ const palette = {
     disabledOpacity: 0.48,
   },
 };
-
 export default palette;

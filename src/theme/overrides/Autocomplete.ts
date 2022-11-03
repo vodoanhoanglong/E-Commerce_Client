@@ -1,4 +1,6 @@
-export default function Autocomplete(theme: any) {
+import { Theme } from "@mui/material";
+
+export default function Autocomplete(theme: Theme) {
   return {
     MuiAutocomplete: {
       styleOverrides: {
