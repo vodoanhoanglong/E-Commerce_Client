@@ -17,3 +17,9 @@ export function fToNow(date: Date) {
     addSuffix: true,
   });
 }
+
+export function currencyFormat(value: number) {
+  return value.toFixed(0).replace(/./g, function (c, i, a) {
+    return i > 0 && c !== "." && (a.length - i) % 3 === 0 ? "," + c : c;
+  });
+}

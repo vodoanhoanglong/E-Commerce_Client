@@ -16,7 +16,7 @@ import {
 import { sub } from "date-fns";
 import React, { useRef, useState } from "react";
 import { Iconify, MenuPopover, Scrollbar } from "~/components";
-import { fToNow } from "~/utils/formatTime";
+import { fToNow } from "~/utils/formats";
 
 interface NotificationContent {
   createdAt: Date;
@@ -24,7 +24,6 @@ interface NotificationContent {
   isUnRead: boolean;
   title: string;
   description: string;
-  type: string;
   avatar: any;
 }
 
@@ -35,10 +34,9 @@ interface NotificationItemProps {
 const NOTIFICATIONS = [
   {
     id: "5e8f3f1b9d4b1b2b4b9b5b6c",
-    title: "Delivery processing",
-    description: "Your order is being shipped",
+    title: "Đơn hàng đang được xử lý",
+    description: "Đơn hàng của bạn đang được chuyển đi",
     avatar: "https://picsum.photos/200",
-    type: "order_shipped",
     createdAt: sub(new Date(), { days: 3, hours: 3, minutes: 30 }),
     isUnRead: true,
   },
@@ -47,7 +45,7 @@ const NOTIFICATIONS = [
 const NotificationItem = ({ notification }: NotificationItemProps) => (
   <ListItemButton
     sx={{
-      py: 1,
+      py: 0,
       px: 2.5,
       borderBottom: (theme) => `dashed 1px ${theme.palette.divider}`,
       ...(notification.isUnRead && {
@@ -129,14 +127,14 @@ function NotificationsPopover() {
       >
         <Box sx={{ display: "flex", alignItems: "center", py: 2, px: 2.5 }}>
           <Box sx={{ flexGrow: 1 }}>
-            <Typography variant="subtitle1">Notifications</Typography>
+            <Typography variant="subtitle1">Thông báo</Typography>
             <Typography variant="body2" sx={{ color: "text.secondary" }}>
-              You have {totalUnRead} unread messages
+              Bạn có {totalUnRead} thông báo chưa đọc
             </Typography>
           </Box>
 
           {totalUnRead > 0 && (
-            <Tooltip title=" Mark all as read">
+            <Tooltip title="Đánh dấu đã đọc">
               <IconButton color="primary" onClick={handleMarkAllAsRead}>
                 <Iconify icon="eva:done-all-fill" width={20} height={20} />
               </IconButton>
@@ -151,7 +149,7 @@ function NotificationsPopover() {
             disablePadding
             subheader={
               <ListSubheader disableSticky sx={{ py: 1, px: 2.5, typography: "overline" }}>
-                New
+                Thông báo mới
               </ListSubheader>
             }
           >
@@ -163,7 +161,7 @@ function NotificationsPopover() {
             disablePadding
             subheader={
               <ListSubheader disableSticky sx={{ py: 1, px: 2.5, typography: "overline" }}>
-                Before that
+                Thông báo trước đó
               </ListSubheader>
             }
           >
@@ -177,7 +175,7 @@ function NotificationsPopover() {
 
         <Box sx={{ p: 1 }}>
           <Button fullWidth disableRipple>
-            View All
+            Xem tất cả
           </Button>
         </Box>
       </MenuPopover>

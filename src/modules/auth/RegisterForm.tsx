@@ -10,13 +10,13 @@ import useAuthentication from "~/hooks/useAuthentication";
 import { RegisterFormInput } from "~/models";
 
 const RegisterSchema = Yup.object({
-  firstName: Yup.string().required("First name required"),
-  lastName: Yup.string().required("Last name required"),
-  email: Yup.string().email("Email must be a valid email address").required("Email is required"),
-  password: Yup.string().required("Password is required"),
+  firstName: Yup.string().required("Họ không được để trống!"),
+  lastName: Yup.string().required("Tên không được để trống!"),
+  email: Yup.string().email("Địa chỉ email không hợp lệ").required("Địa chỉ email không được để trống!"),
+  password: Yup.string().required("Mật khẩu không được để trống!"),
   repassword: Yup.string()
-    .required("Repassword is required")
-    .oneOf([Yup.ref("password"), null], "Passwords must match"),
+    .required("Mật khẩu không được để trống!")
+    .oneOf([Yup.ref("password"), null], "Mật khẩu không khớp!"),
 });
 
 const defaultValues = {
@@ -45,15 +45,15 @@ export default function RegisterForm() {
     <FormProvider methods={methods} onSubmit={handleSubmit(handleRegister)}>
       <Stack spacing={3}>
         <Stack direction={{ xs: "column", sm: "row" }} spacing={2}>
-          <RHFTextField name="firstName" label="First name" />
-          <RHFTextField name="lastName" label="Last name" />
+          <RHFTextField name="firstName" label="Họ" />
+          <RHFTextField name="lastName" label="Tên" />
         </Stack>
 
-        <RHFTextField name="email" label="Email address" type="text" />
+        <RHFTextField name="email" label="Địa chỉ Email" type="text" />
 
         <RHFTextField
           name="password"
-          label="Password"
+          label="Mật Khẩu"
           type={showPassword ? "text" : "password"}
           InputProps={{
             endAdornment: (
@@ -67,7 +67,7 @@ export default function RegisterForm() {
         />
         <RHFTextField
           name="repassword"
-          label="Confirm Password"
+          label="Xác nhận mật khẩu"
           type={showConfirm ? "text" : "password"}
           InputProps={{
             endAdornment: (
@@ -80,7 +80,7 @@ export default function RegisterForm() {
           }}
         />
         <LoadingButton fullWidth size="large" type="submit" variant="contained" loading={isSubmitting || loading}>
-          Register
+          ĐĂNG KÝ
         </LoadingButton>
       </Stack>
     </FormProvider>

@@ -12,10 +12,10 @@ const RootStyle = styled("div")(({ theme }) => ({
   userSelect: "none",
   overflow: "hidden overlay",
   "&::-webkit-scrollbar": {
-    width: 4,
+    width: 3,
   },
   "&::-webkit-scrollbar-thumb": {
-    backgroundColor: theme.palette.grey[400],
+    backgroundColor: theme.palette.grey[500_48],
     borderRadius: theme.shape.borderRadius,
     boxShadow: theme.shadows[10],
   },
