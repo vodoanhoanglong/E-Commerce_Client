@@ -178,7 +178,6 @@ function ProductFilter() {
             sx={{
               display: "flex",
               flexWrap: "wrap",
-              justifyContent: "space-between",
               marginTop: 1,
             }}
           >

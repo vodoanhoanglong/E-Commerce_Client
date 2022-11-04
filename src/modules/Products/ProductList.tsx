@@ -8,7 +8,7 @@ interface ProductItemProps {
 
 function ProductList({ data }: ProductItemProps) {
   return (
-    <Card sx={{ maxWidth: 350, minWidth: 345, marginBottom: 2 }}>
+    <Card sx={{ maxWidth: 350, minWidth: 345, marginBottom: 2, marginRight: 2 }}>
       <CardActionArea>
         <CardMedia component="img" height="160" image={data.image} />
         <CardContent>
