@@ -11,6 +11,18 @@ const MAIN_LINK = [
     display: "Sản phẩm",
     path: "/product",
   },
+  {
+    display: "Tin tức",
+    path: "/news",
+  },
+  {
+    display: "Liên hệ",
+    path: "/contact",
+  },
+  {
+    display: "Giới thiệu",
+    path: "/intro",
+  },
 ];
 
 interface LinkTabProps {
@@ -24,6 +36,7 @@ function LinkTab(props: LinkTabProps) {
 function NavigationLink() {
   const { pathname } = useLocation();
   const [value, setValue] = useState(0);
+
   const handleChange = (event: SyntheticEvent, newValue: number) => {
     setValue(newValue);
   };

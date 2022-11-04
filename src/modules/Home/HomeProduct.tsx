@@ -1,6 +1,5 @@
 import { Container, Grid, Typography } from "@mui/material";
 import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import { styled } from "@mui/material/styles";
 
@@ -63,44 +62,66 @@ const ContentStyle = styled("div")(({ theme }) => ({
 const StyleImage = styled("div")(({ theme }) => ({
   margin: "auto",
   display: "block",
-  maxWidth: "100%",
-  maxHeight: "100%",
-  border: "none",
 }));
 
 function HomeSale() {
   return (
     <Container>
-      <Typography variant="h3" component="h2" color="text.secondary" sx={{ marginBottom: 0 }}>
-        Khuyến mãi hấp dẫn
+      <Typography variant="h2" component="h2" color="text.secondary" sx={{ marginBottom: 0 }}>
+        Sản phẩm bán chạy
       </Typography>
       <ContentStyle>
-        <Grid
-          container
-          p={8}
-          columnSpacing={6}
-          spacing={12}
-          sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}
-        >
-          {imgSale.map((item, index) => (
-            <Grid item sm={4} key={index}>
+        <Grid container p={8} columnSpacing={6} spacing={6} sx={{ display: "flex", mt: 1 }}>
+          <Container>
+            <Grid item sm={6} sx={{ dislay: "flex" }}>
               <StyleImage>
-                <Card sx={{ maxWidth: 345 }}>
+                <Card sx={{ maxWidth: 550 }}>
                   <CardMedia>
-                    <img src={item.img}></img>
+                    <img
+                      src="https://img.srv1.hodine.com/themes/GRP.000001/PID.000000121/images/coffe-huong-vi-moi-1592562564.png"
+                      alt=""
+                    ></img>
                   </CardMedia>
-                  <CardContent>
-                    <Typography gutterBottom variant="h5" component="div">
-                      {item.title}
-                    </Typography>
-                    <Typography variant="subtitle2" color="body2">
-                      {item.priceSale}
-                    </Typography>
-                  </CardContent>
                 </Card>
               </StyleImage>
             </Grid>
-          ))}
+            <Grid item sm={6} sx={{ dislay: "flex" }}>
+              <Typography variant="h6" component="h2" color="text.secondary" sx={{ marginBottom: 0 }}>
+                Tưng bừng khai trương
+              </Typography>
+            </Grid>
+          </Container>
+
+          <Grid item sm={6}>
+            <Typography variant="h6" component="h2" color="text.secondary" sx={{ marginBottom: 0 }}>
+              Tưng bừng khai trương
+            </Typography>
+            <StyleImage>
+              <Card sx={{ maxWidth: 600 }}>
+                <CardMedia>
+                  <img
+                    src="https://img.srv1.hodine.com/themes/GRP.000001/PID.000000121/images/2-1592562818.png"
+                    alt=""
+                  ></img>
+                </CardMedia>
+              </Card>
+            </StyleImage>
+          </Grid>
+          <Grid item sm={6}>
+            <Typography variant="h6" component="h2" color="text.secondary" sx={{ marginBottom: 0 }}>
+              Chương trình đặc biệt nhằm tri ân khách hàng
+            </Typography>
+            <StyleImage>
+              <Card sx={{ maxWidth: 600 }}>
+                <CardMedia>
+                  <img
+                    src="https://img.srv1.hodine.com/themes/GRP.000001/PID.000000121/images/1-1592562837.png"
+                    alt=""
+                  ></img>
+                </CardMedia>
+              </Card>
+            </StyleImage>
+          </Grid>
         </Grid>
       </ContentStyle>
     </Container>
