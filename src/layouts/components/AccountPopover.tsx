@@ -40,7 +40,7 @@ export default function AccountPopover() {
     <Fragment>
       {!user ? (
         <Button to="/login" size="large" variant="contained" component={RouterLink}>
-          Getting Started
+          Đăng nhập ngay
         </Button>
       ) : (
         <Fragment>

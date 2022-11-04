@@ -45,16 +45,22 @@ export default function Searchbar() {
               autoFocus
               fullWidth
               disableUnderline
-              placeholder="Search…"
+              placeholder="Tìm kiếm ..."
               startAdornment={
                 <InputAdornment position="start">
                   <Iconify icon="eva:search-fill" sx={{ color: "text.disabled", width: 20, height: 20 }} />
                 </InputAdornment>
               }
-              sx={{ mr: 1, fontWeight: "fontWeightBold" }}
+              sx={{ mr: 1, fontWeight: "600" }}
             />
-            <Button variant="contained" onClick={handleClose}>
-              Search
+            <Button
+              variant="contained"
+              onClick={handleClose}
+              sx={{
+                flexShrink: 0,
+              }}
+            >
+              Tìm kiếm
             </Button>
           </SearchbarStyle>
         </Slide>

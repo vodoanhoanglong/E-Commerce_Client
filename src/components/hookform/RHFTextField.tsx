@@ -1,5 +1,5 @@
-import { useFormContext, Controller } from "react-hook-form";
 import { TextField } from "@mui/material";
+import { Controller, useFormContext } from "react-hook-form";
 
 interface RHFTextFieldProps {
   name: string;
@@ -24,6 +24,16 @@ export default function RHFTextField({ name, ...other }: RHFTextFieldProps) {
           helperText={error?.message}
           autoComplete="off"
           {...other}
+          sx={{
+            "& .MuiOutlinedInput-root": {
+              "& fieldset": {
+                transition: "all 0.25s ease",
+              },
+              "&:hover fieldset": {
+                borderColor: "primary.main",
+              },
+            },
+          }}
         />
       )}
     />

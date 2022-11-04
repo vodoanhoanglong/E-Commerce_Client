@@ -6,7 +6,7 @@ interface IHelmetProps {
 }
 
 function Helmet({ title, children }: IHelmetProps) {
-  document.title = title + " - Tiki Fake";
+  document.title = title + " - Shopping Mall";
 
   React.useEffect(() => {
     window.scrollTo(0, 0);

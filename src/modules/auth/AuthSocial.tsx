@@ -1,4 +1,4 @@
-import { Stack, Button, Divider, Typography } from "@mui/material";
+import { Button, Divider, Stack, Typography } from "@mui/material";
 import { Fragment } from "react";
 import Iconify from "~/components/Iconify";
 
@@ -21,7 +21,7 @@ export default function AuthSocial() {
 
       <Divider sx={{ my: 3 }}>
         <Typography variant="body2" sx={{ color: "text.secondary" }}>
-          OR
+          Hoặc
         </Typography>
       </Divider>
     </Fragment>

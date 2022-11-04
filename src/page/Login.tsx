@@ -5,23 +5,26 @@ import { AuthSocial, LoginForm } from "~/modules/auth";
 
 function Login() {
   return (
-    <Page title="Sign In">
+    <Page title="Đăng nhập">
       <Typography
         variant="h4"
+        textTransform="uppercase"
         gutterBottom
         sx={{
           textAlign: "center",
         }}
       >
-        Sign in to tiki fake shop
+        Đăng nhập
       </Typography>
-      <Typography sx={{ color: "text.secondary", mb: 5, textAlign: "center" }}>Enter your details below.</Typography>
+      <Typography sx={{ color: "text.secondary", mb: 5, textAlign: "center" }}>
+        Nhập thông tin chi tiết của bạn dưới đây.
+      </Typography>
       <AuthSocial />
       <LoginForm />
       <Typography variant="body2" align="center" sx={{ mt: 3 }}>
-        Don’t have an account?{" "}
+        Bạn chưa có tài khoản?{" "}
         <Link variant="subtitle2" component={RouterLink} to="/register">
-          Get started
+          Đăng ký ngay
         </Link>
       </Typography>
     </Page>
