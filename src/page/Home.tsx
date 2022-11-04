@@ -1,9 +1,11 @@
 import { Page } from "~/components";
 
+import HomeSale from "~/modules/Home/HomeSale";
+
 function Home() {
   return (
-    <Page title="Trang chủ">
-      <div>Home Page</div>
+    <Page title="trang chu">
+      <HomeSale />
     </Page>
   );
 }
