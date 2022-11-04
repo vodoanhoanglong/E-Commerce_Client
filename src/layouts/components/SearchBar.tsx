@@ -14,14 +14,10 @@ const SearchbarStyle = styled("div")(({ theme }: any) => ({
   position: "absolute",
   alignItems: "center",
   height: APPBAR_HEIGHT,
-  backdropFilter: "blur(6px)",
-  WebkitBackdropFilter: "blur(6px)", // Fix on Mobile
   padding: theme.spacing(0, 3),
   boxShadow: theme.customShadows.z8,
-  backgroundColor: `${alpha(theme.palette.background.default, 0.72)}`,
+  backgroundColor: `${alpha(theme.palette.background.default, 1)}`,
 }));
-
-// ----------------------------------------------------------------------
 
 export default function Searchbar() {
   const [isOpen, setOpen] = useState(false);
@@ -49,16 +45,22 @@ export default function Searchbar() {
               autoFocus
               fullWidth
               disableUnderline
-              placeholder="Search…"
+              placeholder="Tìm kiếm ..."
               startAdornment={
                 <InputAdornment position="start">
                   <Iconify icon="eva:search-fill" sx={{ color: "text.disabled", width: 20, height: 20 }} />
                 </InputAdornment>
               }
-              sx={{ mr: 1, fontWeight: "fontWeightBold" }}
+              sx={{ mr: 1, fontWeight: "600" }}
             />
-            <Button variant="contained" onClick={handleClose}>
-              Search
+            <Button
+              variant="contained"
+              onClick={handleClose}
+              sx={{
+                flexShrink: 0,
+              }}
+            >
+              Tìm kiếm
             </Button>
           </SearchbarStyle>
         </Slide>

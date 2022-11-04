@@ -7,22 +7,23 @@ export default function Register() {
     <Page title="Register">
       <Typography
         variant="h4"
+        textTransform="uppercase"
         gutterBottom
         sx={{
           textAlign: "center",
         }}
       >
-        Get started absolutely free.
+        Đăng ký
       </Typography>
       <Typography sx={{ color: "text.secondary", mb: 5, textAlign: "center" }}>
-        Free forever. No credit card needed.
+        Đăng ký miễn phí. Không cần thẻ tín dụng.
       </Typography>
       <AuthSocial />
       <RegisterForm />
       <Typography variant="body2" sx={{ mt: 3, textAlign: "center" }}>
-        Already have an account?&nbsp;
+        Bạn đã có tài khoản?{" "}
         <Link variant="subtitle2" to="/login" component={RouterLink}>
-          Login
+          Đăng nhập ngay
         </Link>
       </Typography>
     </Page>

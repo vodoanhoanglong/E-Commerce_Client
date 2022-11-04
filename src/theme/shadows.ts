@@ -1,8 +1,22 @@
 import { alpha, Shadows } from "@mui/material/styles";
 import palette from "./palette";
 
-const LIGHT_MODE = palette.grey[500];
+export interface ICustomShadows {
+  z1: string;
+  z8: string;
+  z12: string;
+  z16: string;
+  z20: string;
+  z24: string;
+  primary: string;
+  secondary: string;
+  info: string;
+  success: string;
+  warning: string;
+  error: string;
+}
 
+const LIGHT_MODE = palette.grey[500];
 const createShadow: (arg: string) => Shadows = (color) => {
   const transparent1 = alpha(color, 0.2);
   const transparent2 = alpha(color, 0.14);

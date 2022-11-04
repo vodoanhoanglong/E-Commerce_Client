@@ -1,44 +1,36 @@
-import SimpleBarReact from "simplebar-react";
-import { alpha, styled } from "@mui/material/styles";
+import { Box } from "@mui/material";
+import { styled, SxProps, Theme } from "@mui/material/styles";
 
 interface ScrollbarProps {
   children: React.ReactNode;
-  sx?: object;
+  sx?: SxProps<Theme> | undefined;
 }
 
-const RootStyle = styled("div")(() => ({
+const RootStyle = styled("div")(({ theme }) => ({
   flexGrow: 1,
   height: "100%",
-  overflow: "hidden",
-}));
-
-const SimpleBarStyle = styled(SimpleBarReact)(({ theme }) => ({
-  maxHeight: "100%",
-  "& .simplebar-scrollbar": {
-    "&:before": {
-      backgroundColor: alpha(theme.palette.grey[600], 0.48),
-    },
-    "&.simplebar-visible:before": {
-      opacity: 1,
-    },
+  userSelect: "none",
+  overflow: "hidden overlay",
+  "&::-webkit-scrollbar": {
+    width: 3,
   },
-  "& .simplebar-track.simplebar-vertical": {
-    width: 10,
+  "&::-webkit-scrollbar-thumb": {
+    backgroundColor: theme.palette.grey[500_48],
+    borderRadius: theme.shape.borderRadius,
+    boxShadow: theme.shadows[10],
   },
-  "& .simplebar-track.simplebar-horizontal .simplebar-scrollbar": {
-    height: 6,
-  },
-  "& .simplebar-mask": {
-    zIndex: "inherit",
+  "&::-webkit-scrollbar-track": {
+    backgroundColor: "transparent",
   },
 }));
 
-export default function Scrollbar({ children, sx, ...other }: ScrollbarProps) {
+function Scrollbar({ children, sx, ...other }: ScrollbarProps) {
   return (
     <RootStyle>
-      <SimpleBarStyle timeout={500} clickOnTrack={false} sx={sx} {...other}>
+      <Box sx={sx} {...other}>
         {children}
-      </SimpleBarStyle>
+      </Box>
     </RootStyle>
   );
 }
+export default Scrollbar;

@@ -15,8 +15,8 @@ const defaultValues = {
   password: "",
 };
 const LoginSchema = Yup.object({
-  email: Yup.string().email("Email must be a valid email address!").required("Email is required!"),
-  password: Yup.string().required("Password is required!"),
+  email: Yup.string().email("Địa chỉ email không hợp lệ!").required("Địa chỉ email không được để trống!"),
+  password: Yup.string().required("Mật khẩu không được để trống!"),
 });
 
 export default function LoginForm() {
@@ -35,11 +35,11 @@ export default function LoginForm() {
   return (
     <FormProvider methods={methods} onSubmit={handleSubmit(handleLogin)}>
       <Stack spacing={3}>
-        <RHFTextField name="email" label="Email address" />
+        <RHFTextField name="email" label="Địa chỉ Email" />
 
         <RHFTextField
           name="password"
-          label="Password"
+          label="Mật khẩu"
           type={showPassword ? "text" : "password"}
           InputProps={{
             endAdornment: (
@@ -55,12 +55,12 @@ export default function LoginForm() {
 
       <Stack direction="row" alignItems="center" justifyContent="end" sx={{ my: 2 }}>
         <Link variant="subtitle2" underline="hover" sx={{ cursor: "pointer" }}>
-          Forgot password?
+          Quên mật khẩu?
         </Link>
       </Stack>
 
       <LoadingButton fullWidth size="large" type="submit" variant="contained" loading={isSubmitting || loading}>
-        SIGN IN
+        ĐĂNG NHẬP
       </LoadingButton>
     </FormProvider>
   );

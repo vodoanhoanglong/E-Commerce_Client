@@ -1,6 +1,3 @@
-import { sub } from "date-fns";
-import React, { useRef, useState } from "react";
-// @mui
 import {
   Avatar,
   Badge,
@@ -16,8 +13,10 @@ import {
   Tooltip,
   Typography,
 } from "@mui/material";
+import { sub } from "date-fns";
+import React, { useRef, useState } from "react";
 import { Iconify, MenuPopover, Scrollbar } from "~/components";
-import { fToNow } from "~/utils/formatTime";
+import { fToNow } from "~/utils/formats";
 
 interface NotificationContent {
   createdAt: Date;
@@ -25,7 +24,6 @@ interface NotificationContent {
   isUnRead: boolean;
   title: string;
   description: string;
-  type: string;
   avatar: any;
 }
 
@@ -36,22 +34,59 @@ interface NotificationItemProps {
 const NOTIFICATIONS = [
   {
     id: "5e8f3f1b9d4b1b2b4b9b5b6c",
-    title: "Delivery processing",
-    description: "Your order is being shipped",
+    title: "Đơn hàng đang được xử lý",
+    description: "Đơn hàng của bạn đang được chuyển đi",
     avatar: "https://picsum.photos/200",
-    type: "order_shipped",
     createdAt: sub(new Date(), { days: 3, hours: 3, minutes: 30 }),
-    isUnRead: false,
+    isUnRead: true,
   },
 ];
 
-export default function NotificationsPopover() {
+const NotificationItem = ({ notification }: NotificationItemProps) => (
+  <ListItemButton
+    sx={{
+      py: 0,
+      px: 2.5,
+      borderBottom: (theme) => `dashed 1px ${theme.palette.divider}`,
+      ...(notification.isUnRead && {
+        bgcolor: "action.selected",
+      }),
+    }}
+  >
+    <ListItemAvatar>
+      <Avatar sx={{ bgcolor: "background.neutral" }} src={notification.avatar} />
+    </ListItemAvatar>
+    <ListItemText
+      primary={
+        <Typography variant="subtitle2">
+          {notification.title}
+          <Typography component="span" variant="body2" sx={{ color: "text.secondary" }}>
+            &nbsp; {notification.description}
+          </Typography>
+        </Typography>
+      }
+      secondary={
+        <Typography
+          variant="caption"
+          sx={{
+            mt: 0.5,
+            display: "flex",
+            alignItems: "center",
+            color: "text.disabled",
+          }}
+        >
+          <Iconify icon="eva:clock-outline" sx={{ mr: 0.5, width: 16, height: 16 }} />
+          {fToNow(notification.createdAt)}
+        </Typography>
+      }
+    />
+  </ListItemButton>
+);
+
+function NotificationsPopover() {
   const anchorRef = useRef(null);
-
   const [notifications, setNotifications] = useState(NOTIFICATIONS);
-
   const totalUnRead = notifications.filter((item) => item.isUnRead === true).length;
-
   const [open, setOpen] = useState(null);
 
   const handleOpen = (event: any) => {
@@ -88,18 +123,18 @@ export default function NotificationsPopover() {
         open={Boolean(open)}
         anchorEl={open}
         onClose={handleClose}
-        sx={{ width: 360, p: 0, mt: 1.5, ml: 0.75 }}
+        sx={{ width: 425, p: 0, mt: 1.5, ml: 0.75 }}
       >
         <Box sx={{ display: "flex", alignItems: "center", py: 2, px: 2.5 }}>
           <Box sx={{ flexGrow: 1 }}>
-            <Typography variant="subtitle1">Notifications</Typography>
+            <Typography variant="subtitle1">Thông báo</Typography>
             <Typography variant="body2" sx={{ color: "text.secondary" }}>
-              You have {totalUnRead} unread messages
+              Bạn có {totalUnRead} thông báo chưa đọc
             </Typography>
           </Box>
 
           {totalUnRead > 0 && (
-            <Tooltip title=" Mark all as read">
+            <Tooltip title="Đánh dấu đã đọc">
               <IconButton color="primary" onClick={handleMarkAllAsRead}>
                 <Iconify icon="eva:done-all-fill" width={20} height={20} />
               </IconButton>
@@ -109,12 +144,12 @@ export default function NotificationsPopover() {
 
         <Divider sx={{ borderStyle: "dashed" }} />
 
-        <Scrollbar sx={{ height: { xs: 340, sm: "auto" } }}>
+        <Scrollbar sx={{ maxHeight: 360 }}>
           <List
             disablePadding
             subheader={
               <ListSubheader disableSticky sx={{ py: 1, px: 2.5, typography: "overline" }}>
-                New
+                Thông báo mới
               </ListSubheader>
             }
           >
@@ -122,12 +157,11 @@ export default function NotificationsPopover() {
               <NotificationItem key={notification.id} notification={notification} />
             ))}
           </List>
-
           <List
             disablePadding
             subheader={
               <ListSubheader disableSticky sx={{ py: 1, px: 2.5, typography: "overline" }}>
-                Before that
+                Thông báo trước đó
               </ListSubheader>
             }
           >
@@ -141,7 +175,7 @@ export default function NotificationsPopover() {
 
         <Box sx={{ p: 1 }}>
           <Button fullWidth disableRipple>
-            View All
+            Xem tất cả
           </Button>
         </Box>
       </MenuPopover>
@@ -149,82 +183,4 @@ export default function NotificationsPopover() {
   );
 }
 
-function NotificationItem({ notification }: NotificationItemProps) {
-  const { avatar, title } = renderContent(notification);
-
-  return (
-    <ListItemButton
-      sx={{
-        py: 1.5,
-        px: 2.5,
-        mt: "1px",
-        ...(notification.isUnRead && {
-          bgcolor: "action.selected",
-        }),
-      }}
-    >
-      <ListItemAvatar>
-        <Avatar sx={{ bgcolor: "background.neutral" }}>{avatar}</Avatar>
-      </ListItemAvatar>
-      <ListItemText
-        primary={title}
-        secondary={
-          <Typography
-            variant="caption"
-            sx={{
-              mt: 0.5,
-              display: "flex",
-              alignItems: "center",
-              color: "text.disabled",
-            }}
-          >
-            <Iconify icon="eva:clock-outline" sx={{ mr: 0.5, width: 16, height: 16 }} />
-            {fToNow(notification.createdAt)}
-          </Typography>
-        }
-      />
-    </ListItemButton>
-  );
-}
-
-// ----------------------------------------------------------------------
-
-function renderContent(notification: NotificationContent) {
-  const title = (
-    <Typography variant="subtitle2">
-      {notification.title}
-      <Typography component="span" variant="body2" sx={{ color: "text.secondary" }}>
-        &nbsp; {notification.description}
-      </Typography>
-    </Typography>
-  );
-
-  if (notification.type === "order_placed") {
-    return {
-      avatar: <img alt={notification.title} src="/static/icons/ic_notification_package.svg" />,
-      title,
-    };
-  }
-  if (notification.type === "order_shipped") {
-    return {
-      avatar: <img alt={notification.title} src="/static/icons/ic_notification_shipping.svg" />,
-      title,
-    };
-  }
-  if (notification.type === "mail") {
-    return {
-      avatar: <img alt={notification.title} src="/static/icons/ic_notification_mail.svg" />,
-      title,
-    };
-  }
-  if (notification.type === "chat_message") {
-    return {
-      avatar: <img alt={notification.title} src="/static/icons/ic_notification_chat.svg" />,
-      title,
-    };
-  }
-  return {
-    avatar: notification.avatar ? <img alt={notification.title} src={notification.avatar} /> : null,
-    title,
-  };
-}
+export default NotificationsPopover;

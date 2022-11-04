@@ -1,9 +1,11 @@
 import { AppBar, Box, Stack, Toolbar } from "@mui/material";
 import { alpha, styled } from "@mui/material/styles";
+import { CartWidget } from "~/modules/cart";
 
 import AccountPopover from "./AccountPopover";
 import NavigationLink from "./NavigationLink";
 import NotificationsPopover from "./NotificationsPopover";
+import Searchbar from "./SearchBar";
 
 const APPBAR_HEIGHT = 64;
 const RootStyle = styled(AppBar)(({ theme }: any) => ({
@@ -23,8 +25,10 @@ export default function Navbar() {
       <ToolbarStyle>
         <NavigationLink />
         <Box sx={{ flexGrow: 1 }} />
-        <Stack direction="row" alignItems="center" spacing={{ xs: 0.5, sm: 1.5 }}>
+        <Stack direction="row" alignItems="center" spacing={{ xs: 1, sm: 2 }}>
+          <Searchbar />
           <NotificationsPopover />
+          <CartWidget />
           <AccountPopover />
         </Stack>
       </ToolbarStyle>
