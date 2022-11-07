@@ -1,5 +1,5 @@
 import { Badge, Box, Button, Divider, IconButton, List, ListSubheader, Stack, Typography } from "@mui/material";
-import { Fragment, useCallback, useRef, useState } from "react";
+import { Fragment, useMemo, useRef, useState } from "react";
 import { Iconify, MenuPopover, Scrollbar } from "~/components";
 import { useAppSelector } from "~/redux/hooks";
 import { currencyFormat } from "~/utils/formats";
@@ -10,15 +10,7 @@ function CartWidget() {
   const anchorRef = useRef(null);
   const [openPopper, setOpenPopper] = useState(null);
 
-  const handleOpen = (event: any) => {
-    setOpenPopper(event.currentTarget);
-  };
-
-  const handleClose = () => {
-    setOpenPopper(null);
-  };
-
-  const updateTotal = useCallback(() => {
+  const updateTotal = useMemo(() => {
     return cartItems.reduce((acc, item) => acc + item.subTotal, 0);
   }, [cartItems]);
 
@@ -27,7 +19,7 @@ function CartWidget() {
       <IconButton
         ref={anchorRef}
         color={openPopper ? "primary" : "default"}
-        onClick={handleOpen}
+        onClick={(e: any) => setOpenPopper(e.currentTarget)}
         sx={{ width: 40, height: 40 }}
       >
         <Badge showZero badgeContent={cartItems.length} color="error" max={99}>
@@ -37,7 +29,7 @@ function CartWidget() {
       <MenuPopover
         open={Boolean(openPopper)}
         anchorEl={openPopper}
-        onClose={handleClose}
+        onClose={() => setOpenPopper(null)}
         sx={{ width: 600, p: 0, mt: 1.5, ml: 0.75 }}
       >
         <Box sx={{ display: "flex", alignItems: "center", py: 2, px: 2.5 }}>
@@ -68,7 +60,7 @@ function CartWidget() {
 
         <Stack direction="row" justifyContent="space-between" alignItems="center" sx={{ px: 2.5, py: 1 }}>
           <Typography variant="subtitle1">Thành Tiền:</Typography>
-          <Typography variant="subtitle1">{`${currencyFormat(updateTotal())} VNĐ`}</Typography>
+          <Typography variant="subtitle1">{`${currencyFormat(updateTotal)}đ`}</Typography>
         </Stack>
         <Divider sx={{ borderStyle: "dashed" }} />
         <Box sx={{ p: 1 }}>

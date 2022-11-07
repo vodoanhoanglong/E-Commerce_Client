@@ -1,37 +1,33 @@
 import { Box, Tab, Tabs } from "@mui/material";
 import { SyntheticEvent, useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
+import { publicRoutes } from "~/routes";
+
+interface ITabLink {
+  label?: string;
+  to?: string;
+}
 
 const MAIN_LINK = [
   {
     display: "Trang chủ",
-    path: "/home",
+    path: publicRoutes.HOME.path,
   },
   {
     display: "Sản phẩm",
-    path: "/product",
-  },
-  {
-    display: "Tin tức",
-    path: "/news",
+    path: publicRoutes.PRODUCT.path,
   },
   {
     display: "Liên hệ",
-    path: "/contact",
+    path: publicRoutes.CONTACT.path,
   },
   {
     display: "Giới thiệu",
-    path: "/intro",
+    path: publicRoutes.ABOUT.path,
   },
 ];
 
-interface LinkTabProps {
-  label?: string;
-  to?: string;
-}
-function LinkTab(props: LinkTabProps) {
-  return <Tab LinkComponent={Link} {...props} />;
-}
+const TabLink = (props: ITabLink) => <Tab LinkComponent={Link} {...props} />;
 
 function NavigationLink() {
   const { pathname } = useLocation();
@@ -49,7 +45,7 @@ function NavigationLink() {
     <Box sx={{ height: "100%" }}>
       <Tabs value={value} onChange={handleChange}>
         {MAIN_LINK.map((link, index) => (
-          <LinkTab key={index} label={link.display} to={link.path} />
+          <TabLink key={index} label={link.display} to={link.path} />
         ))}
       </Tabs>
     </Box>
