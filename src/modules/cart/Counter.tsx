@@ -1,4 +1,3 @@
-import { Box } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import { useState } from "react";
 import { Iconify } from "~/components";
@@ -9,11 +8,12 @@ const RootStyle = styled("div")(() => ({
   border: "1px solid #d6e0ed",
   backgroundColor: "#f5f8fd",
   height: 30,
+  width: 85,
 }));
 const CounterValue = styled("input")(({ theme }) => ({
   width: "100%",
   height: "100%",
-  fontSize: "1rem",
+  fontSize: "0.85rem",
   lineHeight: 1.1,
   backgroundColor: "transparent",
   color: theme.palette.text.primary,
@@ -35,17 +35,15 @@ const CounterButton = styled("button")(({ theme }) => ({
 function Counter() {
   const [value, setValue] = useState(1);
   return (
-    <Box maxWidth="100px">
-      <RootStyle>
-        <CounterButton disabled>
-          <Iconify icon="eva:minus-fill" />
-        </CounterButton>
-        <CounterValue type="number" value={value} required onChange={(e) => setValue(Number(e.target.value))} />
-        <CounterButton onClick={() => setValue((prev) => prev + 1)}>
-          <Iconify icon="eva:plus-fill" />
-        </CounterButton>
-      </RootStyle>
-    </Box>
+    <RootStyle>
+      <CounterButton disabled>
+        <Iconify icon="eva:minus-fill" />
+      </CounterButton>
+      <CounterValue type="number" value={value} required onChange={(e) => setValue(Number(e.target.value))} />
+      <CounterButton onClick={() => setValue((prev) => prev + 1)}>
+        <Iconify icon="eva:plus-fill" />
+      </CounterButton>
+    </RootStyle>
   );
 }
 
