@@ -1,10 +1,10 @@
-import { Box, Grid, Pagination, Paper, Stack, Typography } from "@mui/material";
+import { Grid, Pagination, Paper, Typography } from "@mui/material";
 import { ChangeEvent, useState } from "react";
 import ProductItem from "./ProductItem";
 
 function ProductList({ data }: any) {
   const [pageNumber, setPageNumber] = useState(0);
-  const productsPerPage = 9;
+  const productsPerPage = 12;
   const pagesVisited = pageNumber * productsPerPage;
 
   const DisplayProducts = data
@@ -17,24 +17,24 @@ function ProductList({ data }: any) {
   };
 
   return (
-    <Grid item xs={9}>
-      <Paper>
-        <Typography variant="h6" sx={{ p: 2 }}>
-          Đồ điện tử
-        </Typography>
-      </Paper>
-      <Stack spacing={1} alignItems="center">
-        <Box
-          sx={{
-            display: "flex",
-            flexWrap: "wrap",
-            marginTop: 1,
-          }}
-        >
-          {DisplayProducts}
-        </Box>
-        <Pagination count={pageCount} page={pageNumber + 1} onChange={handleChange} color="primary" />
-      </Stack>
+    <Grid container spacing={1} columns={{ xs: 8 }}>
+      <Grid item xs={8}>
+        <Paper>
+          <Typography variant="h6" sx={{ p: 2 }}>
+            Đồ điện tử
+          </Typography>
+        </Paper>
+      </Grid>
+      {DisplayProducts}
+      <Grid item xs={8}>
+        <Pagination
+          count={pageCount}
+          page={pageNumber + 1}
+          onChange={handleChange}
+          color="primary"
+          sx={{ display: "flex", justifyContent: "center" }}
+        />
+      </Grid>
     </Grid>
   );
 }

@@ -1,4 +1,5 @@
-import { Box, Grid, MenuItem, MenuList, Paper, Typography } from "@mui/material";
+import { Container, MenuItem, MenuList, Paper, Typography } from "@mui/material";
+import { Stack } from "@mui/system";
 import { Page } from "~/components";
 import ProductList from "~/modules/Products/ProductList";
 
@@ -140,28 +141,23 @@ const products = [
 function Product() {
   return (
     <Page title="Sản phẩm">
-      <Box
-        sx={{
-          padding: "0 24px ",
-        }}
-      >
-        <Grid container spacing={2}>
-          <Grid item xs={3}>
-            <Paper>
-              <MenuList>
-                <Typography variant="body1" sx={{ fontWeight: "bold", p: 2 }}>
-                  Danh mục sản phẩm
-                </Typography>
+      <Container fixed>
+        <Stack direction="row">
+          <Paper sx={{ minWidth: 270, maxWidth: 275, height: "10%", mr: 1 }}>
+            <MenuList>
+              <Typography variant="body1" sx={{ fontWeight: "bold", p: 2 }}>
+                Danh mục sản phẩm
+              </Typography>
 
-                {MENU.map((item) => (
-                  <MenuItem key={item.id}>{item.name}</MenuItem>
-                ))}
-              </MenuList>
-            </Paper>
-          </Grid>
+              {MENU.map((item) => (
+                <MenuItem key={item.id}>{item.name}</MenuItem>
+              ))}
+            </MenuList>
+          </Paper>
+
           <ProductList data={products} />
-        </Grid>
-      </Box>
+        </Stack>
+      </Container>
     </Page>
   );
 }
