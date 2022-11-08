@@ -1,26 +1,41 @@
-import { Card, CardActionArea, CardContent, CardMedia, Typography } from "@mui/material";
-import { Link } from "react-router-dom";
-import { Product } from "~/models";
-import { publicRoutes } from "~/routes";
-import { currencyFormat } from "~/utils/formats";
+import { Box, Grid, Pagination, Paper, Stack, Typography } from "@mui/material";
+import { ChangeEvent, useState } from "react";
+import ProductItem from "./ProductItem";
 
-interface ProductItemProps {
-  data: Product;
-}
+function ProductList({ data }: any) {
+  const [pageNumber, setPageNumber] = useState(0);
+  const productsPerPage = 9;
+  const pagesVisited = pageNumber * productsPerPage;
 
-function ProductList({ data }: ProductItemProps) {
+  const DisplayProducts = data
+    .slice(pagesVisited, pagesVisited + productsPerPage)
+    .map((item: any) => <ProductItem key={item.id} data={item} />);
+
+  const pageCount = Math.ceil(data.length / productsPerPage);
+  const handleChange = (event: ChangeEvent<unknown>, value: number) => {
+    setPageNumber(value - 1);
+  };
+
   return (
-    <Card sx={{ maxWidth: 350, minWidth: 345, marginBottom: 2, marginRight: 2 }}>
-      <CardActionArea component={Link} to={publicRoutes.PRODUCT.path + `/${data.id}`} state={data}>
-        <CardMedia component="img" height="160" image={data.image} />
-        <CardContent>
-          <Typography variant="body1">{data.name}</Typography>
-          <Typography gutterBottom variant="h6" component="div" color="#ff1744">
-            {currencyFormat(data.price)} ₫
-          </Typography>
-        </CardContent>
-      </CardActionArea>
-    </Card>
+    <Grid item xs={9}>
+      <Paper>
+        <Typography variant="h6" sx={{ p: 2 }}>
+          Đồ điện tử
+        </Typography>
+      </Paper>
+      <Stack spacing={1} alignItems="center">
+        <Box
+          sx={{
+            display: "flex",
+            flexWrap: "wrap",
+            marginTop: 1,
+          }}
+        >
+          {DisplayProducts}
+        </Box>
+        <Pagination count={pageCount} page={pageNumber + 1} onChange={handleChange} color="primary" />
+      </Stack>
+    </Grid>
   );
 }
 

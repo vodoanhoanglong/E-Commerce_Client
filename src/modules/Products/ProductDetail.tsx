@@ -1,4 +1,4 @@
-import { Box } from "@mui/material";
+import { Container } from "@mui/material";
 import { useLocation } from "react-router";
 import { Page } from "~/components";
 
@@ -8,13 +8,7 @@ function ProductDetail() {
 
   return (
     <Page title="Thông tin sản phẩm">
-      <Box
-        sx={{
-          padding: "0 24px ",
-        }}
-      >
-        ákm
-      </Box>
+      <Container fixed>adshsn</Container>
     </Page>
   );
 }
