@@ -1,28 +1,41 @@
-import { Box, Card, CardActionArea, CardContent, CardMedia, Typography } from "@mui/material";
-import { currencyFormat } from "~/utils/formats";
+import { Grid, Pagination, Paper, Typography } from "@mui/material";
+import { ChangeEvent, useState } from "react";
+import ProductItem from "./ProductItem";
 
-function ProductList() {
+function ProductList({ data }: any) {
+  const [pageNumber, setPageNumber] = useState(0);
+  const productsPerPage = 12;
+  const pagesVisited = pageNumber * productsPerPage;
+
+  const DisplayProducts = data
+    .slice(pagesVisited, pagesVisited + productsPerPage)
+    .map((item: any) => <ProductItem key={item.id} data={item} />);
+
+  const pageCount = Math.ceil(data.length / productsPerPage);
+  const handleChange = (event: ChangeEvent<unknown>, value: number) => {
+    setPageNumber(value - 1);
+  };
+
   return (
-    <Box
-      sx={{
-        display: "flex",
-        flexWrap: "wrap",
-      }}
-    >
-      <Card sx={{ maxWidth: 345, minWidth: 340, marginRight: 2, marginBottom: 2 }}>
-        <CardActionArea>
-          <CardMedia component="img" height="160" image="/static/images/cards/contemplative-reptile.jpg" />
-          <CardContent>
-            <Typography variant="body1">
-              Bộ 2 chảo vân đá chống dính Tefal Natura dùng cho bếp ga và hồng ngoại (20cm, 24cm) - Hàng chính hãng
-            </Typography>
-            <Typography gutterBottom variant="h6" component="div" color="#ff1744">
-              {currencyFormat(349000)} ₫
-            </Typography>
-          </CardContent>
-        </CardActionArea>
-      </Card>
-    </Box>
+    <Grid container spacing={1} columns={{ xs: 8 }}>
+      <Grid item xs={8}>
+        <Paper>
+          <Typography variant="h6" sx={{ p: 2 }}>
+            Đồ điện tử
+          </Typography>
+        </Paper>
+      </Grid>
+      {DisplayProducts}
+      <Grid item xs={8}>
+        <Pagination
+          count={pageCount}
+          page={pageNumber + 1}
+          onChange={handleChange}
+          color="primary"
+          sx={{ display: "flex", justifyContent: "center" }}
+        />
+      </Grid>
+    </Grid>
   );
 }
 
