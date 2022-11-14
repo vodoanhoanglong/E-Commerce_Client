@@ -1,16 +1,16 @@
-import { Box } from "@mui/material";
 import { Page } from "~/components";
-
-import HomeFilter from "~/modules/Home/HomeProduct";
-import HomeSale from "~/modules/Home/HomeSale";
+import HomeFeature from "~/modules/Home/HomeFeature";
+import HomeInteractive from "~/modules/Home/HomeInteractive";
+import HomeMain from "~/modules/Home/HomeMain";
+import HomeNewProduct from "~/modules/Home/HomeNewProduct";
 
 function Home() {
   return (
     <Page title="trang chu">
-      <Box sx={{ flexGrow: 1, textAlign: "center", m: 0 }}>
-        <HomeSale />
-        <HomeFilter />
-      </Box>
+      <HomeMain />
+      <HomeInteractive />
+      <HomeNewProduct />
+      <HomeFeature />
     </Page>
   );
 }
