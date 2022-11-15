@@ -1,23 +1,24 @@
 import { Box, Container, IconButton, styled, Typography } from "@mui/material";
 import Iconify from "~/components/Iconify";
+
+const CustomContainer = styled(Container)(({ theme }) => ({
+  display: "flex",
+  justifyContent: "space-between",
+  [theme.breakpoints.down("md")]: {
+    flexDirection: "column",
+    alignItems: "center",
+    textAlign: "center",
+    marginBottom: theme.spacing(4),
+  },
+}));
+
+const CustomBox = styled(Box)(({ theme }) => ({
+  [theme.breakpoints.down("md")]: {
+    marginBottom: theme.spacing(4),
+  },
+}));
+
 const HomeInteractive = () => {
-  const CustomContainer = styled(Container)(({ theme }) => ({
-    display: "flex",
-    justifyContent: "space-between",
-    [theme.breakpoints.down("md")]: {
-      flexDirection: "column",
-      alignItems: "center",
-      textAlign: "center",
-      marginBottom: theme.spacing(4),
-    },
-  }));
-
-  const CustomBox = styled(Box)(({ theme }) => ({
-    [theme.breakpoints.down("md")]: {
-      marginBottom: theme.spacing(4),
-    },
-  }));
-
   return (
     <Box sx={{ p: 10, backgroundColor: "#fff" }}>
       <CustomContainer>
