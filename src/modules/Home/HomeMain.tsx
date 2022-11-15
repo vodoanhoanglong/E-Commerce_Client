@@ -1,5 +1,7 @@
 import { Box, styled, Typography } from "@mui/material";
 import Button from "@mui/material/Button";
+import { Link } from "react-router-dom";
+import { publicRoutes } from "~/routes";
 
 const HomeMain = () => {
   const CustomBox = styled(Box)(({ theme }) => ({
@@ -26,7 +28,7 @@ const HomeMain = () => {
   }));
 
   return (
-    <Box sx={{ backgroundColor: "#E6F0FF", minHeight: "90vh" }}>
+    <Box sx={{ backgroundColor: "#E6F0FF", minHeight: "100vh" }}>
       <CustomBox>
         <Box sx={{ flex: "1.25" }}>
           <Typography variant="body2" sx={{ fontSize: "18px", color: "#687690", fontWeight: "500", mt: 10, mb: 4 }}>
@@ -37,8 +39,7 @@ const HomeMain = () => {
             Be the first to get the best real estate deals before they hit the mass market! Hot foreclosure deals with
             one simple search!
           </Typography>
-
-          <Button variant="contained" sx={{ width: "150px", borderRadius: "none", height: "50px" }}>
+          <Button to={publicRoutes.PRODUCT.path} size="large" variant="contained" component={Link}>
             More Of Shop
           </Button>
         </Box>

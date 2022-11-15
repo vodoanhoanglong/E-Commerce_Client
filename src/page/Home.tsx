@@ -6,7 +6,7 @@ import HomeNewProduct from "~/modules/Home/HomeNewProduct";
 
 function Home() {
   return (
-    <Page title="trang chu">
+    <Page title="Trang Chủ">
       <HomeMain />
       <HomeInteractive />
       <HomeNewProduct />

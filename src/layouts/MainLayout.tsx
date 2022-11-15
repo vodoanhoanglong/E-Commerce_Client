@@ -19,7 +19,7 @@ const RootStyle = styled("div")({
 const MainStyle = styled("div")(({ theme }) => ({
   overflow: "auto",
   minHeight: "100%",
-  paddingTop: APP_BAR_HEIGHT + 16,
+  paddingTop: APP_BAR_HEIGHT,
   paddingBottom: theme.spacing(10),
 }));
 
