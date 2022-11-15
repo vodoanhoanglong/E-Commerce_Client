@@ -37,7 +37,7 @@ function NavigationLink() {
     setValue(newValue);
   };
   useEffect(() => {
-    const index = MAIN_LINK.findIndex((link) => link.path === pathname);
+    const index = MAIN_LINK.findIndex((link) => pathname.includes(link.path));
     setValue(index);
   }, [pathname]);
 

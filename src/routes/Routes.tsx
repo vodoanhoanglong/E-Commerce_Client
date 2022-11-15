@@ -1,6 +1,7 @@
 import { createBrowserRouter, Navigate, RouteObject, RouterProvider } from "react-router-dom";
 import { AuthLayout, MainLayout } from "~/layouts";
 import { AboutPage, ContactPage, HomePage, LoginPage, Page404, ProductPage, RegisterPage } from "~/page";
+import ProductDetail from "~/page/ProductDetail";
 import { authRoutes, publicRoutes } from "~/routes";
 
 const routesConfig: RouteObject[] = [
@@ -27,7 +28,16 @@ const routesConfig: RouteObject[] = [
       },
       {
         path: publicRoutes.PRODUCT.path,
-        element: <ProductPage />,
+        children: [
+          {
+            index: true,
+            element: <ProductPage />,
+          },
+          {
+            path: publicRoutes.PRODUCT.children.DETAIL.path,
+            element: <ProductDetail />,
+          },
+        ],
       },
     ],
   },
