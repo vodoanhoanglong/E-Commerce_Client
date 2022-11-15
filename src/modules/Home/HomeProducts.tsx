@@ -1,4 +1,5 @@
-import { Box, styled, Typography } from "@mui/material";
+import { Box, IconButton, Rating, Stack, styled, Tooltip, Typography } from "@mui/material";
+import Iconify from "~/components/Iconify";
 
 const homeProducts = [
   {
@@ -6,9 +7,6 @@ const homeProducts = [
     img: "https://img.srv1.hodine.com/themes/GRP.000002/PID.000000214/images/2da5a361-acb8-49e4-be72-1096bdaeadac[1]-1594632418.jpeg",
     price: "3500000đ",
     name: "Áo da",
-    buy: "Mua ngay",
-    like: "Yêu thích",
-    more: "Xem thêm",
   },
 
   {
@@ -16,9 +14,6 @@ const homeProducts = [
     img: "https://img.srv1.hodine.com/themes/GRP.000002/PID.000000214/images/d510cf53-6071-4364-89d8-709f5dd29a64[1]-1594632386.jpeg",
     price: "4700000d",
     name: "Áo ấm mùa đông",
-    buy: "Mua ngay",
-    like: "Yêu thích",
-    more: "Xem thêm",
   },
 
   {
@@ -26,9 +21,6 @@ const homeProducts = [
     img: "https://img.srv1.hodine.com/themes/GRP.000002/PID.000000214/images/a368b735-97f8-40c7-b810-86441aabd89e[1]-1594632352.jpeg",
     price: "4700000đ",
     name: "Áo khoác dù",
-    buy: "Mua ngay",
-    like: "Yêu thích",
-    more: "Xem thêm",
   },
 ];
 
@@ -62,30 +54,42 @@ const HomeProducts = () => {
             <img src={item.img} alt="producthome" style={{ maxWidth: "100%" }} />
           </ImgContainer>
           <Box sx={{ padding: "1rem" }}>
-            <Typography variant="body2" sx={{ fontWeight: "700" }}>
+            <Typography variant="body2" sx={{ fontWeight: "700", fontSize: "16px" }}>
               {item.price}
             </Typography>
-            <Typography variant="body2" sx={{ my: 2 }}>
+            <Typography variant="body2" sx={{ my: 1, fontSize: "16px" }}>
               {item.name}
             </Typography>
 
             <Box sx={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
               <InfoBox>
-                <Typography variant="body2" sx={{ mt: 1 }}>
-                  {item.buy}
-                </Typography>
+                <Tooltip title="Mua ngay">
+                  <IconButton>
+                    <Iconify icon="el:shopping-cart-sign" width={32} height={32} />
+                  </IconButton>
+                </Tooltip>
               </InfoBox>
               <InfoBox>
-                <Typography variant="body2" sx={{ mt: 1 }}>
-                  {item.like}
-                </Typography>
+                <Tooltip title="Yêu thích">
+                  <IconButton>
+                    <Iconify icon="icon-park-solid:like" width={32} height={32} />
+                  </IconButton>
+                </Tooltip>
               </InfoBox>
               <InfoBox>
-                <Typography variant="body2" sx={{ mt: 1 }}>
-                  {item.more}
-                </Typography>
+                <Tooltip title="Xem thêm">
+                  <IconButton>
+                    <Iconify icon="fluent:more-circle-20-filled" width={38} height={38} />
+                  </IconButton>
+                </Tooltip>
               </InfoBox>
             </Box>
+            <Typography variant="body2" sx={{ fontSize: "14px", fontWeight: "italic", mt: 1 }}>
+              Đánh giá
+              <Stack spacing={1}>
+                <Rating name="half-rating" defaultValue={0} precision={1} />
+              </Stack>
+            </Typography>
           </Box>
         </ProductBox>
       ))}

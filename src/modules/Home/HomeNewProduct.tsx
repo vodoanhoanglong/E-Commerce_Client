@@ -34,25 +34,33 @@ const HomeNewProduct = () => {
   }));
 
   return (
-    <Box sx={{ display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center" }}>
+    <Box
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        alignItems: "center",
+        backgroundColor: "#fff",
+      }}
+    >
       <div style={{ width: "5%", height: "5px", backgroundColor: "#000339", margin: "10px auto" }}></div>
       <Typography variant="h3" sx={{ fontSize: "35px", fontWeight: "bold", color: "#000339", my: "3" }}>
-        How to Buy?
+        Mua sắm thả ga
       </Typography>
       <CustomBox>
         <Typography variant="body2" sx={{ fontSize: "16px", fontWeight: "500", color: "#5a6473", textAlign: "center" }}>
-          Every thing you need in once place
+          Những mặt hàng mới liên tục cập nhật
         </Typography>
       </CustomBox>
       <GuidesBox>
         <GuideBox>
           <img src="https://github.com/frontendzone/real-estate-landing-page/blob/main/src/media/buy_icon.png?raw=true" />
           <Typography variant="body2" sx={{ fontWeight: "500", fontSize: "20px", color: "#3b3c45", my: 1 }}>
-            Buying to the shop
+            Mua sắm tại shop
           </Typography>
           <Box sx={{ cursor: "pointer", display: "flex", justifyContent: "center", alignItems: "center" }}>
             <Typography variant="body2" sx={{ fontWeight: "bold", fontSize: "14px", color: "#0689ff" }}>
-              How to buy
+              Mua sắm
             </Typography>
           </Box>
         </GuideBox>
@@ -60,11 +68,11 @@ const HomeNewProduct = () => {
         <GuideBox>
           <img src="https://github.com/frontendzone/real-estate-landing-page/blob/main/src/media/rent_icon.png?raw=true" />
           <Typography variant="body2" sx={{ fontWeight: "500", fontSize: "20px", color: "#3b3c45", my: 1 }}>
-            Rent in shop
+            Thương hiệu chính hãng
           </Typography>
           <Box sx={{ cursor: "pointer", display: "flex", justifyContent: "center", alignItems: "center" }}>
             <Typography variant="body2" sx={{ fontWeight: "bold", fontSize: "14px", color: "#0689ff" }}>
-              How to Rent
+              Mua sắm an toàn
             </Typography>
           </Box>
         </GuideBox>
@@ -72,11 +80,11 @@ const HomeNewProduct = () => {
         <GuideBox>
           <img src="https://github.com/frontendzone/real-estate-landing-page/blob/main/src/media/sell_icon.png?raw=true" />
           <Typography variant="body2" sx={{ fontWeight: "500", fontSize: "20px", color: "#3b3c45", my: 1 }}>
-            Shelling by Shop
+            Tràn ngập khuyến mãi
           </Typography>
           <Box sx={{ cursor: "pointer", display: "flex", justifyContent: "center", alignItems: "center" }}>
             <Typography variant="body2" sx={{ fontWeight: "bold", fontSize: "14px", color: "#0689ff" }}>
-              How to selling
+              Mua sắm tiết kiệm
             </Typography>
           </Box>
         </GuideBox>

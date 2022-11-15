@@ -1,5 +1,5 @@
-import { Box, Container, styled, Typography } from "@mui/material";
-
+import { Box, Container, IconButton, styled, Typography } from "@mui/material";
+import Iconify from "~/components/Iconify";
 const HomeInteractive = () => {
   const CustomContainer = styled(Container)(({ theme }) => ({
     display: "flex",
@@ -19,7 +19,7 @@ const HomeInteractive = () => {
   }));
 
   return (
-    <Box sx={{ mt: 10 }}>
+    <Box sx={{ p: 10, backgroundColor: "#fff" }}>
       <CustomContainer>
         <CustomBox>
           <img
@@ -36,7 +36,10 @@ const HomeInteractive = () => {
               mt: 2,
             }}
           >
-            More than 45,000 trust Besnik
+            Hơn 45 triệu đánh giá tích cực cho shop
+            <IconButton>
+              <Iconify icon="ant-design:like-outlined" width={20} height={20} />
+            </IconButton>
           </Typography>
         </CustomBox>
 
@@ -55,7 +58,7 @@ const HomeInteractive = () => {
               mt: 2,
             }}
           >
-            5-Star Rating (2k+ Reviews)
+            5-Sao đánh giá (2k+ Lượt phản hồi)
           </Typography>
         </Box>
       </CustomContainer>

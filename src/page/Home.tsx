@@ -1,4 +1,5 @@
 import { Page } from "~/components";
+import HomeCart from "~/modules/Home/HomeCart";
 import HomeFeature from "~/modules/Home/HomeFeature";
 import HomeInteractive from "~/modules/Home/HomeInteractive";
 import HomeMain from "~/modules/Home/HomeMain";
@@ -8,6 +9,7 @@ function Home() {
   return (
     <Page title="trang chu">
       <HomeMain />
+      <HomeCart />
       <HomeInteractive />
       <HomeNewProduct />
       <HomeFeature />

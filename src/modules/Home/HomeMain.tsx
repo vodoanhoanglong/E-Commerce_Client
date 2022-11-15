@@ -1,5 +1,7 @@
 import { Box, styled, Typography } from "@mui/material";
 import Button from "@mui/material/Button";
+import { Link } from "react-router-dom";
+import { publicRoutes } from "~/routes";
 
 const HomeMain = () => {
   const CustomBox = styled(Box)(({ theme }) => ({
@@ -26,20 +28,25 @@ const HomeMain = () => {
   }));
 
   return (
-    <Box sx={{ backgroundColor: "#E6F0FF", minHeight: "90vh" }}>
+    <Box sx={{ backgroundColor: "#E6F0FF", minHeight: "100vh" }}>
       <CustomBox>
         <Box sx={{ flex: "1.25" }}>
-          <Typography variant="body2" sx={{ fontSize: "18px", color: "#687690", fontWeight: "500", mt: 10, mb: 4 }}>
+          <Typography variant="body2" sx={{ fontSize: "20px", color: "#687690", fontWeight: "500", mt: 10, mb: 4 }}>
             Welcome to The Shopping Mall
           </Typography>
-          <Title variant="h1">Discover a place where you'll love to live.</Title>
+          <Title variant="h1">Chuyên các mặt hàng nhu yếu phẩm.</Title>
           <Typography variant="body2" sx={{ fontSize: "18px", color: "#5A6473", my: 4 }}>
-            Be the first to get the best real estate deals before they hit the mass market! Hot foreclosure deals with
-            one simple search!
+            Đến với shop của chúng tôi các bạn có thể trải nghiệm nhiều loại sản phẩm kèm theo những khuyến mãi cực
+            khủng!
           </Typography>
 
-          <Button variant="contained" sx={{ width: "150px", borderRadius: "none", height: "50px" }}>
-            More Of Shop
+          <Button
+            to={publicRoutes.PRODUCT.path}
+            variant="contained"
+            sx={{ width: "170px", borderRadius: "none", height: "50px" }}
+            component={Link}
+          >
+            Xem thêm về shop
           </Button>
         </Box>
         <Box sx={{ flex: "1.6", mt: 7 }}>

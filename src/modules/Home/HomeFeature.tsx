@@ -24,9 +24,8 @@ const HomeFeature = () => {
     <Box sx={{ mt: 5, backgroundColor: "#f5fafe", py: 10 }}>
       <Container>
         <FetureTextBox>
-          <Typography sx={{ color: "#000339", fontSize: "35px", fontWeight: "bold" }}>Feature Product</Typography>
+          <Typography sx={{ color: "#000339", fontSize: "38px", fontWeight: "bold" }}>Sản phẩm nổi bật</Typography>
         </FetureTextBox>
-
         <FetureBox>
           <HomeProducts />
         </FetureBox>
