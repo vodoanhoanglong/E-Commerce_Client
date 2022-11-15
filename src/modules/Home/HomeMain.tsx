@@ -1,5 +1,6 @@
-import { Box, styled, Typography } from "@mui/material";
+import { Box, Collapse, styled, Typography } from "@mui/material";
 import Button from "@mui/material/Button";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { publicRoutes } from "~/routes";
 
@@ -27,37 +28,45 @@ const HomeMain = () => {
     },
   }));
 
-  return (
-    <Box sx={{ backgroundColor: "#E6F0FF", minHeight: "100vh" }}>
-      <CustomBox>
-        <Box sx={{ flex: "1.25" }}>
-          <Typography variant="body2" sx={{ fontSize: "20px", color: "#687690", fontWeight: "500", mt: 10, mb: 4 }}>
-            Welcome to The Shopping Mall
-          </Typography>
-          <Title variant="h1">Chuyên các mặt hàng nhu yếu phẩm.</Title>
-          <Typography variant="body2" sx={{ fontSize: "18px", color: "#5A6473", my: 4 }}>
-            Đến với shop của chúng tôi các bạn có thể trải nghiệm nhiều loại sản phẩm kèm theo những khuyến mãi cực
-            khủng!
-          </Typography>
+  const [checked, setChecked] = useState(false);
 
-          <Button
-            to={publicRoutes.PRODUCT.path}
-            variant="contained"
-            sx={{ width: "170px", borderRadius: "none", height: "50px" }}
-            component={Link}
-          >
-            Xem thêm về shop
-          </Button>
-        </Box>
-        <Box sx={{ flex: "1.6", mt: 7 }}>
-          <img
-            src="https://simpleshop.vn/blog/wp-content/uploads/2021/07/TND_M119_05-removebg-preview-1.png"
-            alt="homemainImg"
-            style={{ maxWidth: "100%", marginBottom: "2rem" }}
-          />
-        </Box>
-      </CustomBox>
-    </Box>
+  useEffect(() => {
+    setChecked(true);
+  }, []);
+
+  return (
+    <Collapse in={checked} {...(checked ? { timeout: 1500 } : {})} collapsedSize={15}>
+      <Box sx={{ backgroundColor: "#E6F0FF", minHeight: "100vh" }} id="homemain">
+        <CustomBox>
+          <Box sx={{ flex: "1.25" }}>
+            <Typography variant="body2" sx={{ fontSize: "20px", color: "#687690", fontWeight: "500", mt: 10, mb: 4 }}>
+              Welcome to The Shopping Mall
+            </Typography>
+            <Title variant="h1">Chuyên các mặt hàng nhu yếu phẩm.</Title>
+            <Typography variant="body2" sx={{ fontSize: "18px", color: "#5A6473", my: 4 }}>
+              Đến với shop của chúng tôi các bạn có thể trải nghiệm nhiều loại sản phẩm kèm theo những khuyến mãi cực
+              khủng!
+            </Typography>
+            <Button
+              to={publicRoutes.PRODUCT.path}
+              variant="contained"
+              sx={{ width: "170px", borderRadius: "none", height: "50px", textTransform: "none", fontSize: "15px" }}
+              component={Link}
+            >
+              Đến cửa hàng ngay
+            </Button>
+          </Box>
+
+          <Box sx={{ flex: "1.6", mt: 7 }}>
+            <img
+              src="https://simpleshop.vn/blog/wp-content/uploads/2021/07/TND_M119_05-removebg-preview-1.png"
+              alt="homemainImg"
+              style={{ maxWidth: "100%", marginBottom: "2rem" }}
+            />
+          </Box>
+        </CustomBox>
+      </Box>
+    </Collapse>
   );
 };
 
