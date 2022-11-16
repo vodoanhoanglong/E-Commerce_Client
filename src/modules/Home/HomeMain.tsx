@@ -39,10 +39,13 @@ const HomeMain = () => {
       <Box sx={{ backgroundColor: "#E6F0FF", minHeight: "100vh" }} id="homemain">
         <CustomBox>
           <Box sx={{ flex: "1.25" }}>
-            <Typography variant="body2" sx={{ fontSize: "20px", color: "#687690", fontWeight: "500", mt: 10, mb: 4 }}>
+            <Typography variant="body2" sx={{ fontSize: "22px", color: "#687690", fontWeight: "500", mt: 10, mb: 4 }}>
               Welcome to The Shopping Mall
             </Typography>
-            <Title variant="h1">Chuyên các mặt hàng nhu yếu phẩm.</Title>
+            <Title variant="h1">Giao hàng tận tay</Title>
+            <Typography variant="h2" sx={{ fontSize: "26px", color: "#0A8BFF", fontFamily: "Sanseri" }}>
+              Đặt hàng ngay hôm nay
+            </Typography>
             <Typography variant="body2" sx={{ fontSize: "18px", color: "#5A6473", my: 4 }}>
               Đến với shop của chúng tôi các bạn có thể trải nghiệm nhiều loại sản phẩm kèm theo những khuyến mãi cực
               khủng!
