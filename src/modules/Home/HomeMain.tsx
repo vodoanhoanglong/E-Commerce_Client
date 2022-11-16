@@ -35,7 +35,7 @@ const HomeMain = () => {
   }, []);
 
   return (
-    <Collapse in={checked} {...(checked ? { timeout: 1500 } : {})} collapsedSize={15}>
+    <Collapse in={checked} {...(checked ? { timeout: 1500 } : {})}>
       <Box sx={{ backgroundColor: "#E6F0FF", minHeight: "100vh" }} id="homemain">
         <CustomBox>
           <Box sx={{ flex: "1.25" }}>
@@ -43,7 +43,7 @@ const HomeMain = () => {
               Welcome to The Shopping Mall
             </Typography>
             <Title variant="h1">Giao hàng tận tay</Title>
-            <Typography variant="h2" sx={{ fontSize: "26px", color: "#0A8BFF", fontFamily: "Sanseri" }}>
+            <Typography variant="h2" sx={{ fontSize: "26px", color: "#0A8BFF", fontFamily: "Apple Color Emoji" }}>
               Đặt hàng ngay hôm nay
             </Typography>
             <Typography variant="body2" sx={{ fontSize: "18px", color: "#5A6473", my: 4 }}>

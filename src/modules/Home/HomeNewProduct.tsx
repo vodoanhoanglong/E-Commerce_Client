@@ -43,7 +43,7 @@ const HomeNewProduct = () => {
         backgroundColor: "#fff",
       }}
     >
-      <div style={{ width: "5%", height: "5px", backgroundColor: "#000339", margin: "10px auto" }}></div>
+      <div style={{ width: "6%", height: "5px", backgroundColor: "#030014", margin: "20px auto" }}></div>
       <Typography variant="h3" sx={{ fontSize: "35px", fontWeight: "bold", color: "#000339", my: "3" }}>
         Mua sắm thả ga
       </Typography>
@@ -59,8 +59,8 @@ const HomeNewProduct = () => {
             Mua sắm tại shop
           </Typography>
           <Box sx={{ cursor: "pointer", display: "flex", justifyContent: "center", alignItems: "center" }}>
-            <Typography variant="body2" sx={{ fontWeight: "bold", fontSize: "14px", color: "#0689ff" }}>
-              Mua sắm
+            <Typography variant="body2" sx={{ fontWeight: "bold", fontSize: "16px", color: "#0689ff" }}>
+              Mua sắm trực tuyến
             </Typography>
           </Box>
         </GuideBox>
@@ -71,7 +71,7 @@ const HomeNewProduct = () => {
             Thương hiệu chính hãng
           </Typography>
           <Box sx={{ cursor: "pointer", display: "flex", justifyContent: "center", alignItems: "center" }}>
-            <Typography variant="body2" sx={{ fontWeight: "bold", fontSize: "14px", color: "#0689ff" }}>
+            <Typography variant="body2" sx={{ fontWeight: "bold", fontSize: "16px", color: "#0689ff" }}>
               Mua sắm an toàn
             </Typography>
           </Box>
@@ -83,7 +83,7 @@ const HomeNewProduct = () => {
             Tràn ngập khuyến mãi
           </Typography>
           <Box sx={{ cursor: "pointer", display: "flex", justifyContent: "center", alignItems: "center" }}>
-            <Typography variant="body2" sx={{ fontWeight: "bold", fontSize: "14px", color: "#0689ff" }}>
+            <Typography variant="body2" sx={{ fontWeight: "bold", fontSize: "16px", color: "#0689ff" }}>
               Mua sắm tiết kiệm
             </Typography>
           </Box>
