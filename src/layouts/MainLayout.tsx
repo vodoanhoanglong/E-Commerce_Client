@@ -8,6 +8,7 @@ import { User } from "~/models";
 import { setUser } from "~/redux/features/authSlice";
 import { useAppDispatch, useAppSelector } from "~/redux/hooks";
 import { NavBar } from "./components";
+import Footer from "./components/Footer";
 
 const APP_BAR_HEIGHT = 64;
 
@@ -61,6 +62,7 @@ function MainLayout() {
       <MainStyle>
         <Outlet />
       </MainStyle>
+      <Footer />
     </RootStyle>
   );
 }
