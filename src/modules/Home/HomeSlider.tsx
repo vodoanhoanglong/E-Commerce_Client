@@ -29,10 +29,17 @@ export default function HomeSlider() {
   return (
     <Box minHeight="100vh" sx={{ p: 2, backgroundColor: "#000" }}>
       <div style={{ width: "50%", height: "5px", backgroundColor: "#ffffff", margin: "20px auto" }}></div>
-      <CustomBox sx={{ display: "flex", justifyContent: "center" }}>
+      <CustomBox sx={{ display: "flex", justifyContent: "space-between" }}>
         <Box sx={{ maxHeight: "600" }}>
           <Container>
-            <Card sx={{ width: 260, maxWidth: 345, mt: 15, backgroundColor: "#008ac1" }}>
+            <Card
+              sx={{
+                width: 270,
+                maxWidth: 345,
+                mt: 15,
+                backgroundColor: "#008ac1",
+              }}
+            >
               <CardMedia
                 component="img"
                 alt="green iguana"
@@ -44,7 +51,7 @@ export default function HomeSlider() {
                 <Typography gutterBottom variant="h5" component="div" sx={{ color: "#fff" }}>
                   Top 1
                 </Typography>
-                <Typography variant="body2" sx={{ color: "#fff" }}>
+                <Typography variant="body1" sx={{ color: "#fff" }}>
                   Dẫn đầu xu thế về lĩnh vực kinh doanh online, bán hàng trực tuyến qua internet
                 </Typography>
               </CardContent>
@@ -101,7 +108,7 @@ export default function HomeSlider() {
                 <Typography gutterBottom variant="h5" component="div" sx={{ color: "#fff" }}>
                   Cơ hội
                 </Typography>
-                <Typography variant="body2" sx={{ color: "#fff" }}>
+                <Typography variant="body1" sx={{ color: "#fff" }}>
                   Biết nắm bắt cơ hội, tìm ra xu thế mới trong lĩnh vực kinh doanh với mô hình cao cấp hiện đại mang lại
                   lợi nhuận cao
                 </Typography>
@@ -116,7 +123,7 @@ export default function HomeSlider() {
               <Box sx={{ display: "flex" }}>
                 <Collapse in={checked1}>
                   <CardContent>
-                    <Typography variant="body2" sx={{ color: "#fff" }}>
+                    <Typography variant="body1" sx={{ color: "#fff" }}>
                       Dẫn đầu xu thế về lĩnh vực kinh doanh online, bán hàng trực tuyến qua internet
                     </Typography>
                   </CardContent>
@@ -139,7 +146,7 @@ export default function HomeSlider() {
                 <Typography gutterBottom variant="h5" component="div" sx={{ color: "#fff" }}>
                   Kết nối
                 </Typography>
-                <Typography variant="body2" sx={{ color: "#fff" }}>
+                <Typography variant="body1" sx={{ color: "#fff" }}>
                   Mở rộng mô hình kinh doanh trực tuyến trên nhiều trang mạng xã hội, kết nối shop với khách hàng cực
                   đơn giản và tiện lợi
                 </Typography>
@@ -154,7 +161,7 @@ export default function HomeSlider() {
               <Box sx={{ display: "flex" }}>
                 <Collapse in={checked2}>
                   <CardContent>
-                    <Typography variant="body2" sx={{ color: "#fff" }}>
+                    <Typography variant="body1" sx={{ color: "#fff" }}>
                       Dẫn đầu xu thế về lĩnh vực kinh doanh online, bán hàng trực tuyến qua internet
                     </Typography>
                   </CardContent>

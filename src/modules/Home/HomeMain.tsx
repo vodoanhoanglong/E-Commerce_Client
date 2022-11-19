@@ -35,7 +35,7 @@ const HomeMain = () => {
   }, []);
 
   return (
-    <Collapse in={checked} {...(checked ? { timeout: 1500 } : {})}>
+    <Collapse in={checked} {...(checked ? { timeout: 1100 } : {})}>
       <Box sx={{ backgroundColor: "#E6F0FF", minHeight: "100vh" }} id="homemain">
         <CustomBox>
           <Box sx={{ flex: "1.25" }}>

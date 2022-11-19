@@ -35,7 +35,7 @@ export const ImgContainer = styled(Box)(() => ({
 export const CustomBox = styled(Box)(({ theme }) => ({
   display: "flex",
   margin: "0",
-  justifyContent: "center",
+
   gap: theme.spacing(5),
   marginLeft: theme.spacing(8),
   [theme.breakpoints.down("md")]: {

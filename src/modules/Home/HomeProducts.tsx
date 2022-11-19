@@ -47,57 +47,59 @@ const homeProducts = [
 
 const HomeProducts = () => {
   return (
-    <ContainerBox>
-      <Grid container rowSpacing={6} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
-        {homeProducts.map((item) => (
-          <Grid key={item.id} item xs={4}>
-            <ProductBox>
-              <ImgContainer>
-                <img src={item.img} alt="producthome" />
-              </ImgContainer>
-              <Box sx={{ padding: "1rem" }}>
-                <Typography variant="body2" sx={{ fontWeight: "700", fontSize: "16px" }}>
-                  {currencyFormat(item.price)}đ
-                </Typography>
-                <Typography variant="body2" sx={{ my: 1, fontSize: "16px" }}>
-                  {item.name}
-                </Typography>
+    <Box>
+      <ContainerBox>
+        <Grid container rowSpacing={6} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
+          {homeProducts.map((item) => (
+            <Grid key={item.id} item xs={4}>
+              <ProductBox>
+                <ImgContainer>
+                  <img src={item.img} alt="producthome" />
+                </ImgContainer>
+                <Box sx={{ padding: "1rem" }}>
+                  <Typography variant="body2" sx={{ fontWeight: "700", fontSize: "16px" }}>
+                    {currencyFormat(item.price)}đ
+                  </Typography>
+                  <Typography variant="body2" sx={{ my: 1, fontSize: "16px" }}>
+                    {item.name}
+                  </Typography>
 
-                <Box sx={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-                  <InfoBox>
-                    <Tooltip title="Mua ngay">
-                      <IconButton>
-                        <Iconify icon="el:shopping-cart-sign" width={36} height={36} color="#2065D1" />
-                      </IconButton>
-                    </Tooltip>
-                  </InfoBox>
-                  <InfoBox>
-                    <Tooltip title="Yêu thích">
-                      <IconButton>
-                        <Iconify icon="icon-park-solid:like" width={36} height={36} />
-                      </IconButton>
-                    </Tooltip>
-                  </InfoBox>
-                  <InfoBox>
-                    <Tooltip title="Xem thêm">
-                      <IconButton>
-                        <Iconify icon="fluent:more-circle-20-filled" width={38} height={38} />
-                      </IconButton>
-                    </Tooltip>
-                  </InfoBox>
+                  <Box sx={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+                    <InfoBox>
+                      <Tooltip title="Thêm vào giỏ hàng">
+                        <IconButton>
+                          <Iconify icon="el:shopping-cart-sign" width={36} height={36} color="#2065D1" />
+                        </IconButton>
+                      </Tooltip>
+                    </InfoBox>
+                    <InfoBox>
+                      <Tooltip title="Yêu thích">
+                        <IconButton>
+                          <Iconify icon="icon-park-solid:like" width={36} height={36} />
+                        </IconButton>
+                      </Tooltip>
+                    </InfoBox>
+                    <InfoBox>
+                      <Tooltip title="Xem thêm">
+                        <IconButton>
+                          <Iconify icon="fluent:more-circle-20-filled" width={38} height={38} />
+                        </IconButton>
+                      </Tooltip>
+                    </InfoBox>
+                  </Box>
+                  <Typography variant="body2" sx={{ fontSize: "14px", fontWeight: "italic", mt: 1 }}>
+                    Đánh giá
+                    <Stack spacing={1}>
+                      <Rating name="half-rating" defaultValue={0} precision={1} />
+                    </Stack>
+                  </Typography>
                 </Box>
-                <Typography variant="body2" sx={{ fontSize: "14px", fontWeight: "italic", mt: 1 }}>
-                  Đánh giá
-                  <Stack spacing={1}>
-                    <Rating name="half-rating" defaultValue={0} precision={1} />
-                  </Stack>
-                </Typography>
-              </Box>
-            </ProductBox>
-          </Grid>
-        ))}
-      </Grid>
-    </ContainerBox>
+              </ProductBox>
+            </Grid>
+          ))}
+        </Grid>
+      </ContainerBox>
+    </Box>
   );
 };
 
