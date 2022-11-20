@@ -1,4 +1,4 @@
-import { Box, Grid, IconButton, Rating, Stack, Tooltip, Typography } from "@mui/material";
+import { Box, Grid, IconButton, Tooltip, Typography } from "@mui/material";
 import Iconify from "~/components/Iconify";
 import { ContainerBox, ImgContainer, InfoBox, ProductBox } from "~/layouts/components/CustomBox";
 import { currencyFormat } from "~/utils/formats";
@@ -87,12 +87,6 @@ const HomeProducts = () => {
                       </Tooltip>
                     </InfoBox>
                   </Box>
-                  <Typography variant="body2" sx={{ fontSize: "14px", fontWeight: "italic", mt: 1 }}>
-                    Đánh giá
-                    <Stack spacing={1}>
-                      <Rating name="half-rating" defaultValue={0} precision={1} />
-                    </Stack>
-                  </Typography>
                 </Box>
               </ProductBox>
             </Grid>

@@ -1,6 +1,6 @@
 import { Box } from "@mui/material";
 import { Page } from "~/components";
-import CartDetail from "~/modules/Home/CartDetail";
+
 import HomeCart from "~/modules/Home/HomeCart";
 import HomeFeature from "~/modules/Home/HomeFeature";
 import HomeInteractive from "~/modules/Home/HomeInteractive";
@@ -18,7 +18,6 @@ function Home() {
         <HomeNewProduct />
         <HomeFeature />
         <HomeSlider />
-        <CartDetail />
       </Box>
     </Page>
   );
