@@ -6,7 +6,7 @@ import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { useState } from "react";
 import { CustomBox } from "~/layouts/components/CustomBox";
-export default function HomeSlider() {
+export default function HomeNews() {
   const [checked, setChecked] = useState(false);
 
   const handleChange = () => {
@@ -44,7 +44,7 @@ export default function HomeSlider() {
                 alt="green iguana"
                 height="100%"
                 width="100%"
-                image="https://mevacon.giaoduc.edu.vn/wp-content/uploads/2022/05/so-1-trong-than-so-hoc.png"
+                image="/static/imgHome/top1.png"
               />
               <CardContent>
                 <Typography gutterBottom variant="h5" component="div" sx={{ color: "#fff" }}>
@@ -65,7 +65,7 @@ export default function HomeSlider() {
                 <Collapse in={checked}>
                   <CardContent>
                     <Typography variant="body1" sx={{ color: "#fff" }}>
-                      Dẫn đầu xu thế về lĩnh vực kinh doanh online, bán hàng trực tuyến qua internet
+                      Dẫn đầu nhiều năm liền với những sản phẩm top 1, đoạt nhiều giải thưởng danh giá khác.
                     </Typography>
                   </CardContent>
                 </Collapse>
@@ -101,7 +101,7 @@ export default function HomeSlider() {
                 alt="green iguana"
                 height="100%"
                 width="100%"
-                image="https://tmarketing.vn/wp-content/uploads/2021/10/quyen-kiem-soat.png"
+                image="/static/imgHome/cohoi.png"
               />
               <CardContent>
                 <Typography gutterBottom variant="h5" component="div" sx={{ color: "#fff" }}>
@@ -123,7 +123,8 @@ export default function HomeSlider() {
                 <Collapse in={checked1}>
                   <CardContent>
                     <Typography variant="body1" sx={{ color: "#fff" }}>
-                      Dẫn đầu xu thế về lĩnh vực kinh doanh online, bán hàng trực tuyến qua internet
+                      Tạo ra hàng ngàn công việc làm ăn cho giới trẻ, tiếp thu và cải tạo nhiều nguồn lực mới cho quốc
+                      gia.
                     </Typography>
                   </CardContent>
                 </Collapse>
@@ -133,13 +134,13 @@ export default function HomeSlider() {
         </Box>
         <Box>
           <Container>
-            <Card sx={{ maxWidth: 345, width: 300, mt: 15, backgroundColor: "#008ac1" }}>
+            <Card sx={{ maxWidth: 345, width: 300, mt: 12, backgroundColor: "#008ac1" }}>
               <CardMedia
                 component="img"
                 alt="green iguana"
                 height="100%"
                 width="100%"
-                image="https://1office.vn/wp-content/uploads/2021/01/workplace-1024x660.png"
+                image="/static/imgHome/ketnoi.png"
               />
               <CardContent>
                 <Typography gutterBottom variant="h5" component="div" sx={{ color: "#fff" }}>
@@ -161,7 +162,8 @@ export default function HomeSlider() {
                 <Collapse in={checked2}>
                   <CardContent>
                     <Typography variant="body1" sx={{ color: "#fff" }}>
-                      Dẫn đầu xu thế về lĩnh vực kinh doanh online, bán hàng trực tuyến qua internet
+                      Không chỉ trong nước mà còn lan rộng ra khắp các quốc gia, đặc biệt ảnh hưởng mạnh nhất là khu vực
+                      Đông Nam Á.
                     </Typography>
                   </CardContent>
                 </Collapse>

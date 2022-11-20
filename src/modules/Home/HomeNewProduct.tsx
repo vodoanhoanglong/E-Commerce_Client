@@ -41,7 +41,7 @@ const HomeNewProduct = () => {
       </Box>
       <GuidesBox>
         <GuideBox>
-          <img src="https://github.com/frontendzone/real-estate-landing-page/blob/main/src/media/buy_icon.png?raw=true" />
+          <img src="/static/imgHome/buy_icon.png" />
           <Typography variant="h5" fontWeight="bold" color="#3b3c45" textAlign="center" sx={{ mt: 1 }}>
             Mua sắm tại shop
           </Typography>
@@ -53,7 +53,7 @@ const HomeNewProduct = () => {
         </GuideBox>
 
         <GuideBox>
-          <img src="https://github.com/frontendzone/real-estate-landing-page/blob/main/src/media/rent_icon.png?raw=true" />
+          <img src="/static/imgHome/rent_icon.png" />
           <Typography variant="h5" fontWeight="bold" color="#3b3c45" textAlign="center" sx={{ mt: 1 }}>
             Thương hiệu chính hãng
           </Typography>
@@ -65,7 +65,7 @@ const HomeNewProduct = () => {
         </GuideBox>
 
         <GuideBox>
-          <img src="https://github.com/frontendzone/real-estate-landing-page/blob/main/src/media/sell_icon.png?raw=true" />
+          <img src="/static/imgHome/sell_icon.png" />
           <Typography variant="h5" fontWeight="bold" color="#3b3c45" textAlign="center" sx={{ mt: 1 }}>
             Tràn ngập khuyến mãi
           </Typography>

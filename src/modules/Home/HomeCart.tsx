@@ -5,19 +5,19 @@ import { Fragment, useEffect, useState } from "react";
 const Carts = [
   {
     id: "1",
-    img: "https://www.datocms-assets.com/6783/1643324716-bhi-fashion-designer-female.png",
+    img: "/static/imgHome/thoitrang.png",
     title: "Thời trang",
     desc: "Hãy đến shop của chúng tôi, các bạn sẽ được trải nghiệm về chất lượng phục vụ của nhân viên một cách tốt nhất.",
   },
   {
     id: "2",
-    img: "https://www.rilastil.com.vn/data/upload/duoc%20pham%20va%20my%20pham.png",
+    img: "/static/imgHome/mypham.png",
     title: "Mỹ phẫm",
     desc: "Mỹ phẩm đa dạng và được nhập từ Mỹ với chất lượng được đảm bảo một cách an toàn và hiệu quả nhất dành cho khách hàng.",
   },
   {
     id: "3",
-    img: "https://bucket.nhanh.vn/store1/40602/ps/20200623/combo_du_doan_tuong_lai_1.png",
+    img: "/static/imgHome/sachbao.png",
     title: "Sách báo",
     desc: "Mang đến nhiều hiểu biết, truyền cảm hứng và tri thức cho mọi người với những cuốn sách hay ",
   },
@@ -41,9 +41,8 @@ const HomeCart = () => {
     <Collapse in={checked} {...(checked ? { timeout: 1500 } : {})} collapsedSize={15}>
       <Box
         sx={{
-          backgroundColor: "#fff",
           minHeight: "100vh",
-          m: "auto",
+          p: 3,
         }}
       >
         <Typography variant="h3" textAlign="center" sx={{ mt: 2 }}>
