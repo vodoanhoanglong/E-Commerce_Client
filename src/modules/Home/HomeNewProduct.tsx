@@ -1,38 +1,22 @@
-import { Box, styled, Typography } from "@mui/material";
+import { Box, Stack, styled, Typography } from "@mui/material";
+
+const GuidesBox = styled(Box)(({ theme }) => ({
+  display: "flex",
+  justifyContent: "space-between",
+  alignItems: "center",
+  gap: theme.spacing(25),
+  marginTop: theme.spacing(5),
+  marginBottom: theme.spacing(5),
+}));
+
+const GuideBox = styled(Box)(({ theme }) => ({
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
+  marginTop: theme.spacing(3),
+}));
 
 const HomeNewProduct = () => {
-  const CustomBox = styled(Box)(({ theme }) => ({
-    width: "30%",
-    [theme.breakpoints.down("md")]: {
-      width: "85%",
-    },
-  }));
-
-  const GuidesBox = styled(Box)(({ theme }) => ({
-    display: "flex",
-    justifyContent: "space-around",
-    width: "70%",
-    marginTop: theme.spacing(6),
-    marginBottom: theme.spacing(5),
-    [theme.breakpoints.down("md")]: {
-      width: "100%",
-    },
-    [theme.breakpoints.down("sm")]: {
-      marginBottom: "0",
-      flexDirection: "column",
-    },
-  }));
-
-  const GuideBox = styled(Box)(({ theme }) => ({
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    marginTop: theme.spacing(3),
-    [theme.breakpoints.down("sm")]: {
-      margin: theme.spacing(4, 0, 4, 0),
-    },
-  }));
-
   return (
     <Box
       sx={{
@@ -40,38 +24,41 @@ const HomeNewProduct = () => {
         flexDirection: "column",
         justifyContent: "center",
         alignItems: "center",
-        backgroundColor: "#fff",
       }}
     >
-      <div style={{ width: "6%", height: "5px", backgroundColor: "#030014", margin: "20px auto" }}></div>
-      <Typography variant="h3" sx={{ fontSize: "35px", fontWeight: "bold", color: "#000339", my: "3" }}>
+      <div style={{ width: "6%", height: "5px", backgroundColor: "#2065D1", margin: "20px auto" }}></div>
+      <Typography variant="h3" sx={{ color: "#000339" }}>
         Mua sắm thả ga
       </Typography>
-      <CustomBox>
-        <Typography variant="body2" sx={{ fontSize: "16px", fontWeight: "500", color: "#5a6473", textAlign: "center" }}>
+      <Box
+        sx={{
+          width: "30%",
+        }}
+      >
+        <Typography variant="subtitle1" textAlign="center" color="#5a6473">
           Những mặt hàng mới liên tục cập nhật
         </Typography>
-      </CustomBox>
+      </Box>
       <GuidesBox>
         <GuideBox>
           <img src="https://github.com/frontendzone/real-estate-landing-page/blob/main/src/media/buy_icon.png?raw=true" />
-          <Typography variant="body2" sx={{ fontWeight: "500", fontSize: "20px", color: "#3b3c45", my: 1 }}>
+          <Typography variant="h5" fontWeight="bold" color="#3b3c45" textAlign="center" sx={{ mt: 1 }}>
             Mua sắm tại shop
           </Typography>
-          <Box sx={{ cursor: "pointer", display: "flex", justifyContent: "center", alignItems: "center" }}>
-            <Typography variant="body2" sx={{ fontWeight: "bold", fontSize: "16px", color: "#0689ff" }}>
+          <Stack direction="row" alignItems="center" justifyContent="center" sx={{ cursor: "pointer" }}>
+            <Typography variant="subtitle2" color="primary" fontWeight="bold">
               Mua sắm trực tuyến
             </Typography>
-          </Box>
+          </Stack>
         </GuideBox>
 
         <GuideBox>
           <img src="https://github.com/frontendzone/real-estate-landing-page/blob/main/src/media/rent_icon.png?raw=true" />
-          <Typography variant="body2" sx={{ fontWeight: "500", fontSize: "20px", color: "#3b3c45", my: 1 }}>
+          <Typography variant="h5" fontWeight="bold" color="#3b3c45" textAlign="center" sx={{ mt: 1 }}>
             Thương hiệu chính hãng
           </Typography>
           <Box sx={{ cursor: "pointer", display: "flex", justifyContent: "center", alignItems: "center" }}>
-            <Typography variant="body2" sx={{ fontWeight: "bold", fontSize: "16px", color: "#0689ff" }}>
+            <Typography variant="subtitle2" color="primary" fontWeight="bold">
               Mua sắm an toàn
             </Typography>
           </Box>
@@ -79,11 +66,11 @@ const HomeNewProduct = () => {
 
         <GuideBox>
           <img src="https://github.com/frontendzone/real-estate-landing-page/blob/main/src/media/sell_icon.png?raw=true" />
-          <Typography variant="body2" sx={{ fontWeight: "500", fontSize: "20px", color: "#3b3c45", my: 1 }}>
+          <Typography variant="h5" fontWeight="bold" color="#3b3c45" textAlign="center" sx={{ mt: 1 }}>
             Tràn ngập khuyến mãi
           </Typography>
           <Box sx={{ cursor: "pointer", display: "flex", justifyContent: "center", alignItems: "center" }}>
-            <Typography variant="body2" sx={{ fontWeight: "bold", fontSize: "16px", color: "#0689ff" }}>
+            <Typography variant="subtitle2" color="primary" fontWeight="bold">
               Mua sắm tiết kiệm
             </Typography>
           </Box>

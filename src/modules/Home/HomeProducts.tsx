@@ -1,6 +1,6 @@
 import { Box, Grid, IconButton, Tooltip, Typography } from "@mui/material";
 import Iconify from "~/components/Iconify";
-import { ContainerBox, ImgContainer, InfoBox, ProductBox } from "~/layouts/components/CustomBox";
+import { ImgContainer, InfoBox, ProductBox } from "~/layouts/components/CustomBox";
 import { currencyFormat } from "~/utils/formats";
 
 const homeProducts = [
@@ -47,8 +47,8 @@ const homeProducts = [
 
 const HomeProducts = () => {
   return (
-    <Box>
-      <ContainerBox>
+    <Box sx={{ ml: 15, mt: 5 }}>
+      <Box>
         <Grid container rowSpacing={6} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
           {homeProducts.map((item) => (
             <Grid key={item.id} item xs={4}>
@@ -92,7 +92,7 @@ const HomeProducts = () => {
             </Grid>
           ))}
         </Grid>
-      </ContainerBox>
+      </Box>
     </Box>
   );
 };

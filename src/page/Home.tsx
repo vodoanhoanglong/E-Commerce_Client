@@ -3,21 +3,20 @@ import { Page } from "~/components";
 
 import HomeCart from "~/modules/Home/HomeCart";
 import HomeFeature from "~/modules/Home/HomeFeature";
-import HomeInteractive from "~/modules/Home/HomeInteractive";
 import HomeMain from "~/modules/Home/HomeMain";
 import HomeNewProduct from "~/modules/Home/HomeNewProduct";
-import HomeSlider from "~/modules/Home/HomeSlider";
+import HomeNews from "~/modules/Home/HomeNews";
 
 function Home() {
   return (
     <Page title="Trang Chủ">
-      <Box sx={{ backgroundColor: "#fff" }}>
+      <Box sx={{ backgroundColor: "#E6F0FF" }}>
         <HomeMain />
         <HomeCart />
-        <HomeInteractive />
         <HomeNewProduct />
+
         <HomeFeature />
-        <HomeSlider />
+        <HomeNews />
       </Box>
     </Page>
   );

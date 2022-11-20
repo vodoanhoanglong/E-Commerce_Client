@@ -6,7 +6,6 @@ import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { useState } from "react";
 import { CustomBox } from "~/layouts/components/CustomBox";
-
 export default function HomeSlider() {
   const [checked, setChecked] = useState(false);
 
@@ -28,7 +27,7 @@ export default function HomeSlider() {
 
   return (
     <Box minHeight="100vh" sx={{ p: 2, backgroundColor: "#000" }}>
-      <div style={{ width: "50%", height: "5px", backgroundColor: "#ffffff", margin: "20px auto" }}></div>
+      <div style={{ width: "50%", height: "5px", backgroundColor: "#ffffff", margin: "0 auto" }}></div>
       <CustomBox sx={{ display: "flex", justifyContent: "space-between" }}>
         <Box sx={{ maxHeight: "600" }}>
           <Container>
