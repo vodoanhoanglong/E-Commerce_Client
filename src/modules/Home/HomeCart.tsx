@@ -1,7 +1,6 @@
-import { Box, Card, CardContent, CardMedia, Collapse, Container } from "@mui/material";
+import { Box, Card, CardContent, CardMedia, Collapse, Container, Stack, styled } from "@mui/material";
 import Typography from "@mui/material/Typography";
-import { useEffect, useState } from "react";
-import { CustomBox } from "~/layouts/components/CustomBox";
+import { Fragment, useEffect, useState } from "react";
 
 const Carts = [
   {
@@ -24,6 +23,13 @@ const Carts = [
   },
 ];
 
+const CardItem = styled(Card)(({ theme }) => ({
+  maxWidth: "500px",
+  borderRadius: theme.shape.borderRadius,
+  backgroundColor: theme.palette.background.paper,
+  boxShadow: theme.shadows[10],
+}));
+
 const HomeCart = () => {
   const [checked, setChecked] = useState(false);
 
@@ -33,36 +39,17 @@ const HomeCart = () => {
 
   return (
     <Collapse in={checked} {...(checked ? { timeout: 1500 } : {})} collapsedSize={15}>
-      <Box sx={{ minHeight: "100vh", backgroundColor: "#fff" }}>
-        <Typography
-          variant="h2"
-          sx={{
-            fontSize: "16px",
-            fontWeight: "bold",
-            display: "flex",
-            justifyContent: "center",
-            p: 3,
-          }}
-        >
+      <Box>
+        <div style={{ width: "6%", height: "5px", backgroundColor: "#2065D1", margin: "20px auto" }}></div>
+        <Typography variant="h3" textAlign="center">
           Thương hiệu độc quyền
         </Typography>
-
-        <CustomBox
-          sx={{
-            p: 5,
-          }}
-        >
+        <Stack direction="row" alignItems="center" justifyContent="center" gap={5} sx={{ ml: 8, mt: 5 }}>
           {Carts.map((item) => (
-            <>
-              <Box key={item.id}>
+            <Fragment key={item.id}>
+              <Box>
                 <Container>
-                  <Card
-                    sx={{
-                      maxWidth: 545,
-
-                      boxShadow: "none",
-                    }}
-                  >
+                  <CardItem>
                     <CardMedia component="img" height="350" image={item.img} alt={item.title} />
                     <CardContent sx={{ mt: 5 }}>
                       <Typography gutterBottom variant="h4" component="div">
@@ -72,12 +59,12 @@ const HomeCart = () => {
                         {item.desc}
                       </Typography>
                     </CardContent>
-                  </Card>
+                  </CardItem>
                 </Container>
               </Box>
-            </>
+            </Fragment>
           ))}
-        </CustomBox>
+        </Stack>
       </Box>
     </Collapse>
   );

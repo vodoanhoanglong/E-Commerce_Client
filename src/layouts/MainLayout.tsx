@@ -16,11 +16,10 @@ const RootStyle = styled("div")({
   overflow: "hidden",
 });
 
-const MainStyle = styled("div")(({ theme }) => ({
+const MainStyle = styled("div")(() => ({
   overflow: "auto",
   minHeight: "100%",
   paddingTop: APP_BAR_HEIGHT,
-  paddingBottom: theme.spacing(10),
 }));
 
 const LoadingWrapperStyle = styled("div")(() => ({
