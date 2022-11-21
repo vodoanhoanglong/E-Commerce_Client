@@ -1,5 +1,6 @@
-import { Container, MenuItem, MenuList, Paper, Typography } from "@mui/material";
+import { Box, MenuItem, MenuList, Paper, Typography } from "@mui/material";
 import { Stack } from "@mui/system";
+import { useState } from "react";
 import { Page } from "~/components";
 import ProductList from "~/modules/Products/ProductList";
 
@@ -139,25 +140,31 @@ const products = [
 ];
 
 function Product() {
+  const [filter, setFilter] = useState("Đồ điện tử");
+  const handleFilter = (item: string) => {
+    setFilter(item);
+  };
   return (
     <Page title="Sản phẩm">
-      <Container fixed>
+      <Box sx={{ marginInline: 10, mt: 3 }}>
         <Stack direction="row">
-          <Paper sx={{ minWidth: 270, maxWidth: 275, height: "10%", mr: 1 }}>
+          <Paper sx={{ minWidth: 270, maxWidth: 275, height: "20%", mr: 1 }}>
             <MenuList>
               <Typography variant="body1" sx={{ fontWeight: "bold", p: 2 }}>
                 Danh mục sản phẩm
               </Typography>
 
               {MENU.map((item) => (
-                <MenuItem key={item.id}>{item.name}</MenuItem>
+                <MenuItem key={item.id} onClick={() => handleFilter(item.name)}>
+                  {item.name}
+                </MenuItem>
               ))}
             </MenuList>
           </Paper>
 
-          <ProductList data={products} />
+          <ProductList data={products} filter={filter} />
         </Stack>
-      </Container>
+      </Box>
     </Page>
   );
 }

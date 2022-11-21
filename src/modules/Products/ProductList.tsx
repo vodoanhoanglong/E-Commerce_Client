@@ -2,7 +2,7 @@ import { Grid, Pagination, Paper, Typography } from "@mui/material";
 import { ChangeEvent, useState } from "react";
 import ProductItem from "./ProductItem";
 
-function ProductList({ data }: any) {
+function ProductList({ data, filter }: any) {
   const [pageNumber, setPageNumber] = useState(0);
   const productsPerPage = 12;
   const pagesVisited = pageNumber * productsPerPage;
@@ -21,7 +21,7 @@ function ProductList({ data }: any) {
       <Grid item xs={8}>
         <Paper>
           <Typography variant="h6" sx={{ p: 2 }}>
-            Đồ điện tử
+            {filter}
           </Typography>
         </Paper>
       </Grid>
