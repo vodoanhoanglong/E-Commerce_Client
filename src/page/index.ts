@@ -1,4 +1,5 @@
 export { default as AboutPage } from "./About";
+export { default as CartDetailPage } from "./CartDetail";
 export { default as ContactPage } from "./Contact";
 export { default as HomePage } from "./Home";
 export { default as LoginPage } from "./Login";
