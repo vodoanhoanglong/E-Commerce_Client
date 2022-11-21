@@ -16,7 +16,7 @@ const GuideBox = styled(Box)(({ theme }) => ({
   marginTop: theme.spacing(3),
 }));
 
-const HomeNewProduct = () => {
+const HomeGuide = () => {
   return (
     <Box
       sx={{
@@ -80,4 +80,4 @@ const HomeNewProduct = () => {
   );
 };
 
-export default HomeNewProduct;
+export default HomeGuide;

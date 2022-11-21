@@ -14,13 +14,12 @@ const HomeMain = () => {
 
   return (
     <Collapse in={checked} {...(checked ? { timeout: 1100 } : {})}>
-      <Box minHeight="100vh">
+      <Box>
         <Stack direction="row" alignItems="center" justifyContent="center" gap={10} sx={{ ml: 8 }}>
           <Box sx={{ flex: "1.25" }}>
             <Typography variant="h3" sx={{ color: "#687690" }}>
               Welcome to The Shopping Mall
             </Typography>
-
             <Typography variant="h2">Giao hàng tận tay</Typography>
             <Typography variant="h3" color="primary">
               Đặt hàng ngay hôm nay

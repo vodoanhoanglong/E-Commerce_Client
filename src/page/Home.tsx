@@ -1,22 +1,15 @@
 import { Box } from "@mui/material";
 import { Page } from "~/components";
-
-import HomeCart from "~/modules/Home/HomeCart";
-import HomeFeature from "~/modules/Home/HomeFeature";
-import HomeMain from "~/modules/Home/HomeMain";
-import HomeNewProduct from "~/modules/Home/HomeNewProduct";
-import HomeNews from "~/modules/Home/HomeNews";
+import { HomeCart, HomeFeature, HomeGuide, HomeMain } from "~/modules/Landing";
 
 function Home() {
   return (
     <Page title="Trang Chủ">
       <Box sx={{ backgroundColor: "#E6F0FF" }}>
         <HomeMain />
+        <HomeGuide />
         <HomeCart />
-        <HomeNewProduct />
-
         <HomeFeature />
-        <HomeNews />
       </Box>
     </Page>
   );
