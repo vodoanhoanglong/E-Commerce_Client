@@ -1,11 +1,14 @@
 import { Badge, Box, Button, Divider, IconButton, List, ListSubheader, Stack, Typography } from "@mui/material";
 import { Fragment, useMemo, useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Iconify, MenuPopover, Scrollbar } from "~/components";
 import { useAppSelector } from "~/redux/hooks";
+import { publicRoutes } from "~/routes";
 import { currencyFormat } from "~/utils/formats";
 import CartItem from "./CartItem";
 
 function CartWidget() {
+  const navigate = useNavigate();
   const cartItems = useAppSelector((state) => state.cart.data);
   const anchorRef = useRef(null);
   const [openPopper, setOpenPopper] = useState(null);
@@ -64,8 +67,14 @@ function CartWidget() {
         </Stack>
         <Divider sx={{ borderStyle: "dashed" }} />
         <Box sx={{ p: 1 }}>
-          {/* Can replace Button by Link Component to CartDetail Page */}
-          <Button fullWidth disableRipple>
+          <Button
+            fullWidth
+            disableRipple
+            onClick={() => {
+              setOpenPopper(null);
+              navigate(publicRoutes.CART.path);
+            }}
+          >
             Xem chi tiết giỏ hàng
           </Button>
         </Box>
