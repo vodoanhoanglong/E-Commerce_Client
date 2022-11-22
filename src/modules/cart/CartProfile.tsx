@@ -1,93 +1,68 @@
-import { Box, IconButton, Tooltip, Typography } from "@mui/material";
-import Button from "@mui/material/Button";
-import Divider from "@mui/material/Divider";
-import List from "@mui/material/List";
-import ListItem from "@mui/material/ListItem";
-import ListItemText from "@mui/material/ListItemText";
-import Iconify from "~/components/Iconify";
+import { Box, Button, Divider, IconButton, TextField, Typography } from "@mui/material";
+import FormControl from "@mui/material/FormControl";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import Paper from "@mui/material/Paper";
+import Radio from "@mui/material/Radio";
+import RadioGroup from "@mui/material/RadioGroup";
+import Tooltip from "@mui/material/Tooltip";
+import { Iconify } from "~/components";
 import { currencyFormat } from "~/utils/formats";
-
-const style = {
-  width: "100%",
-};
 
 function CartProfile() {
   return (
-    <Box sx={{ ml: 3, backgroundColor: "#FAE8E5", width: "30%" }}>
-      <Box>
-        <Typography variant="h5" textAlign="center" sx={{ mb: 2, mt: 2 }}>
-          Thông tin giỏ hàng
-        </Typography>
-        <List sx={style} component="nav" aria-label="mailbox folders">
-          <Box sx={{ display: "flex", justifyContent: "center" }}>
-            <IconButton>
-              <Iconify icon="mdi:user" width={36} height={36} />
-            </IconButton>
-            <ListItem button>
-              <ListItemText primary="Tên khách hàng: " />
-              <ListItemText primary="Hải" />
-            </ListItem>
+    <Box width="30%" sx={{ ml: 3 }}>
+      <Paper>
+        <Box>
+          <Typography variant="h5" textAlign="center" sx={{ mb: 2, mt: 3 }}>
+            Giỏ hàng
+          </Typography>
+          <Divider sx={{ borderStyle: "solid", mb: 1, mt: 6 }} />
+          <Box sx={{ display: "flex", justifyContent: "space-around" }}>
+            <Typography color="#000000" fontWeight="bold">
+              Số sản phẩm: 1
+            </Typography>
+            <Typography color="#000000" fontWeight="bold">{`${currencyFormat(1000000)}đ`}</Typography>
           </Box>
-          <Divider />
-          <Box sx={{ display: "flex", justifyContent: "center" }}>
-            <IconButton>
-              <Iconify icon="material-symbols:edit-calendar-outline-rounded" width={36} height={36} />
-            </IconButton>
-            <ListItem button>
-              <ListItemText primary="Ngày xuất đơn: " />
-              <ListItemText primary="Jan 9, 2014" />
-            </ListItem>
-          </Box>
-          <Divider />
-          <Box sx={{ display: "flex", justifyContent: "center" }}>
-            <IconButton>
-              <Iconify icon="ri:bill-fill" width={36} height={36} />
-            </IconButton>
-            <ListItem button>
-              <ListItemText primary="Tổng thanh toán: " />
-              <ListItemText primary={currencyFormat(400000)} />đ
-            </ListItem>
-          </Box>
-          <Divider />
-        </List>
-        <Box sx={{ display: "flex", justifyContent: "center" }}>
-          <Button
-            variant="contained"
-            sx={{
-              backgroundColor: "#000000",
-              color: "#ffffff",
-              mt: 2,
-              borderRadius: "20px",
-              width: "150px",
-              pt: 1,
-              pb: 1,
-              "&:hover": {
-                backgroundColor: "#fff",
-                color: "#000",
-              },
-            }}
-          >
-            Thanh toán
-          </Button>
-        </Box>
-      </Box>
-
-      <Box sx={{ display: "flex", justifyContent: "center", mt: 8 }}>
-        <Tooltip title="Log out">
-          <IconButton>
-            <Iconify
-              icon="ic:outline-log-out"
-              width={36}
-              height={36}
-              sx={{
-                "&:hover": {
-                  color: "#000",
-                },
-              }}
+          <Box sx={{ mt: 3 }}>
+            <Typography sx={{ fontWeight: "bold", fontSize: "16px", color: "#000000" }}>Mã giảm giá</Typography>
+            <TextField
+              helperText="Nhập mã bên trên"
+              label="Mã khuyến mãi"
+              id="outlined-size-normal"
+              sx={{ width: "400px", mt: 2, borderColor: "red" }}
             />
-          </IconButton>
-        </Tooltip>
-      </Box>
+          </Box>
+          <Box sx={{ mt: 3 }}>
+            <Typography sx={{ fontWeight: "bold", fontSize: "16px", color: "#000000" }}>
+              Phương thức thanh toán
+            </Typography>
+            <FormControl>
+              <RadioGroup defaultValue="female" name="radio-buttons-group">
+                <FormControlLabel value="female" control={<Radio />} label="Chuyển khoản" />
+                <FormControlLabel value="male" control={<Radio />} label="Thanh toán khi nhận hàng" />
+              </RadioGroup>
+            </FormControl>
+          </Box>
+          <Box sx={{ display: "flex", justifyContent: "space-around", mt: 4 }}>
+            <Typography color="#000000" variant="h5">
+              Tổng tiền thanh toán:
+            </Typography>
+            <Typography color="#000000" variant="h5">{`${currencyFormat(1000000)}đ`}</Typography>
+          </Box>
+          <Box sx={{ display: "flex", justifyContent: "center", mt: 4 }}>
+            <Button variant="contained" sx={{ width: "200px" }}>
+              Thanh toán
+            </Button>
+          </Box>
+        </Box>
+        <Box sx={{ display: "flex", mt: 10, justifyContent: "flex-end" }}>
+          <Tooltip title="Tiếp tục mua sắm">
+            <IconButton>
+              <Iconify icon="material-symbols:arrow-right-alt-rounded" width={35} height={35} />
+            </IconButton>
+          </Tooltip>
+        </Box>
+      </Paper>
     </Box>
   );
 }
