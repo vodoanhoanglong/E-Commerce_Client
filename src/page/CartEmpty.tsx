@@ -1,7 +1,8 @@
 import { Button, Container, IconButton, Typography } from "@mui/material";
 import { styled } from "@mui/material/styles";
-import { Link as RouterLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Iconify } from "~/components";
+import { publicRoutes } from "~/routes";
 
 import Page from "~/components/Page";
 
@@ -17,7 +18,7 @@ const ContentStyle = styled("div")(({ theme }) => ({
 
 export default function CartEmpty() {
   return (
-    <Page title="Cart empty">
+    <Page title="Giỏ hàng">
       <Container>
         <ContentStyle sx={{ textAlign: "center", alignItems: "center" }}>
           <IconButton color="error">
@@ -27,7 +28,7 @@ export default function CartEmpty() {
             Giỏ hàng của bạn đang trống
           </Typography>
 
-          <Button to="/" size="large" variant="contained" component={RouterLink}>
+          <Button to={publicRoutes.PRODUCT.path} size="large" variant="contained" component={Link}>
             Trở lại mua hàng
           </Button>
         </ContentStyle>
