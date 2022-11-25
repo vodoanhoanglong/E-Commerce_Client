@@ -72,7 +72,7 @@ function CartWidget() {
             disableRipple
             onClick={() => {
               setOpenPopper(null);
-              navigate(publicRoutes.CARTEMTY.path);
+              navigate(publicRoutes.CART.path);
             }}
           >
             Xem chi tiết giỏ hàng

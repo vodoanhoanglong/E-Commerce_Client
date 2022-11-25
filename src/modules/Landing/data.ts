@@ -52,4 +52,13 @@ export const homeProducts: Product[] = [
     name: "Tâm lí học hành",
     qtyStock: 10,
   },
+  {
+    id: "6",
+    image: "https://salt.tikicdn.com/cache/750x750/ts/product/50/bd/eb/51937df1d205a27deb93bde1dda06f05.jpg.webp",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nunc ut aliquam tincidunt, nisl nisl aliquam tortor, et aliquam nisl nunc ut nisl. Sed euismod, nunc ut aliquam tincidunt, nisl nisl aliquam tortor, et aliquam nisl nunc ut nisl.",
+    price: 335000,
+    name: "Tâm lí học hành",
+    qtyStock: 10,
+  },
 ];
