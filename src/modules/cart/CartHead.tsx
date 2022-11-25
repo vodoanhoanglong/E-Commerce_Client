@@ -1,11 +1,7 @@
-import { Box, Stack, Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 function CartHead() {
   return (
     <Box>
-      <Stack direction="row" justifyContent="space-between" alignItems="center" sx={{ px: 2.5, py: 1 }}>
-        <Typography variant="h3">Shopping Cart</Typography>
-        <Typography variant="subtitle1">UserID: username</Typography>
-      </Stack>
       <Box width="100%" sx={{ display: "flex" }}>
         <Typography variant="body2" fontWeight="bold" width={75} textAlign="left" sx={{ ml: 3 }}>
           Sản phẩm

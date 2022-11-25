@@ -10,7 +10,6 @@ import {
   ProductPage,
   RegisterPage,
 } from "~/page";
-import CartEmpty from "~/page/CartEmpty";
 import ProductDetail from "~/page/ProductDetail";
 import { authRoutes, publicRoutes } from "~/routes";
 
@@ -52,10 +51,6 @@ const routesConfig: RouteObject[] = [
       {
         path: publicRoutes.CART.path,
         element: <CartDetailPage />,
-      },
-      {
-        path: publicRoutes.CARTEMTY.path,
-        element: <CartEmpty />,
       },
     ],
   },
