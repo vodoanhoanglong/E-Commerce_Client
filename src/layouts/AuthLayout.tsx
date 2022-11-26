@@ -1,25 +1,19 @@
 import { useLazyQuery } from "@apollo/client";
 import styled from "@emotion/styled";
-import { CircularProgress, Container } from "@mui/material";
+import { Container } from "@mui/material";
 import { useLayoutEffect } from "react";
 import { Outlet, useNavigate } from "react-router";
 import { GET_CURRENT_USER } from "~/graphql/queries";
 import { User } from "~/models";
 import { setUser } from "~/redux/features/authSlice";
 import { useAppDispatch } from "~/redux/hooks";
+import { PreLoading } from "./components";
 
 const ContentStyle = styled("div")(({ theme }: any) => ({
   maxWidth: 600,
   margin: "0 auto",
   minHeight: "100vh",
   padding: theme.spacing(12, 0),
-}));
-
-const LoadingWrapperStyle = styled("div")(() => ({
-  display: "flex",
-  flexDirection: "column",
-  justifyContent: "center",
-  alignItems: "center",
 }));
 
 function AuthLayout() {
@@ -44,9 +38,7 @@ function AuthLayout() {
   return (
     <Container maxWidth="sm">
       {loading ? (
-        <LoadingWrapperStyle>
-          <CircularProgress />
-        </LoadingWrapperStyle>
+        <PreLoading />
       ) : (
         <ContentStyle>
           <Outlet />
