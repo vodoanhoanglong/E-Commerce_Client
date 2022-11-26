@@ -28,8 +28,8 @@ export const publicRoutes = {
   CART: {
     path: "/cart",
   },
-  CARTEMTY: {
-    path: "/cartemty",
+  CHECKOUT: {
+    path: "/checkout",
   },
 };
 

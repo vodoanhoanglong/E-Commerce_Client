@@ -1,8 +1,9 @@
 import { createBrowserRouter, Navigate, RouteObject, RouterProvider } from "react-router-dom";
-import { AuthLayout, MainLayout } from "~/layouts";
+import { AuthLayout, CartLayout, MainLayout } from "~/layouts";
 import {
   AboutPage,
   CartDetailPage,
+  CheckoutPage,
   ContactPage,
   HomePage,
   LoginPage,
@@ -54,6 +55,15 @@ const routesConfig: RouteObject[] = [
       },
     ],
   },
+  {
+    element: <CartLayout />,
+    children: [
+      {
+        path: publicRoutes.CHECKOUT.path,
+        element: <CheckoutPage />,
+      },
+    ],
+  },
   // Auth routes
   {
     path: "/",
@@ -75,7 +85,5 @@ const routesConfig: RouteObject[] = [
     element: <Page404 />,
   },
 ];
-const router = createBrowserRouter(routesConfig);
-export default function Routes() {
-  return <RouterProvider router={router} />;
-}
+const Routes = () => <RouterProvider router={createBrowserRouter(routesConfig)} />;
+export default Routes;
