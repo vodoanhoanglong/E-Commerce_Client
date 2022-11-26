@@ -3,8 +3,8 @@ import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import Link from "@mui/material/Link";
 import Paper from "@mui/material/Paper";
+import Stack from "@mui/material/Stack";
 import { styled } from "@mui/material/styles";
-
 const Item = styled(Paper)(({ theme }) => ({
   padding: theme.spacing(1),
   textAlign: "left",
@@ -101,21 +101,23 @@ const Footer = () => {
                 <Typography textAlign="left" variant="h6" sx={{ p: 1, fontSize: 20, fontWeight: "bold" }}>
                   Phương thức thanh toán
                 </Typography>
-                <Box sx={{ width: 50, height: 40, ml: 1 }} display="flex">
+
+                <Box sx={{ width: 60, height: 50, m: 1 }} display="flex">
                   <img src="/static/casilogo/img1.jpg"></img>
                   <img src="/static/casilogo/img2.png"></img>
                   <img src="/static/casilogo/img3.png"></img>
                   <img src="/static/casilogo/img4.png"></img>
                   <img src="/static/casilogo/img5.png"></img>
                 </Box>
-                <Box sx={{ width: 50, height: 40, ml: 1 }} display="flex">
+
+                <Box sx={{ width: 60, height: 50, m: 1 }} display="flex">
                   <img src="/static/casilogo/img6.png"></img>
                   <img src="/static/casilogo/img7.png"></img>
                   <img src="/static/casilogo/img8.png"></img>
                   <img src="/static/casilogo/img9.png"></img>
                   <img src="/static/casilogo/img10.png"></img>
                 </Box>
-                <Box sx={{ width: 50, height: 40, ml: 1 }} display="flex">
+                <Box sx={{ width: 60, height: 50, m: 1 }} display="flex">
                   <img src="/static/casilogo/img11.png"></img>
                 </Box>
                 <Typography textAlign="left" variant="h6" sx={{ fontSize: 20, fontWeight: "bold" }}>
@@ -147,9 +149,15 @@ const Footer = () => {
                 <Typography textAlign="left" sx={{ p: 1, fontSize: 20, fontWeight: "bold" }}>
                   Tải ứng dụng trên điện thoại
                 </Typography>
-                <Box sx={{ width: 150, height: 100 }}>
+                <Stack
+                  sx={{ width: 400, height: 40 }}
+                  direction="row"
+                  justifyContent="center"
+                  alignItems="center"
+                  spacing={2}
+                >
                   <Link
-                    sx={{ width: 40, height: 30 }}
+                    sx={{ width: 430, height: 30 }}
                     href="https://apps.apple.com/vn/app/id958100553"
                     underline="none"
                   >
@@ -158,11 +166,11 @@ const Footer = () => {
                   <Link
                     href="https://play.google.com/store/apps/details?id=vn.tiki.app.tikiandroid"
                     underline="none"
-                    sx={{ width: 40, height: 30 }}
+                    sx={{ width: 450, height: 30 }}
                   >
                     <img src="/static/casilogo/googleplay.png"></img>
                   </Link>
-                </Box>
+                </Stack>
               </Item>
             </Grid>
           </Grid>
