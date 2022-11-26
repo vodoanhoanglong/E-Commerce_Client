@@ -17,6 +17,10 @@ function CartWidget() {
     return cartItems.reduce((acc, item) => acc + item.subTotal, 0);
   }, [cartItems]);
 
+  const updateQty = useMemo(() => {
+    return cartItems.reduce((acc, item) => acc + item.quantity, 0);
+  }, [cartItems]);
+
   return (
     <Fragment>
       <IconButton
@@ -25,7 +29,7 @@ function CartWidget() {
         onClick={(e: any) => setOpenPopper(e.currentTarget)}
         sx={{ width: 40, height: 40 }}
       >
-        <Badge showZero badgeContent={cartItems.length} color="error" max={99}>
+        <Badge showZero badgeContent={updateQty} color="error" max={99}>
           <Iconify icon="eva:shopping-cart-fill" width={24} height={24} />
         </Badge>
       </IconButton>
@@ -72,7 +76,7 @@ function CartWidget() {
             disableRipple
             onClick={() => {
               setOpenPopper(null);
-              navigate(publicRoutes.CART.path);
+              navigate(publicRoutes.CHECKOUT.path);
             }}
           >
             Xem chi tiết giỏ hàng

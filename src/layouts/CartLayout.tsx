@@ -6,7 +6,6 @@ import { GET_CURRENT_USER } from "~/graphql/queries";
 import { User } from "~/models";
 import { setUser } from "~/redux/features/authSlice";
 import { useAppDispatch, useAppSelector } from "~/redux/hooks";
-import { authRoutes } from "~/routes";
 import { AccountPopover, LogoLayout, NavBar, NotificationsPopover, PreLoading, SearchBar } from "./components";
 import CheckoutHeader from "./components/CheckoutHeader";
 import { APP_BAR_HEIGHT } from "./MainLayout";
@@ -35,11 +34,11 @@ function CartLayout() {
         },
         onError: (err) => {
           console.warn(err.message);
-          navigate(authRoutes.LOGIN.path, {
-            state: {
-              prevUrl: pathname,
-            },
-          });
+          // navigate(authRoutes.LOGIN.path, {
+          //   state: {
+          //     prevUrl: pathname,
+          //   },
+          // });
         },
       });
     }
