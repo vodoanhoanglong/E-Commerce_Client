@@ -7,6 +7,7 @@ interface IconifyProps {
   width?: number;
   height?: number;
   color?: string;
+  className?: string;
 }
 
 export default function Iconify({ icon, sx, ...other }: IconifyProps) {

@@ -1,13 +1,15 @@
-import { RegisterFormInput } from "./../models/auth";
 import { useMutation } from "@apollo/client";
 import { useState } from "react";
 import { useNavigate } from "react-router";
+import { useLocation } from "react-router-dom";
+import { RegisterFormInput } from "./../models/auth";
 
 import { LOGIN, REGISTER } from "~/graphql/mutations";
 
-import { LoginFormInput, AuthOutput } from "~/models";
+import { AuthOutput, LoginFormInput } from "~/models";
 
 export default function useAuthentication() {
+  const { state } = useLocation();
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState("");
@@ -23,7 +25,7 @@ export default function useAuthentication() {
       onCompleted: ({ login: res }) => {
         localStorage.setItem("access_token", res.token);
         setLoading(false);
-        navigate("/");
+        navigate(state?.prevUrl || "/");
       },
       onError: (err) => {
         setErrors(err.message);
