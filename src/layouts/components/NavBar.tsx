@@ -1,11 +1,9 @@
-import { AppBar, Box, Stack, Toolbar } from "@mui/material";
+import { AppBar, Toolbar } from "@mui/material";
 import { alpha, styled } from "@mui/material/styles";
-import { CartWidget } from "~/modules/cart";
 
-import AccountPopover from "./AccountPopover";
-import NavigationLink from "./NavigationLink";
-import NotificationsPopover from "./NotificationsPopover";
-import Searchbar from "./SearchBar";
+interface NavBarProps {
+  children: React.ReactNode;
+}
 
 const APPBAR_HEIGHT = 64;
 const RootStyle = styled(AppBar)(({ theme }: any) => ({
@@ -19,19 +17,10 @@ const ToolbarStyle = styled(Toolbar)(() => ({
   minHeight: APPBAR_HEIGHT,
 }));
 
-export default function Navbar() {
+export default function Navbar({ children }: NavBarProps) {
   return (
     <RootStyle>
-      <ToolbarStyle>
-        <NavigationLink />
-        <Box sx={{ flexGrow: 1 }} />
-        <Stack direction="row" alignItems="center" spacing={{ xs: 1, sm: 2 }}>
-          <Searchbar />
-          <NotificationsPopover />
-          <CartWidget />
-          <AccountPopover />
-        </Stack>
-      </ToolbarStyle>
+      <ToolbarStyle>{children}</ToolbarStyle>
     </RootStyle>
   );
 }

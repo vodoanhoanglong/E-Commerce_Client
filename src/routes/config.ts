@@ -28,6 +28,9 @@ export const publicRoutes = {
   CART: {
     path: "/cart",
   },
+  CHECKOUT: {
+    path: "/checkout",
+  },
 };
 
 export const privateRoutes = {};

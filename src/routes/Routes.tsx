@@ -1,6 +1,16 @@
 import { createBrowserRouter, Navigate, RouteObject, RouterProvider } from "react-router-dom";
-import { AuthLayout, MainLayout } from "~/layouts";
-import { AboutPage, ContactPage, HomePage, LoginPage, Page404, ProductPage, RegisterPage } from "~/page";
+import { AuthLayout, CartLayout, MainLayout } from "~/layouts";
+import {
+  AboutPage,
+  CartDetailPage,
+  CheckoutPage,
+  ContactPage,
+  HomePage,
+  LoginPage,
+  Page404,
+  ProductPage,
+  RegisterPage,
+} from "~/page";
 import ProductDetail from "~/page/ProductDetail";
 import { authRoutes, publicRoutes } from "~/routes";
 
@@ -39,6 +49,19 @@ const routesConfig: RouteObject[] = [
           },
         ],
       },
+      {
+        path: publicRoutes.CART.path,
+        element: <CartDetailPage />,
+      },
+    ],
+  },
+  {
+    element: <CartLayout />,
+    children: [
+      {
+        path: publicRoutes.CHECKOUT.path,
+        element: <CheckoutPage />,
+      },
     ],
   },
   // Auth routes
@@ -62,7 +85,5 @@ const routesConfig: RouteObject[] = [
     element: <Page404 />,
   },
 ];
-const router = createBrowserRouter(routesConfig);
-export default function Routes() {
-  return <RouterProvider router={router} />;
-}
+const Routes = () => <RouterProvider router={createBrowserRouter(routesConfig)} />;
+export default Routes;
