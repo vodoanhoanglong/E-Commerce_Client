@@ -1,183 +1,103 @@
-import { Typography } from "@mui/material";
-import Box from "@mui/material/Box";
-import Grid from "@mui/material/Grid";
-import Link from "@mui/material/Link";
-import Paper from "@mui/material/Paper";
-import Stack from "@mui/material/Stack";
-import { styled } from "@mui/material/styles";
-const Item = styled(Paper)(({ theme }) => ({
-  padding: theme.spacing(1),
-  textAlign: "left",
-  color: theme.palette.text.secondary,
+import { Box, Grid, Stack, styled, Typography } from "@mui/material";
+import { aboutLinks, mobileStore, paymentIcon, socialIcon, supportLinks } from "~/constants/footer";
+
+const Wrapper = styled(Box)(({ theme }) => ({
+  borderTop: `5px solid ${theme.palette.primary.light}`,
+  width: "100%",
+  padding: theme.spacing(5, 10),
 }));
 
-const Footer = () => {
-  return (
-    <Paper
-      sx={{
-        "& > :not(style)": {
-          m: 1,
-          width: "100%",
-          height: "100%",
-        },
-      }}
-    >
-      <Paper>
-        <Box sx={{ flexGrow: 1 }}>
-          <Grid container spacing={2}>
-            <Grid item xs={3}>
-              <Item>
-                <Typography textAlign="left" variant="h6" sx={{ p: 1, fontSize: 20, fontWeight: "bold" }}>
-                  Hỗ trợ khách hàng
-                </Typography>
-                <Link textAlign="left" sx={{ fontSize: 15, color: "black" }}>
-                  Hotline: 1900-6035
-                </Link>
-                <Typography textAlign="left" sx={{ fontSize: 15 }}>
-                  (1000 đ/phút, 8-21h kể cả T7, CN)
-                </Typography>
-                <Typography textAlign="left" sx={{ fontSize: 15 }}>
-                  Các câu hỏi thường gặp
-                </Typography>
-                <Typography textAlign="left" sx={{ fontSize: 15 }}>
-                  Gửi yêu cầu hỗ trợ
-                </Typography>
-                <Typography textAlign="left" sx={{ fontSize: 15 }}>
-                  Hướng dẫn đặt hàng
-                </Typography>
-                <Typography textAlign="left" sx={{ fontSize: 15 }}>
-                  Phương thức vận chuyển
-                </Typography>
-                <Typography textAlign="left" sx={{ fontSize: 15 }}>
-                  Chính sách đổi trả
-                </Typography>
-                <Typography textAlign="left" sx={{ fontSize: 15 }}>
-                  Hướng dẫn trả góp
-                </Typography>
-                <Typography textAlign="left" sx={{ fontSize: 15 }}>
-                  Chính sách hàng nhập khẩu
-                </Typography>
-                <Typography textAlign="left" sx={{ fontSize: 15 }}>
-                  Hỗ trợ khách hàng: hotro@tiki.vn
-                </Typography>
-              </Item>
-            </Grid>
-            <Grid item xs={3}>
-              <Item>
-                <Typography textAlign="left" variant="h6" sx={{ p: 1, fontSize: 20, fontWeight: "bold" }}>
-                  Về Tiki
-                </Typography>
-                <Typography textAlign="left" sx={{ fontSize: 15 }}>
-                  Giới thiệu Tiki
-                </Typography>
-                <Typography textAlign="left" sx={{ fontSize: 15 }}>
-                  Tuyển dụng
-                </Typography>
-                <Typography textAlign="left" sx={{ fontSize: 15 }}>
-                  Chính sách bảo mật thanh toán
-                </Typography>
-                <Typography textAlign="left" sx={{ fontSize: 15 }}>
-                  Chính sách bảo mật thông tin cá nhân
-                </Typography>
-                <Typography textAlign="left" sx={{ fontSize: 15 }}>
-                  Chính sách giải quyết khiếu nại
-                </Typography>
-                <Typography textAlign="left" sx={{ fontSize: 15 }}>
-                  Điều khoản sử dụng
-                </Typography>
-                <Typography textAlign="left" sx={{ fontSize: 15 }}>
-                  Giới thiệu Tiki Xu
-                </Typography>
-                <Typography textAlign="left" sx={{ fontSize: 15 }}>
-                  Gói thành viên đặc quyền - Astra Rewards
-                </Typography>
-                <Typography textAlign="left" sx={{ fontSize: 15 }}>
-                  Bán hàng doanh nghiệp
-                </Typography>
-              </Item>
-            </Grid>
-            <Grid item xs={3}>
-              <Item>
-                <Typography textAlign="left" variant="h6" sx={{ p: 1, fontSize: 20, fontWeight: "bold" }}>
-                  Phương thức thanh toán
-                </Typography>
+const FlexList = styled("ul")(() => ({
+  display: "flex",
+  flexWrap: "wrap",
+  listStyleType: "none",
+  padding: 0,
+}));
 
-                <Box sx={{ width: 60, height: 50, m: 1 }} display="flex">
-                  <img src="/static/casilogo/img1.jpg"></img>
-                  <img src="/static/casilogo/img2.png"></img>
-                  <img src="/static/casilogo/img3.png"></img>
-                  <img src="/static/casilogo/img4.png"></img>
-                  <img src="/static/casilogo/img5.png"></img>
-                </Box>
+const FlexListItem = styled("li")(({ theme }) => ({
+  width: "5rem",
+  height: "3rem",
+  padding: "0.25rem",
+  marginBottom: "0.5rem",
+  marginRight: "0.5rem",
+  backgroundColor: theme.palette.background.default,
+  borderRadius: theme.shape.borderRadius,
+  boxShadow: theme.shadows[10],
+  cursor: "pointer",
+}));
 
-                <Box sx={{ width: 60, height: 50, m: 1 }} display="flex">
-                  <img src="/static/casilogo/img6.png"></img>
-                  <img src="/static/casilogo/img7.png"></img>
-                  <img src="/static/casilogo/img8.png"></img>
-                  <img src="/static/casilogo/img9.png"></img>
-                  <img src="/static/casilogo/img10.png"></img>
-                </Box>
-                <Box sx={{ width: 60, height: 50, m: 1 }} display="flex">
-                  <img src="/static/casilogo/img11.png"></img>
-                </Box>
-                <Typography textAlign="left" variant="h6" sx={{ fontSize: 20, fontWeight: "bold" }}>
-                  Dịch vụ giao hàng
-                </Typography>
-                <Box sx={{ width: 50, height: 40 }}>
-                  <Link href="https://www.tikinow.biz/?src=footer" underline="none">
-                    <img src="/static/casilogo/image1.png"></img>
-                  </Link>
-                </Box>
-              </Item>
-            </Grid>
-            <Grid display="center" item xs={3}>
-              <Item>
-                <Typography textAlign="left" variant="h6" sx={{ p: 1, fontSize: 20, fontWeight: "bold" }}>
-                  Kết nối với chúng tôi
-                </Typography>
-                <Box sx={{ ml: 3, width: 150, height: 50 }} display="flex">
-                  <Link sx={{ width: 100, height: 100 }} href="https://www.facebook.com/tiki.vn/" underline="none">
-                    <img src="/static/casilogo/fb.webp"></img>
-                  </Link>
-                  <Link href="https://www.youtube.com/user/TikiVBlog" underline="none" sx={{ width: 100, height: 100 }}>
-                    <img src="/static/casilogo/youtube.png"></img>
-                  </Link>
-                  <Link href="https://zalo.me/589673439383195103" underline="none" sx={{ width: 100, height: 100 }}>
-                    <img src="/static/casilogo/zalo.png"></img>
-                  </Link>
-                </Box>
-                <Typography textAlign="left" sx={{ p: 1, fontSize: 20, fontWeight: "bold" }}>
-                  Tải ứng dụng trên điện thoại
-                </Typography>
-                <Stack
-                  sx={{ width: 400, height: 40 }}
-                  direction="row"
-                  justifyContent="center"
-                  alignItems="center"
-                  spacing={2}
-                >
-                  <Link
-                    sx={{ width: 430, height: 30 }}
-                    href="https://apps.apple.com/vn/app/id958100553"
-                    underline="none"
-                  >
-                    <img src="/static/casilogo/ios.png"></img>
-                  </Link>
-                  <Link
-                    href="https://play.google.com/store/apps/details?id=vn.tiki.app.tikiandroid"
-                    underline="none"
-                    sx={{ width: 450, height: 30 }}
-                  >
-                    <img src="/static/casilogo/googleplay.png"></img>
-                  </Link>
-                </Stack>
-              </Item>
-            </Grid>
-          </Grid>
+const Image = styled("img")(({ theme }) => ({
+  width: "100%",
+  height: "100%",
+  borderRadius: theme.shape.borderRadius,
+  objectFit: "contain",
+}));
+
+const Footer = () => (
+  <Wrapper>
+    <Grid container spacing={2}>
+      <Grid item xs={3}>
+        <Typography variant="h5" fontWeight="bold" sx={{ mb: 2 }}>
+          Hỗ trợ khách hàng
+        </Typography>
+        <Stack spacing={1}>
+          {supportLinks.map((link, index) => (
+            <Typography key={index} color="text.secondary" variant="subtitle1" fontWeight={500}>
+              {link}
+            </Typography>
+          ))}
+        </Stack>
+      </Grid>
+      <Grid item xs={3}>
+        <Typography variant="h5" fontWeight="bold" color="text.primary" sx={{ mb: 2 }}>
+          Về chúng tôi
+        </Typography>
+        <Stack spacing={1}>
+          {aboutLinks.map((link, index) => (
+            <Typography key={index} color="text.secondary" variant="subtitle1" fontWeight={500}>
+              {link}
+            </Typography>
+          ))}
+        </Stack>
+      </Grid>
+      <Grid item xs={3}>
+        <Typography variant="h5" fontWeight="bold" color="text.primary" sx={{ mb: 2 }}>
+          Phương thức thanh toán
+        </Typography>
+        <FlexList>
+          {paymentIcon.map((icon, index) => (
+            <FlexListItem key={index}>
+              <Image src={icon.icon} alt={icon.name} />
+            </FlexListItem>
+          ))}
+        </FlexList>
+      </Grid>
+      <Grid display="center" item xs={3}>
+        <Box>
+          <Typography variant="h5" fontWeight="bold" color="text.primary" sx={{ mb: 1 }}>
+            Kết nối với chúng tôi
+          </Typography>
+          <Stack direction="row" spacing={1} marginBottom={1}>
+            {socialIcon.map((icon, index) => (
+              <Box key={index} sx={{ width: 45, height: 45 }}>
+                <Image src={icon.icon} alt={icon.name} />
+              </Box>
+            ))}
+          </Stack>
+          <Typography variant="h5" fontWeight="bold" color="text.primary" sx={{ mb: 1 }}>
+            Tải ứng dụng trên điện thoại
+          </Typography>
+          <Stack direction="row" alignItems="center" spacing={1}>
+            {mobileStore.map((store, index) => (
+              <Box key={index} sx={{ height: 56 }}>
+                <Image src={store.icon} alt={store.name} />
+              </Box>
+            ))}
+          </Stack>
         </Box>
-      </Paper>
-    </Paper>
-  );
-};
+      </Grid>
+    </Grid>
+  </Wrapper>
+);
 
 export default Footer;
