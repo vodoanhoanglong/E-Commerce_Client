@@ -17,6 +17,7 @@ import {
   PreLoading,
   SearchBar,
 } from "./components";
+import Footer from "./components/Footer";
 
 export const APP_BAR_HEIGHT = 64;
 
@@ -66,6 +67,7 @@ function MainLayout() {
       <MainStyle>
         <Outlet />
       </MainStyle>
+      <Footer />
     </RootStyle>
   );
 }
