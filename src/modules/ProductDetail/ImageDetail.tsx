@@ -14,8 +14,8 @@ function ImageDetail({ data }: any) {
   };
   return (
     <Stack spacing={1} alignItems="center" sx={{ m: 2 }}>
-      {data.image.slice(0, 1).map((item: any) => (
-        <CardMedia component="img" height="100%" image={image || item.smallImage} key={item.id} />
+      {data.images.slice(0, 1).map((item: any) => (
+        <CardMedia component="img" height="100%" image={image || item.url} key={item.id} />
       ))}
 
       <Box sx={{ maxWidth: { xs: 320, sm: 480 }, bgcolor: "background.paper" }}>
@@ -27,11 +27,11 @@ function ImageDetail({ data }: any) {
           allowScrollButtonsMobile
           aria-label="scrollable force tabs example"
         >
-          {data.image.map((item: any) => (
+          {data.images.map((item: any) => (
             <Tab
               key={item.id}
-              icon={<img src={item.smallImage} alt="homemainImg" style={{ width: 100 }} />}
-              onClick={() => handleChangeImage(item.smallImage)}
+              icon={<img src={item.url} alt="homemainImg" style={{ width: 100 }} />}
+              onClick={() => handleChangeImage(item.url)}
             />
           ))}
         </Tabs>

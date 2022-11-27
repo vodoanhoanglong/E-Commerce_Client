@@ -13,8 +13,8 @@ function ProductItem({ data }: any) {
           to={publicRoutes.PRODUCT.path + `/${slugify(data.name, { lower: true })}`}
           state={data}
         >
-          {data.image.slice(0, 1).map((item: any) => (
-            <CardMedia component="img" height="100%" image={item.smallImage} key={item.id} />
+          {data.images.slice(0, 1).map((item: any) => (
+            <CardMedia component="img" height="100%" image={item.url} key={item.id} />
           ))}
 
           <CardContent>
