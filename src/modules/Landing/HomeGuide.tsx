@@ -41,7 +41,7 @@ const HomeGuide = () => {
       </Box>
       <GuidesBox>
         <GuideBox>
-          <img src="/static/imgHome/buy_icon.png" />
+          <img src="/static/icon/buy_icon.png" />
           <Typography variant="h5" fontWeight="bold" color="#3b3c45" textAlign="center" sx={{ mt: 1 }}>
             Mua sắm tại shop
           </Typography>
@@ -53,7 +53,7 @@ const HomeGuide = () => {
         </GuideBox>
 
         <GuideBox>
-          <img src="/static/imgHome/rent_icon.png" />
+          <img src="/static/icon/rent_icon.png" />
           <Typography variant="h5" fontWeight="bold" color="#3b3c45" textAlign="center" sx={{ mt: 1 }}>
             Thương hiệu chính hãng
           </Typography>
@@ -65,7 +65,7 @@ const HomeGuide = () => {
         </GuideBox>
 
         <GuideBox>
-          <img src="/static/imgHome/sell_icon.png" />
+          <img src="/static/icon/sell_icon.png" />
           <Typography variant="h5" fontWeight="bold" color="#3b3c45" textAlign="center" sx={{ mt: 1 }}>
             Tràn ngập khuyến mãi
           </Typography>
