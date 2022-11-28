@@ -1,6 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { CheckoutState } from "~/models/cart";
-
 const initialState: CheckoutState = {
   cart: [],
   activeStep: 0,
@@ -15,8 +14,12 @@ export const checkoutSlice = createSlice({
   name: "checkout",
   initialState,
   reducers: {
-    getCart: (state, action) => {
-      state.cart = action.payload;
+    getCart: (state) => {
+      state.cart = JSON.parse(localStorage.getItem("cart") || "[]");
+      state.totalItems = state.cart.reduce((acc, item) => acc + item.quantity, 0);
+    },
+    nextStep: (state) => {
+      state.activeStep++;
     },
   },
 });

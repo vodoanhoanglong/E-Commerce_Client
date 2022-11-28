@@ -5,7 +5,7 @@ import { useState } from "react";
 import Iconify from "~/components/Iconify";
 const APPBAR_HEIGHT = 64;
 
-const SearchbarStyle = styled("div")(({ theme }: any) => ({
+const SearchbarStyle = styled("div")(({ theme }) => ({
   top: 0,
   left: 0,
   zIndex: 99,
