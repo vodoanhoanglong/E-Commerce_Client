@@ -1,2 +1,3 @@
-export { default as CheckoutStepper } from "./CheckoutStepper";
-export { default as MainAddress } from "./MainAddress";
+export { default as CartPreview } from "./CartPreview";
+export { default as CreateBill } from "./CreateBill";
+export { default as Payment } from "./Payment";

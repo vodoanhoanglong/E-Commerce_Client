@@ -73,13 +73,13 @@ export default function CheckoutStepper({ activeStep }: StepperProps) {
           sx={{
             "& .MuiStepLabel-label": {
               fontSize: 14,
-              fontWeight: 600,
+              fontWeight: 500,
               "&.Mui-active": {
-                fontSize: 15,
                 color: "primary.main",
+                fontWeight: 600,
               },
               "&.Mui-completed": {
-                color: "primary.light",
+                color: "primary.main",
               },
             },
           }}

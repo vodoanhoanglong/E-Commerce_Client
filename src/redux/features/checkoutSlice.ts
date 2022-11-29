@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import { CheckoutState } from "~/models/cart";
 const initialState: CheckoutState = {
   cart: [],
-  activeStep: 0,
+  activeStep: 1,
   bill: null,
   subTotal: 0,
   shipping: 0,
@@ -21,8 +21,11 @@ export const checkoutSlice = createSlice({
     nextStep: (state) => {
       state.activeStep++;
     },
+    backStep: (state) => {
+      state.activeStep--;
+    },
   },
 });
 
-export const { getCart } = checkoutSlice.actions;
+export const { getCart, backStep, nextStep } = checkoutSlice.actions;
 export default checkoutSlice.reducer;
