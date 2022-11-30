@@ -8,7 +8,7 @@ import * as Yup from "yup";
 import { Iconify } from "~/components";
 import { FormProvider, RHFTextField } from "~/components/hookform";
 import useAuthentication from "~/hooks/useAuthentication";
-import { LoginFormInput } from "~/models";
+import { LoginForm } from "~/models";
 
 const defaultValues = {
   email: "",
@@ -19,10 +19,10 @@ const LoginSchema = Yup.object({
   password: Yup.string().required("Mật khẩu không được để trống!"),
 });
 
-export default function LoginForm() {
+export default function SignInForm() {
   const { loading, handleLogin } = useAuthentication();
   const [showPassword, setShowPassword] = useState(false);
-  const methods = useForm<LoginFormInput>({
+  const methods = useForm<LoginForm>({
     resolver: yupResolver(LoginSchema),
     defaultValues,
   });

@@ -1,14 +1,10 @@
-import {
-  Stack,
-  Step,
-  StepConnector,
-  stepConnectorClasses,
-  StepIconProps,
-  StepLabel,
-  Stepper,
-  styled,
-} from "@mui/material";
+import { Step, StepConnector, stepConnectorClasses, StepIconProps, StepLabel, Stepper, styled } from "@mui/material";
 import { Iconify } from "~/components";
+import { steps } from "~/constants/checkout";
+
+interface StepperProps {
+  activeStep: number;
+}
 
 const QontoConnector = styled(StepConnector)(({ theme }) => ({
   [`&.${stepConnectorClasses.alternativeLabel}`]: {
@@ -28,7 +24,7 @@ const QontoConnector = styled(StepConnector)(({ theme }) => ({
   },
   [`& .${stepConnectorClasses.line}`]: {
     borderColor: "#eaeaf0",
-    borderTopWidth: 3,
+    borderTopWidth: 2,
     borderRadius: 1,
   },
 }));
@@ -36,8 +32,8 @@ const QontoConnector = styled(StepConnector)(({ theme }) => ({
 const QontoStepIconRoot = styled("div")<{ ownerState: { active?: boolean } }>(({ theme, ownerState }) => ({
   color: "#eaeaf0",
   display: "flex",
-  height: 22,
   alignItems: "center",
+  height: 22,
   ...(ownerState.active && {
     color: theme.palette.primary.main,
   }),
@@ -68,18 +64,29 @@ function QontoStepIcon(props: StepIconProps) {
   );
 }
 
-const steps = ["Giỏ hàng", "Hóa đơn & địa chỉ", "Thanh toán"];
-
-export default function CheckoutStepper() {
+export default function CheckoutStepper({ activeStep }: StepperProps) {
   return (
-    <Stack sx={{ width: "100%", mt: 5 }}>
-      <Stepper alternativeLabel activeStep={1} connector={<QontoConnector />}>
-        {steps.map((label) => (
-          <Step key={label}>
-            <StepLabel StepIconComponent={QontoStepIcon}>{label}</StepLabel>
-          </Step>
-        ))}
-      </Stepper>
-    </Stack>
+    <Stepper alternativeLabel activeStep={activeStep} connector={<QontoConnector />}>
+      {steps.map((label) => (
+        <Step
+          key={label}
+          sx={{
+            "& .MuiStepLabel-label": {
+              fontSize: 14,
+              fontWeight: 500,
+              "&.Mui-active": {
+                color: "primary.main",
+                fontWeight: 600,
+              },
+              "&.Mui-completed": {
+                color: "primary.main",
+              },
+            },
+          }}
+        >
+          <StepLabel StepIconComponent={QontoStepIcon}>{label}</StepLabel>
+        </Step>
+      ))}
+    </Stepper>
   );
 }

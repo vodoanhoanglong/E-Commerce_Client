@@ -1,7 +1,6 @@
 import { useLazyQuery } from "@apollo/client";
-import styled from "@emotion/styled";
-import { Container } from "@mui/material";
-import { useLayoutEffect } from "react";
+import { styled } from "@mui/material";
+import { Fragment, useLayoutEffect } from "react";
 import { Outlet, useNavigate } from "react-router";
 import { GET_CURRENT_USER } from "~/graphql/queries";
 import { User } from "~/models";
@@ -9,11 +8,10 @@ import { setUser } from "~/redux/features/authSlice";
 import { useAppDispatch } from "~/redux/hooks";
 import { PreLoading } from "./components";
 
-const ContentStyle = styled("div")(({ theme }: any) => ({
-  maxWidth: 600,
+const ContentStyle = styled("div")(({ theme }) => ({
   margin: "0 auto",
   minHeight: "100vh",
-  padding: theme.spacing(12, 0),
+  padding: theme.spacing(8, 0),
 }));
 
 function AuthLayout() {
@@ -36,7 +34,7 @@ function AuthLayout() {
   }, [dispath, navigate, reloadUser]);
 
   return (
-    <Container maxWidth="sm">
+    <Fragment>
       {loading ? (
         <PreLoading />
       ) : (
@@ -44,7 +42,7 @@ function AuthLayout() {
           <Outlet />
         </ContentStyle>
       )}
-    </Container>
+    </Fragment>
   );
 }
 

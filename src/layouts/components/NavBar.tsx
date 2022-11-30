@@ -6,11 +6,11 @@ interface NavBarProps {
 }
 
 const APPBAR_HEIGHT = 64;
-const RootStyle = styled(AppBar)(({ theme }: any) => ({
-  boxShadow: theme.customShadows.z8,
+const RootStyle = styled(AppBar)(({ theme }) => ({
+  boxShadow: theme.customShadows.z12,
   backdropFilter: "blur(6px)",
   WebkitBackdropFilter: "blur(6px)", // Fix on Mobile
-  backgroundColor: alpha(theme.palette.background.default, 0.72),
+  backgroundColor: alpha(theme.palette.background.default, 0.6),
 }));
 
 const ToolbarStyle = styled(Toolbar)(() => ({
