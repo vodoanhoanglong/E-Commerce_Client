@@ -1,6 +1,6 @@
 import { Button, CardContent, CardHeader, Stack, Typography } from "@mui/material";
 import { Iconify } from "~/components";
-import PaperWrapper from "./PaperWrapper";
+import PaperWrapper from "../../../components/PaperWrapper";
 
 function BillingAddress() {
   return (

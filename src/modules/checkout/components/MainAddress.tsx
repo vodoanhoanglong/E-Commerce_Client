@@ -1,8 +1,7 @@
 import { Box, Button, DialogActions, Stack, styled, Typography } from "@mui/material";
 import { Fragment, useState } from "react";
-import { Iconify, Tag } from "~/components";
+import { Iconify, PaperWrapper, Tag } from "~/components";
 import DialogWrapper from "~/components/DialogWrapper";
-import { PaperWrapper } from ".";
 
 const Headline = styled("div")(({ theme }) => ({
   width: "100%",
