@@ -40,7 +40,7 @@ function Cart() {
   return (
     <Stack direction="row" gap={4} sx={{ mt: 5 }}>
       <Stack direction="column">
-        <Paper sx={{ minWidth: 715 }} elevation={4}>
+        <Paper sx={{ minWidth: 755 }} elevation={4}>
           {cartItems.length > 0 ? (
             <Fragment>
               <Box height={60} sx={{ p: 2, display: "flex", justifyContent: "flex-start", alignItems: "center" }}>

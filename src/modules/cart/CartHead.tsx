@@ -17,17 +17,17 @@ function CartHead() {
       </Box>
       <Box sx={{ width: 125 }}>
         <Typography variant="body2" fontWeight="bold">
-          Price
+          Giá bán
         </Typography>
       </Box>
       <Box sx={{ width: 85 }}>
         <Typography variant="body2" fontWeight="bold">
-          Quantity
+          Số lượng
         </Typography>
       </Box>
       <Box sx={{ width: 125 }}>
         <Typography variant="body2" fontWeight="bold" textAlign="center">
-          Total Price
+          Thành tiền
         </Typography>
       </Box>
       <Box></Box>
