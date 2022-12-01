@@ -25,9 +25,6 @@ export const publicRoutes = {
   CONTACT: {
     path: "/contact",
   },
-  CART: {
-    path: "/cart",
-  },
   CHECKOUT: {
     path: "/checkout",
   },

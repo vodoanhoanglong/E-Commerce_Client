@@ -3,7 +3,6 @@ import { AuthLayout, CartLayout, MainLayout } from "~/layouts";
 import {
   AboutPage,
   CartDetailPage,
-  CheckoutPage,
   ContactPage,
   HomePage,
   LoginPage,
@@ -49,10 +48,6 @@ const routesConfig: RouteObject[] = [
           },
         ],
       },
-      {
-        path: publicRoutes.CART.path,
-        element: <CartDetailPage />,
-      },
     ],
   },
   {
@@ -60,7 +55,7 @@ const routesConfig: RouteObject[] = [
     children: [
       {
         path: publicRoutes.CHECKOUT.path,
-        element: <CheckoutPage />,
+        element: <CartDetailPage />,
       },
     ],
   },

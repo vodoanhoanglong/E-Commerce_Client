@@ -39,7 +39,7 @@ function CartItem({ data }: CartItemProps) {
             </Typography>
           </Box>
         </Stack>
-        <Counter />
+        <Counter state={data} />
         <Stack direction="row" alignItems="center" justifyContent="flex-end" spacing={1}>
           <Typography variant="subtitle2" width={85} textAlign="right">{`${currencyFormat(
             data.subTotal,

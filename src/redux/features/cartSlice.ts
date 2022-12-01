@@ -36,7 +36,23 @@ export const cartSlice = createSlice({
       }
       localStorage.setItem("cart", JSON.stringify(state.data.sort((a, b) => a.product.id.localeCompare(b.product.id))));
     },
+
+    removeFromCart: (state, action) => {
+      const product = action.payload;
+      state.data = state.data.filter((e) => e.product.id !== product.id);
+      localStorage.setItem("cart", JSON.stringify(state.data.sort((a, b) => a.product.id.localeCompare(b.product.id))));
+    },
+
+    updateQuantity: (state, action) => {
+      const { product, value } = action.payload;
+      const index = state.data.findIndex((item) => item.product.id === product.id);
+      if (index > -1) {
+        state.data[index].subTotal = product.price * (state.data[index].quantity + value);
+        state.data[index].quantity = state.data[index].quantity + value;
+      }
+      localStorage.setItem("cart", JSON.stringify(state.data.sort((a, b) => a.product.id.localeCompare(b.product.id))));
+    },
   },
 });
-export const { addToCart } = cartSlice.actions;
+export const { addToCart, removeFromCart, updateQuantity } = cartSlice.actions;
 export default cartSlice.reducer;

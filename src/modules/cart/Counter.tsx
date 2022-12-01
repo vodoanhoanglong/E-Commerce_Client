@@ -1,6 +1,13 @@
-import { styled } from "@mui/material/styles";
-import { useState } from "react";
+import { styled, SxProps, Theme } from "@mui/material";
 import { Iconify } from "~/components";
+import { CartProduct } from "~/models";
+import { updateQuantity } from "~/redux/features/cartSlice";
+import { useAppDispatch } from "~/redux/hooks";
+
+interface CounterProps {
+  state: CartProduct;
+  sx?: SxProps<Theme>;
+}
 
 const RootStyle = styled("div")(() => ({
   display: "flex",
@@ -32,15 +39,18 @@ const CounterButton = styled("button")(({ theme }) => ({
   transition: theme.transitions.create("all"),
   cursor: "pointer",
 }));
-function Counter() {
-  const [value, setValue] = useState(1);
+function Counter({ state, sx }: CounterProps) {
+  const dispatch = useAppDispatch();
   return (
-    <RootStyle>
-      <CounterButton disabled>
+    <RootStyle sx={sx}>
+      <CounterButton
+        disabled={state.quantity === 1}
+        onClick={() => dispatch(updateQuantity({ product: state.product, value: -1 }))}
+      >
         <Iconify icon="eva:minus-fill" />
       </CounterButton>
-      <CounterValue type="number" value={value} required onChange={(e) => setValue(Number(e.target.value))} />
-      <CounterButton onClick={() => setValue((prev) => prev + 1)}>
+      <CounterValue type="number" value={state.quantity} required />
+      <CounterButton onClick={() => dispatch(updateQuantity({ product: state.product, value: 1 }))}>
         <Iconify icon="eva:plus-fill" />
       </CounterButton>
     </RootStyle>
