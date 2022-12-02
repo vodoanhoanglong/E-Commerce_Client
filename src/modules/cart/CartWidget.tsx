@@ -1,5 +1,5 @@
 import { Badge, Box, Button, Divider, IconButton, List, ListSubheader, Stack, Typography } from "@mui/material";
-import { Fragment, useMemo, useRef, useState } from "react";
+import React, { Fragment, useMemo, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Iconify, MenuPopover, Scrollbar } from "~/components";
 import { useAppSelector } from "~/redux/hooks";
@@ -11,7 +11,7 @@ function CartWidget() {
   const navigate = useNavigate();
   const cartItems = useAppSelector((state) => state.cart.data);
   const anchorRef = useRef(null);
-  const [openPopper, setOpenPopper] = useState(null);
+  const [openPopper, setOpenPopper] = useState<EventTarget | null>(null);
 
   const updateTotal = useMemo(() => {
     return cartItems.reduce((acc, item) => acc + item.subTotal, 0);
@@ -26,7 +26,7 @@ function CartWidget() {
       <IconButton
         ref={anchorRef}
         color={openPopper ? "primary" : "default"}
-        onClick={(e: any) => setOpenPopper(e.currentTarget)}
+        onClick={(e: React.MouseEvent<HTMLButtonElement>) => setOpenPopper(e.currentTarget)}
         sx={{ width: 40, height: 40 }}
       >
         <Badge showZero badgeContent={updateQty} color="error" max={99}>

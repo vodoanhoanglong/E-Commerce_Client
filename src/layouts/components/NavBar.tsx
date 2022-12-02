@@ -1,8 +1,8 @@
-import { AppBar, Toolbar } from "@mui/material";
-import { alpha, styled } from "@mui/material/styles";
+import { alpha, AppBar, styled, SxProps, Theme, Toolbar } from "@mui/material";
 
 interface NavBarProps {
   children: React.ReactNode;
+  sx?: SxProps<Theme>;
 }
 
 const APPBAR_HEIGHT = 64;
@@ -17,9 +17,9 @@ const ToolbarStyle = styled(Toolbar)(() => ({
   minHeight: APPBAR_HEIGHT,
 }));
 
-export default function Navbar({ children }: NavBarProps) {
+export default function Navbar({ children, sx }: NavBarProps) {
   return (
-    <RootStyle>
+    <RootStyle sx={sx}>
       <ToolbarStyle>{children}</ToolbarStyle>
     </RootStyle>
   );

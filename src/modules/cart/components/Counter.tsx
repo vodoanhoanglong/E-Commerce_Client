@@ -45,12 +45,17 @@ function Counter({ state, sx }: CounterProps) {
     <RootStyle sx={sx}>
       <CounterButton
         disabled={state.quantity <= 1}
-        onClick={() => dispatch(updateQuantity({ product: state.product, value: -1 }))}
+        onClick={() => dispatch(updateQuantity({ product: state.product, value: state.quantity - 1 }))}
       >
         <Iconify icon="eva:minus-fill" />
       </CounterButton>
-      <CounterValue type="number" value={state.quantity} required />
-      <CounterButton onClick={() => dispatch(updateQuantity({ product: state.product, value: 1 }))}>
+      <CounterValue
+        type="number"
+        value={state.quantity}
+        required
+        onChange={(event) => dispatch(updateQuantity({ product: state.product, value: Number(event.target.value) }))}
+      />
+      <CounterButton onClick={() => dispatch(updateQuantity({ product: state.product, value: state.quantity + 1 }))}>
         <Iconify icon="eva:plus-fill" />
       </CounterButton>
     </RootStyle>

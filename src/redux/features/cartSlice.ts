@@ -47,8 +47,8 @@ export const cartSlice = createSlice({
       const { product, value } = action.payload;
       const index = state.data.findIndex((item) => item.product.id === product.id);
       if (index > -1) {
-        state.data[index].subTotal = product.price * (state.data[index].quantity + value);
-        state.data[index].quantity = state.data[index].quantity + value;
+        state.data[index].quantity = value;
+        state.data[index].subTotal = product.price * state.data[index].quantity;
       }
       localStorage.setItem("cart", JSON.stringify(state.data.sort((a, b) => a.product.id.localeCompare(b.product.id))));
     },

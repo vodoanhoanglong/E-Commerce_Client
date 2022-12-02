@@ -1,15 +1,16 @@
 import { CartProduct } from "./product";
 
-export interface Bill {
-  id: string;
-  receiver: string;
-  address: string;
+export interface BillAddress {
+  fullName?: string;
+  phoneNumber?: string;
+  address?: string;
+  isDefault: boolean;
 }
 
 export interface CheckoutState {
   cart: CartProduct[];
   activeStep: number;
-  bill: Bill | null;
+  bill: BillAddress | null;
   subTotal: number;
   shipping: number;
   discount: number;

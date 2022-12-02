@@ -1,10 +1,14 @@
-import { CardHeader, Grid, Stack, Typography } from "@mui/material";
-import { PaperWrapper } from "~/components";
+import { Button, CardHeader, Grid, Stack, Typography } from "@mui/material";
+import { Link } from "react-router-dom";
+import { Iconify, PaperWrapper } from "~/components";
 import { CartTable } from "~/modules/cart";
-import { useAppSelector } from "~/redux/hooks";
-import { CartEmpty } from "../cart/components";
+import { CartEmpty } from "~/modules/cart/components";
+import { nextStep } from "~/redux/features/checkoutSlice";
+import { useAppDispatch, useAppSelector } from "~/redux/hooks";
+import { OrderSummary } from "./components";
 
 function CartPreview() {
+  const dispatch = useAppDispatch();
   const checkoutData = useAppSelector((state) => state.checkout);
   return (
     <Grid container spacing={3}>
@@ -29,11 +33,18 @@ function CartPreview() {
 
           {checkoutData.totalItems > 0 ? <CartTable cart={checkoutData.cart} /> : <CartEmpty />}
         </PaperWrapper>
+        <Button component={Link} variant="text" color="inherit" to="/product">
+          <Iconify icon="ic:outline-keyboard-arrow-left" sx={{ fontSize: 20 }} />
+          Tiếp tục mua hàng
+        </Button>
       </Grid>
       {/* Order Summary */}
       <Grid item xs={12} md={4}>
         <Stack spacing={1}>
-          <h1>Thông tin thanh toán</h1>
+          <OrderSummary />
+          <Button size="large" variant="contained" fullWidth onClick={() => dispatch(nextStep())}>
+            Mua Hàng
+          </Button>
         </Stack>
       </Grid>
     </Grid>

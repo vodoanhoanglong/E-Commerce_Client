@@ -1,8 +1,12 @@
 import { Button, CardContent, CardHeader, Stack, Typography } from "@mui/material";
 import { Iconify } from "~/components";
+import { backStep } from "~/redux/features/checkoutSlice";
+import { useAppDispatch, useAppSelector } from "~/redux/hooks";
 import PaperWrapper from "../../../components/PaperWrapper";
 
-function BillingAddress() {
+function BilledAddress() {
+  const dispatch = useAppDispatch();
+  const billAddress = useAppSelector((state) => state.checkout.bill);
   return (
     <PaperWrapper>
       <CardHeader
@@ -15,6 +19,7 @@ function BillingAddress() {
               variant="text"
               size="small"
               color="primary"
+              onClick={() => dispatch(backStep())}
               sx={{
                 display: "flex",
                 alignItems: "center",
@@ -37,14 +42,14 @@ function BillingAddress() {
       />
       <CardContent>
         <Typography variant="subtitle2" textTransform="capitalize" fontWeight="bold">
-          {"Nguyễn Thanh Hòa (0123456789)"}
+          {`${billAddress?.fullName} (${billAddress?.phoneNumber})`}
         </Typography>
         <Typography variant="subtitle2" textTransform="capitalize" fontWeight={500}>
-          {"450 Lê Văn Việt, Phường Tăng Nhơn Phú A, Thành Phố Thủ Đức, TP. Hồ Chí Minh"}
+          {billAddress?.address}
         </Typography>
       </CardContent>
     </PaperWrapper>
   );
 }
 
-export default BillingAddress;
+export default BilledAddress;
