@@ -6,6 +6,11 @@ export const GET_CURRENT_USER = gql`
       id
       email
       fullName
+      phoneNumber
+      address
+      avatar
+      bod
+      gender
     }
   }
 `;

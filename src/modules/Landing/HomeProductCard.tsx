@@ -1,7 +1,9 @@
 import { Box, Button, Stack, styled, Typography } from "@mui/material";
+import { Link } from "react-router-dom";
 import { Product } from "~/models";
 import { addToCart } from "~/redux/features/cartSlice";
 import { useAppDispatch } from "~/redux/hooks";
+import { publicRoutes } from "~/routes";
 import { currencyFormat } from "~/utils/formats";
 
 interface IProductCardProps {
@@ -60,7 +62,13 @@ function HomeProductCard({ product }: IProductCardProps) {
           </Typography>
         </Box>
         <ProductAction direction="row" alignItems="center" justifyContent="center" gap={3}>
-          <Button variant="contained" size="medium">
+          <Button
+            to={publicRoutes.CHECKOUT.path}
+            component={Link}
+            variant="contained"
+            size="medium"
+            onClick={handleAddToCart}
+          >
             Mua ngay
           </Button>
           <Button variant="outlined" size="medium" onClick={handleAddToCart}>

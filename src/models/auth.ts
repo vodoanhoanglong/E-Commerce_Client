@@ -1,22 +1,22 @@
-export interface LoginFormInput {
-  email: string;
-  password: string;
-}
-export interface RegisterFormInput {
-  email: string;
-  password: string;
-  firstName?: string;
-  lastName?: string;
-}
-
-export interface AuthOutput {
-  token: string;
-  error: string;
-}
-
-export interface User {
-  id?: string;
+interface BaseUserData {
   fullName: string;
-  email: string;
+  gender: string;
+  address: string;
+  phoneNumber: string;
   avatar?: string;
+  bod: Date;
 }
+export interface AuthToken {
+  token: string;
+}
+export interface LoginForm {
+  email: string;
+  password: string;
+}
+
+export interface User extends BaseUserData {
+  id: string;
+  email: string;
+}
+
+export type RegisterForm = LoginForm & BaseUserData;

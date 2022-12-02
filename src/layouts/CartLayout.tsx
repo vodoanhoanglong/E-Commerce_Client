@@ -7,8 +7,8 @@ import { User } from "~/models";
 import { setUser } from "~/redux/features/authSlice";
 import { useAppDispatch, useAppSelector } from "~/redux/hooks";
 import { authRoutes } from "~/routes";
-import { AccountPopover, LogoLayout, NavBar, NotificationsPopover, PreLoading, SearchBar } from "./components";
-import CheckoutHeader from "./components/CheckoutHeader";
+import { AccountPopover, LogoLayout, NavBar, NotificationsPopover, PreLoading } from "./components";
+import Footer from "./components/Footer";
 import { APP_BAR_HEIGHT } from "./MainLayout";
 
 const RootStyle = styled("div")({
@@ -17,7 +17,8 @@ const RootStyle = styled("div")({
 });
 
 const ContentStyle = styled(Container)(() => ({
-  paddingTop: APP_BAR_HEIGHT + 24,
+  paddingTop: APP_BAR_HEIGHT + 50,
+  paddingBottom: 50,
 }));
 
 function CartLayout() {
@@ -49,18 +50,24 @@ function CartLayout() {
   return (
     <RootStyle>
       <NavBar>
-        <LogoLayout sx={{ mr: 2 }} />
-        <SearchBar />
-        <Box sx={{ flexGrow: 1 }} />
-        <Stack direction="row" alignItems="center" spacing={{ xs: 1, sm: 2 }}>
-          <NotificationsPopover />
-          <AccountPopover />
-        </Stack>
+        <Container
+          sx={{
+            display: "flex",
+            alignItems: "center",
+          }}
+        >
+          <LogoLayout sx={{ mr: 5 }} large />
+          <Box sx={{ flexGrow: 1 }} />
+          <Stack direction="row" alignItems="center" spacing={{ xs: 1, sm: 2 }}>
+            <NotificationsPopover />
+            <AccountPopover />
+          </Stack>
+        </Container>
       </NavBar>
       <ContentStyle>
-        <CheckoutHeader />
         <Outlet />
       </ContentStyle>
+      <Footer />
     </RootStyle>
   );
 }
