@@ -41,7 +41,7 @@ function CartWidget() {
             <Typography variant="body2" sx={{ color: "text.secondary" }}>
               {cartItems.length > 0
                 ? `Bạn có ${cartItems.length} sản phẩm đang chờ thanh toán!`
-                : "Giỏ hàng của bạn đang trống!"}
+                : " của bạn đang trống!"}
             </Typography>
           </Box>
         </Box>

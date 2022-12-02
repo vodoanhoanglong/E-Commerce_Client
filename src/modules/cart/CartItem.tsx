@@ -29,7 +29,7 @@ function CartItem({ data }: CartItemProps) {
     <StyledListItem>
       <Stack direction="row" alignItems="center" justifyContent="space-between" spacing={2} sx={{ width: "100%" }}>
         <Stack direction="row" alignItems="center" spacing={2}>
-          <ImageThumb src={data.product.image} />
+          <ImageThumb src={data.product.images[0].url} />
           <Box sx={{ flexGrow: 0, overflow: "hidden", width: 250 }}>
             <Typography variant="subtitle2" noWrap>
               {data.product.name}

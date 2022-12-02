@@ -18,7 +18,7 @@ function ProductDetail() {
 
   return (
     <Page title="Thông tin sản phẩm">
-      <Container fixed sx={{ mt: 3 }}>
+      <Container fixed sx={{ marginBlock: 3 }}>
         <Card sx={{ display: "flex" }}>
           <ImageDetail data={data} />
           <Box sx={{ display: "flex", flexDirection: "column" }}>

@@ -43,7 +43,7 @@ function HomeProductCard({ product }: IProductCardProps) {
   return (
     <ProductWrapper>
       <Box sx={{ width: "100%", p: 1 }}>
-        <ProductImage src={product.image} alt="" />
+        <ProductImage src={product.images[0].url} alt="" />
       </Box>
       <Box sx={{ p: 2 }}>
         <Stack direction="row" alignItems="center" justifyContent="space-between">

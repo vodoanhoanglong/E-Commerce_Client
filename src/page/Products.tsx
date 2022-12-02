@@ -1,29 +1,11 @@
 import { useQuery } from "@apollo/client";
-import { Box, CircularProgress, MenuItem, MenuList, Paper, styled, Typography } from "@mui/material";
+import { Box, CircularProgress, styled } from "@mui/material";
 import { Stack } from "@mui/system";
 import { useState } from "react";
 import { Page } from "~/components";
-import { GET_PRODUCT } from "~/graphql/queries";
+import { GET_PRODUCT_CATEGORY } from "~/graphql/queries";
+import ProductFilter from "~/modules/Products/ProductFilter";
 import ProductList from "~/modules/Products/ProductList";
-
-const MENU = [
-  {
-    id: 0,
-    name: "Đồ điện tử",
-  },
-  {
-    id: 1,
-    name: "Thời trang",
-  },
-  {
-    id: 2,
-    name: "Thực phẩm",
-  },
-  {
-    id: 3,
-    name: "Sách",
-  },
-];
 
 const LoadingWrapperStyle = styled("div")(() => ({
   display: "flex",
@@ -33,11 +15,17 @@ const LoadingWrapperStyle = styled("div")(() => ({
 }));
 
 function Products() {
-  const { loading, error, data } = useQuery(GET_PRODUCT);
-  const [filter, setFilter] = useState("Đồ điện tử");
-  const handleFilter = (item: string) => {
-    setFilter(item);
-  };
+  const [pageNumber, setPageNumber] = useState(0);
+  const [filterId, setFilterId] = useState("watch");
+  const { loading, error, data } = useQuery(GET_PRODUCT_CATEGORY, {
+    variables: {
+      categoryAliases: filterId,
+      page: pageNumber,
+      size: 10,
+    },
+  });
+
+  const [filterName, setFilterName] = useState(data?.getCategory[0].name);
   if (error) {
     console.error(error.message);
   }
@@ -49,22 +37,20 @@ function Products() {
           <CircularProgress />
         </LoadingWrapperStyle>
       ) : (
-        <Box sx={{ marginInline: 10, mt: 3 }}>
+        <Box sx={{ marginInline: 10, marginBlock: 3 }}>
           <Stack direction="row">
-            <Paper sx={{ minWidth: 270, maxWidth: 275, height: "20%", mr: 1 }}>
-              <MenuList>
-                <Typography variant="body1" sx={{ fontWeight: "bold", p: 2 }}>
-                  Danh mục sản phẩm
-                </Typography>
-
-                {MENU.map((item) => (
-                  <MenuItem key={item.id} onClick={() => handleFilter(item.name)}>
-                    {item.name}
-                  </MenuItem>
-                ))}
-              </MenuList>
-            </Paper>
-            <ProductList data={data?.getProducts.data} filter={filter} />
+            <ProductFilter
+              data={data?.getCategory}
+              setFilterName={setFilterName}
+              setFilterId={setFilterId}
+              setPageNumber={setPageNumber}
+            />
+            <ProductList
+              data={data?.getProducts.data}
+              pagination={data?.getProducts.pagination}
+              filterName={filterName}
+              setPageNumber={setPageNumber}
+            />
           </Stack>
         </Box>
       )}
