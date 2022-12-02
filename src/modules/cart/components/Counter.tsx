@@ -44,7 +44,7 @@ function Counter({ state, sx }: CounterProps) {
   return (
     <RootStyle sx={sx}>
       <CounterButton
-        disabled={state.quantity === 1}
+        disabled={state.quantity <= 1}
         onClick={() => dispatch(updateQuantity({ product: state.product, value: -1 }))}
       >
         <Iconify icon="eva:minus-fill" />

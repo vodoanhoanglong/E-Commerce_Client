@@ -5,7 +5,7 @@ import { Iconify, MenuPopover, Scrollbar } from "~/components";
 import { useAppSelector } from "~/redux/hooks";
 import { publicRoutes } from "~/routes";
 import { currencyFormat } from "~/utils/formats";
-import CartItem from "./CartItem";
+import { CartWidgetItem } from "./components";
 
 function CartWidget() {
   const navigate = useNavigate();
@@ -60,7 +60,7 @@ function CartWidget() {
         >
           <Scrollbar sx={{ maxHeight: 325 }}>
             {cartItems.map((item) => (
-              <CartItem key={item.product.id} data={item} />
+              <CartWidgetItem key={item.product.id} data={item} />
             ))}
           </Scrollbar>
         </List>

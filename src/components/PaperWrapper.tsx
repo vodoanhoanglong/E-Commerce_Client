@@ -7,7 +7,7 @@ interface PaperWrapperProps {
 
 const Wrapper = styled(Box)(({ theme }) => ({
   backgroundColor: theme.palette.background.paper,
-  borderRadius: theme.shape.borderRadius - 2,
+  borderRadius: theme.shape.borderRadius,
   boxShadow: theme.customShadows.z8,
 }));
 function PaperWrapper({ children, sx }: PaperWrapperProps) {

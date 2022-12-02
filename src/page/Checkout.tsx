@@ -22,21 +22,22 @@ const container = [
 ];
 
 function Checkout() {
-  const checkoutState = useAppSelector((state) => state.checkout);
+  const activeStep = useAppSelector((state) => state.checkout.activeStep);
+  const cart = useAppSelector((state) => state.cart.data);
   const dispatch = useAppDispatch();
   useEffect(() => {
     dispatch(getCart());
-  }, []);
+  }, [cart]);
   return (
     <Page title="Thanh Toán">
       {/* Header */}
       <Grid container sx={{ mb: 5 }}>
         <Grid item xs={12} md={8}>
-          <CheckoutStepper activeStep={checkoutState.activeStep} />
+          <CheckoutStepper activeStep={activeStep} />
         </Grid>
       </Grid>
       {/* Container */}
-      {container[checkoutState.activeStep].element}
+      {container[activeStep].element}
     </Page>
   );
 }
