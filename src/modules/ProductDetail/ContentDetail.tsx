@@ -2,7 +2,6 @@ import { Grid, Stack, Typography } from "@mui/material";
 import { Iconify } from "~/components";
 import { Product } from "~/models";
 import { currencyFormat } from "~/utils/formats";
-import Counter from "../cart/Counter";
 import DiscountDetail from "./DiscountDetail";
 import ProductPolicy from "./ProductPolicy";
 interface ProductProps {
@@ -43,7 +42,7 @@ function ContentDetail({ data }: ProductProps) {
       </Grid>
       <Grid item xs={8}>
         <Stack direction="row" spacing={2} alignItems="center">
-          <Counter />
+          {/* <Counter state={data} /> */}
           <Typography gutterBottom variant="body1" fontSize={15} color="text.secondary">
             18 sản phẩm có sẵn
           </Typography>
