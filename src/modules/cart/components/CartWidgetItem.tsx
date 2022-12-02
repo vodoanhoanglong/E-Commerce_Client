@@ -2,10 +2,12 @@ import { Box, IconButton, ListItem, Stack, Typography } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import { Iconify } from "~/components";
 import { CartProduct } from "~/models";
+import { removeFromCart } from "~/redux/features/cartSlice";
+import { useAppDispatch } from "~/redux/hooks";
 import { currencyFormat } from "~/utils/formats";
 import Counter from "./Counter";
 
-interface CartItemProps {
+interface ICartWidgetItem {
   data: CartProduct;
 }
 
@@ -24,7 +26,8 @@ const ImageThumb = styled("img")(() => ({
   objectFit: "cover",
 }));
 
-function CartItem({ data }: CartItemProps) {
+function CartWidgetItem({ data }: ICartWidgetItem) {
+  const dispatch = useAppDispatch();
   return (
     <StyledListItem>
       <Stack direction="row" alignItems="center" justifyContent="space-between" spacing={2} sx={{ width: "100%" }}>
@@ -44,7 +47,7 @@ function CartItem({ data }: CartItemProps) {
           <Typography variant="subtitle2" width={85} textAlign="right">{`${currencyFormat(
             data.subTotal,
           )}đ`}</Typography>
-          <IconButton color="error">
+          <IconButton color="error" onClick={() => dispatch(removeFromCart(data.product))}>
             <Iconify icon="eva:close-fill" color="#DF3E30" />
           </IconButton>
         </Stack>
@@ -53,4 +56,4 @@ function CartItem({ data }: CartItemProps) {
   );
 }
 
-export default CartItem;
+export default CartWidgetItem;

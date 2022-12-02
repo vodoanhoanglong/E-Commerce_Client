@@ -1,15 +1,7 @@
 import { createBrowserRouter, Navigate, RouteObject, RouterProvider } from "react-router-dom";
 import { AuthLayout, CartLayout, MainLayout } from "~/layouts";
-import {
-  AboutPage,
-  CartDetailPage,
-  ContactPage,
-  HomePage,
-  LoginPage,
-  Page404,
-  ProductPage,
-  RegisterPage,
-} from "~/page";
+import { AboutPage, ContactPage, HomePage, LoginPage, Page404, ProductPage, RegisterPage } from "~/page";
+import Checkout from "~/page/Checkout";
 import ProductDetail from "~/page/ProductDetail";
 import { authRoutes, publicRoutes } from "~/routes";
 
@@ -55,7 +47,7 @@ const routesConfig: RouteObject[] = [
     children: [
       {
         path: publicRoutes.CHECKOUT.path,
-        element: <CartDetailPage />,
+        element: <Checkout />,
       },
     ],
   },

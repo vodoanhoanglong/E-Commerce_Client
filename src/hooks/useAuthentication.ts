@@ -38,8 +38,8 @@ export default function useAuthentication() {
       password: value.password,
       fullName: value.fullName,
       address: value.address,
-      dob: moment(value.dob).format("YYYY-MM-DD"),
-      phoneNumber: value.phone,
+      dob: moment(value.bod).format("YYYY-MM-DD"),
+      phoneNumber: value.phoneNumber,
     };
     setLoading(true);
     register({

@@ -2,6 +2,7 @@ import { Box, Button, DialogActions, Stack, styled, Typography } from "@mui/mate
 import { Fragment, useState } from "react";
 import { Iconify, PaperWrapper, Tag } from "~/components";
 import DialogWrapper from "~/components/DialogWrapper";
+import { useAppSelector } from "~/redux/hooks";
 
 const Headline = styled("div")(({ theme }) => ({
   width: "100%",
@@ -14,6 +15,7 @@ const Headline = styled("div")(({ theme }) => ({
 }));
 
 function MainAddress() {
+  const currentUser = useAppSelector((state) => state.auth.data);
   const [isEditting, setIsEditting] = useState(false);
   return (
     <Fragment>
@@ -42,7 +44,7 @@ function MainAddress() {
             <Stack direction="row" alignItems="center" justifyContent="space-between">
               <Stack direction="row" alignItems="center" spacing={2}>
                 <Typography variant="subtitle1" textTransform="capitalize" fontWeight="bold">
-                  {"Nguyễn Thanh Hòa (0123456789)"}
+                  {`${currentUser?.fullName} (${currentUser?.phoneNumber})`}
                 </Typography>
                 <Tag title="Mặc định" />
               </Stack>
@@ -71,7 +73,7 @@ function MainAddress() {
               </Button>
             </Stack>
             <Typography variant="subtitle2" textTransform="capitalize" fontWeight={500}>
-              {"450 Lê Văn Việt, Phường Tăng Nhơn Phú A, Thành Phố Thủ Đức, TP. Hồ Chí Minh"}
+              {currentUser?.address}
             </Typography>
           </Box>
         </Box>

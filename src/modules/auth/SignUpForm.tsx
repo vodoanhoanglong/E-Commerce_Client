@@ -12,8 +12,8 @@ import { RegisterForm } from "~/models";
 const RegisterSchema = Yup.object({
   fullName: Yup.string().required("Họ không được để trống!"),
   email: Yup.string().email("Địa chỉ email không hợp lệ").required("Địa chỉ email không được để trống!"),
-  dob: Yup.date().required("Ngày sinh không được để trống!"),
-  phone: Yup.string().required("Số điện thoại không được để trống!"),
+  bod: Yup.date().required("Ngày sinh không được để trống!"),
+  phoneNumber: Yup.string().required("Số điện thoại không được để trống!"),
   gender: Yup.string().required(),
   address: Yup.string().required("Địa chỉ không được để trống!"),
   password: Yup.string().required("Mật khẩu không được để trống!"),
@@ -22,8 +22,8 @@ const RegisterSchema = Yup.object({
 const defaultValues = {
   fullName: "",
   email: "",
-  dob: new Date(),
-  phone: "",
+  bod: new Date(),
+  phoneNumber: "",
   gender: "",
   address: "",
   password: "",
@@ -60,8 +60,8 @@ export default function SignUpForm() {
             </Grid>
             <RHFTextField name="address" label="Địa chỉ" />
             <Stack direction={{ xs: "column", sm: "row" }} spacing={2}>
-              <RHFPhoneInput name="phone" label="Số điện thoại" />
-              <RHFDatePicker name="dob" label="Ngày Sinh" />
+              <RHFPhoneInput name="phoneNumber" label="Số điện thoại" />
+              <RHFDatePicker name="bod" label="Ngày Sinh" />
             </Stack>
             <RHFTextField name="email" label="Email" type="text" />
             <RHFTextField
