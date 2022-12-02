@@ -11,7 +11,7 @@ const Wrapper = styled(Box)(({ theme }) => ({
   boxShadow: theme.customShadows.z8,
 }));
 function PaperWrapper({ children, sx }: PaperWrapperProps) {
-  return <Wrapper sx={sx}>{children}</Wrapper>;
+  return <Wrapper sx={{ marginBottom: 2, ...sx }}>{children}</Wrapper>;
 }
 
 export default PaperWrapper;

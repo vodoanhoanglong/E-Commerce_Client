@@ -49,7 +49,12 @@ function CartLayout() {
   if (loading) return <PreLoading />;
   return (
     <RootStyle>
-      <NavBar>
+      <NavBar
+        sx={{
+          boxShadow: "none",
+          borderBottom: (theme) => `solid 1px ${theme.palette.divider}`,
+        }}
+      >
         <Container
           sx={{
             display: "flex",

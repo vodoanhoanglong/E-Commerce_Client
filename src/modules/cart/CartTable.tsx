@@ -13,11 +13,11 @@ export interface ITableHeadCell {
 }
 
 const tableHeadCols: ITableHeadCell[] = [
-  { display: "Product", align: "left" },
-  { display: "Price", align: "left" },
-  { display: "Quantity", align: "left" },
-  { display: "Total", align: "right" },
-  { display: "", align: "left" },
+  { display: "Sản phẩm", align: "left" },
+  { display: "Đơn giá", align: "left" },
+  { display: "Số lượng", align: "left" },
+  { display: "Thành tiền", align: "right" },
+  { display: "", align: "right" },
 ];
 
 function CartTable({ cart }: ICartTable) {

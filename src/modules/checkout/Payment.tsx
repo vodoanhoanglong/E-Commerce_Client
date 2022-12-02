@@ -1,5 +1,5 @@
 import { Grid, Stack } from "@mui/material";
-import { BillingAddress } from "./components";
+import { BilledAddress } from "./components";
 
 function Payment() {
   return (
@@ -10,7 +10,7 @@ function Payment() {
       {/* Order Summary */}
       <Grid item xs={12} md={4}>
         <Stack spacing={1}>
-          <BillingAddress />
+          <BilledAddress />
         </Stack>
       </Grid>
     </Grid>
