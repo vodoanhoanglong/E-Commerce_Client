@@ -15,8 +15,8 @@ const defaultValues = {
   password: "",
 };
 const LoginSchema = Yup.object({
-  email: Yup.string().email("Địa chỉ email không hợp lệ!").required("Địa chỉ email không được để trống!"),
-  password: Yup.string().required("Mật khẩu không được để trống!"),
+  email: Yup.string().email("Địa chỉ email không hợp lệ!").required(""),
+  password: Yup.string().required(""),
 });
 
 export default function SignInForm() {
