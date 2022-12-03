@@ -50,10 +50,10 @@ function CartTableItem({ item }: ICartTableItem) {
         </Stack>
       </TableCell>
       <TableCell size="medium">{`${currencyFormat(item.product.price)}đ`}</TableCell>
-      <TableCell size="medium" align="left">
+      <TableCell size="medium" sx={{ width: "85px" }}>
         <Counter state={item} />
       </TableCell>
-      <TableCell align="right" size="medium">{`${currencyFormat(item.subTotal)}đ`}</TableCell>
+      <TableCell align="right" size="medium" sx={{ width: "150px" }}>{`${currencyFormat(item.subTotal)}đ`}</TableCell>
       <TableCell size="medium">
         <IconButton color="error" onClick={() => dispatch(removeFromCart(item.product))}>
           <Iconify icon="eva:close-fill" color="#DF3E30" />

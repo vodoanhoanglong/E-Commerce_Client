@@ -4,7 +4,7 @@ import { aboutLinks, mobileStore, paymentIcon, socialIcon, supportLinks } from "
 const Wrapper = styled(Box)(({ theme }) => ({
   borderTop: `5px solid ${theme.palette.primary.light}`,
   width: "100%",
-  padding: theme.spacing(5, 10),
+  padding: theme.spacing(2, 10),
 }));
 
 const FlexList = styled("ul")(() => ({
