@@ -1,12 +1,10 @@
-import { deleteObject, getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
+import { deleteObject, getDownloadURL, ref, uploadBytesResumable, UploadMetadata } from "firebase/storage";
 import { storage } from "~/app/firebaseConfig";
-import { useAppSelector } from "~/redux/hooks";
-export default function useImageUploader() {
-  const user = useAppSelector((state) => state.auth.data);
 
-  const uploader = (file: any, callback: (url: string) => void) => {
-    const storageRef = ref(storage, `${user?.email}/${file.name}`);
-    const uploadTask = uploadBytesResumable(storageRef, file, file.type);
+export default function useImageUploader() {
+  const uploader = (path: string, file: File, callback: (url: string) => void) => {
+    const storageRef = ref(storage, path);
+    const uploadTask = uploadBytesResumable(storageRef, file, file.type as UploadMetadata);
     uploadTask.on(
       "state_changed",
       (snapshot) => {
@@ -31,8 +29,8 @@ export default function useImageUploader() {
     );
   };
 
-  const deleteFile = (file: any, callback: () => void) => {
-    const storageRef = ref(storage, `${user?.email}/${file.name}`);
+  const deleteFile = (filePath: string, callback: () => void) => {
+    const storageRef = ref(storage, filePath);
     deleteObject(storageRef)
       .then(() => {
         callback();
