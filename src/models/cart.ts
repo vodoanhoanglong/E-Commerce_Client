@@ -1,9 +1,9 @@
 import { CartProduct } from "./product";
 
 export interface BillAddress {
-  fullName?: string;
-  phoneNumber?: string;
-  address?: string;
+  fullName: string;
+  phoneNumber: string;
+  address: string;
   isDefault: boolean;
 }
 
