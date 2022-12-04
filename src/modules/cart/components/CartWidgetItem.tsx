@@ -2,7 +2,7 @@ import { Box, IconButton, ListItem, Stack, Typography } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import { Iconify } from "~/components";
 import { CartProduct } from "~/models";
-import { removeFromCart } from "~/redux/features/cartSlice";
+import { removeFromCart, updateQuantity } from "~/redux/features/cartSlice";
 import { useAppDispatch } from "~/redux/hooks";
 import { currencyFormat } from "~/utils/formats";
 import Counter from "./Counter";
@@ -28,6 +28,9 @@ const ImageThumb = styled("img")(() => ({
 
 function CartWidgetItem({ data }: ICartWidgetItem) {
   const dispatch = useAppDispatch();
+  const handleUpdateQuantity = (quantity: number) => {
+    dispatch(updateQuantity({ product: data.product, value: quantity }));
+  };
   return (
     <StyledListItem>
       <Stack direction="row" alignItems="center" justifyContent="space-between" spacing={2} sx={{ width: "100%" }}>
@@ -42,7 +45,7 @@ function CartWidgetItem({ data }: ICartWidgetItem) {
             </Typography>
           </Box>
         </Stack>
-        <Counter state={data} />
+        <Counter value={data.quantity} onUpdateValue={handleUpdateQuantity} />
         <Stack direction="row" alignItems="center" justifyContent="flex-end" spacing={1}>
           <Typography variant="subtitle2" width={85} textAlign="right">{`${currencyFormat(
             data.subTotal,

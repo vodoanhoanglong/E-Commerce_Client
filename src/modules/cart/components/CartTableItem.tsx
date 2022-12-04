@@ -1,7 +1,7 @@
 import { Box, IconButton, Stack, styled, TableCell, TableRow, Typography } from "@mui/material";
 import { Iconify } from "~/components";
 import { CartProduct } from "~/models";
-import { removeFromCart } from "~/redux/features/cartSlice";
+import { removeFromCart, updateQuantity } from "~/redux/features/cartSlice";
 import { useAppDispatch } from "~/redux/hooks";
 import { currencyFormat } from "~/utils/formats";
 import Counter from "./Counter";
@@ -27,6 +27,11 @@ const ImgWrapper = styled(Box)(({ theme }) => ({
 
 function CartTableItem({ item }: ICartTableItem) {
   const dispatch = useAppDispatch();
+
+  const handleUpdateQuantity = (quantity: number) => {
+    dispatch(updateQuantity({ product: item.product, value: quantity }));
+  };
+
   return (
     <TableRowStyled>
       <TableCell
@@ -51,7 +56,7 @@ function CartTableItem({ item }: ICartTableItem) {
       </TableCell>
       <TableCell size="medium">{`${currencyFormat(item.product.price)}đ`}</TableCell>
       <TableCell size="medium" sx={{ width: "85px" }}>
-        <Counter state={item} />
+        <Counter value={item.quantity} onUpdateValue={handleUpdateQuantity} />
       </TableCell>
       <TableCell align="right" size="medium" sx={{ width: "150px" }}>{`${currencyFormat(item.subTotal)}đ`}</TableCell>
       <TableCell size="medium">
