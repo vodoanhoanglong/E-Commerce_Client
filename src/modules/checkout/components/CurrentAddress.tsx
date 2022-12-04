@@ -1,11 +1,11 @@
-import { Box, Button, DialogActions, Stack, styled, Typography } from "@mui/material";
+import { Box, Button, Stack, styled, Typography } from "@mui/material";
 import { Fragment, useEffect, useState } from "react";
 import { Iconify, PaperWrapper, Tag } from "~/components";
 import DialogWrapper from "~/components/DialogWrapper";
-import { BillAddress } from "~/models";
 import { createBilling } from "~/redux/features/checkoutSlice";
 import { useAppDispatch, useAppSelector } from "~/redux/hooks";
-import EditAddressForm from "./EditAddressForm";
+import AddAddressForm from "./AddAddressForm";
+import AddressItem from "./AddressItem";
 
 const Headline = styled("div")(({ theme }) => ({
   width: "100%",
@@ -17,21 +17,24 @@ const Headline = styled("div")(({ theme }) => ({
     "repeating-linear-gradient(45deg,#6fa6d6,#6fa6d6 33px,rgb(0 0 0 / 0%) 0,rgb(0 0 0 / 0%) 41px,#f18d9b 0,#f18d9b 74px,rgb(0 0 0 / 0%) 0,rgb(0 0 0 / 0%) 82px)",
 }));
 // * Tách địa chỉ default với địa chỉ khác => 2 paper riêng
-function DefaultAddress() {
+function CurrentAddress() {
   const dispath = useAppDispatch();
   const currentUser = useAppSelector((state) => state.auth.data);
-  const [currentAddress, setCurrentAddress] = useState<BillAddress>();
+  const currentAddress = useAppSelector((state) => state.checkout.bill);
+
+  const userAddress = {
+    fullName: currentUser?.fullName || "",
+    phoneNumber: currentUser?.phoneNumber || "",
+    address: currentUser?.address || "",
+  };
+
+  // const [currentAddress, setCurrentAddress] = useState<BillAddress>();
   const [isEditting, setIsEditting] = useState(false);
 
   useEffect(() => {
-    const defaultAddress: BillAddress = {
-      fullName: currentUser?.fullName,
-      phoneNumber: currentUser?.phoneNumber,
-      address: currentUser?.address,
-      isDefault: true,
-    };
-    setCurrentAddress(defaultAddress);
-    dispath(createBilling(defaultAddress));
+    if (currentAddress == null) {
+      dispath(createBilling({ ...userAddress, isDefault: true }));
+    }
   }, []);
 
   return (
@@ -95,20 +98,12 @@ function DefaultAddress() {
           </Box>
         </Box>
       </PaperWrapper>
-
+      {!currentAddress?.isDefault && <AddressItem item={{ ...userAddress, isDefault: true }} />}
       <DialogWrapper title="Thêm Mới Địa Chỉ " open={isEditting} onClose={() => setIsEditting(false)}>
-        <EditAddressForm />
-        <DialogActions>
-          <Button size="medium" variant="contained">
-            Giao Hàng Đến Địa Chỉ Này
-          </Button>
-          <Button size="medium" variant="outlined" color="inherit" onClick={() => setIsEditting(false)}>
-            Hủy Bỏ
-          </Button>
-        </DialogActions>
+        <AddAddressForm onClose={() => setIsEditting(false)} />
       </DialogWrapper>
     </Fragment>
   );
 }
 
-export default DefaultAddress;
+export default CurrentAddress;

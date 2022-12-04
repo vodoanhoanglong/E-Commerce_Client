@@ -8,10 +8,10 @@ interface PaperWrapperProps {
 const Wrapper = styled(Box)(({ theme }) => ({
   backgroundColor: theme.palette.background.paper,
   borderRadius: theme.shape.borderRadius,
-  boxShadow: theme.customShadows.z8,
+  boxShadow: theme.customShadows.z1,
 }));
 function PaperWrapper({ children, sx }: PaperWrapperProps) {
-  return <Wrapper sx={{ marginBottom: 2, ...sx }}>{children}</Wrapper>;
+  return <Wrapper sx={{ marginBottom: 1, ...sx }}>{children}</Wrapper>;
 }
 
 export default PaperWrapper;

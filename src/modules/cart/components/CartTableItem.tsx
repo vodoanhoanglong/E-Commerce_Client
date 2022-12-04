@@ -63,7 +63,7 @@ function CartTableItem({ item }: ICartTableItem) {
         <Counter value={quantity} onUpdateValue={handleUpdateQuantity} />
       </TableCell>
       <TableCell align="right" size="medium" sx={{ width: "150px" }}>{`${currencyFormat(subTotal)}đ`}</TableCell>
-      <TableCell size="medium">
+      <TableCell size="medium" sx={{ minWidth: "72px" }}>
         <IconButton color="error" onClick={() => dispatch(removeFromCart(product))}>
           <Iconify icon="eva:close-fill" color="#DF3E30" />
         </IconButton>
