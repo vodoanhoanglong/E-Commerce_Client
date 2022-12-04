@@ -17,7 +17,6 @@ export interface Product {
   quantityStore: number;
 }
 export interface Category {
-  id: string;
   alias: string;
   name: string;
   description: string;

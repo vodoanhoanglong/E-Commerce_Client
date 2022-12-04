@@ -29,9 +29,9 @@ function ImageDetail({ data }: ProductProps) {
           allowScrollButtonsMobile
           aria-label="scrollable force tabs example"
         >
-          {data.images.map((item: ProductImage) => (
+          {data.images.map((item: ProductImage, index) => (
             <Tab
-              key={item.id}
+              key={index}
               icon={<img src={item.url} style={{ width: 100 }} />}
               onClick={() => handleChangeImage(item.url)}
             />

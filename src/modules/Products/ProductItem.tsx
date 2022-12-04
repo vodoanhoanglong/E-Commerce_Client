@@ -38,7 +38,7 @@ function ProductItem({ data }: ProductProps) {
             <Typography variant="h6" color="#ff1744">
               {currencyFormat(data.price)} ₫
             </Typography>
-            <Typography gutterBottom variant="body1" fontSize={15}>
+            <Typography gutterBottom variant="body1" fontSize={13}>
               Đã bán 100k
             </Typography>
           </CardContent>

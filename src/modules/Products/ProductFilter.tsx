@@ -2,9 +2,9 @@ import { MenuItem, MenuList, Paper, Typography } from "@mui/material";
 import { Category } from "~/models";
 interface CategoryProps {
   data: Category[];
-  setFilterName: any;
-  setFilterId: any;
-  setPageNumber: any;
+  setFilterName: (value: string) => void;
+  setFilterId: (value: string) => void;
+  setPageNumber: (value: number) => void;
 }
 
 function ProductFilter({ data, setFilterName, setFilterId, setPageNumber }: CategoryProps) {
@@ -20,8 +20,8 @@ function ProductFilter({ data, setFilterName, setFilterId, setPageNumber }: Cate
           Danh mục sản phẩm
         </Typography>
 
-        {data.map((item: Category) => (
-          <MenuItem key={item.id} onClick={() => handleFilter(item)}>
+        {data.map((item: Category, index) => (
+          <MenuItem key={index} onClick={() => handleFilter(item)}>
             {item.name}
           </MenuItem>
         ))}

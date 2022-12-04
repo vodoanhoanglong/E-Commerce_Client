@@ -6,7 +6,7 @@ interface ProductProps {
   data: Product[];
   pagination: PaginationData;
   filterName: string;
-  setPageNumber: any;
+  setPageNumber: (value: number) => void;
 }
 
 function ProductList({ data, pagination, filterName, setPageNumber }: ProductProps) {

@@ -12,6 +12,10 @@ export const GET_PRODUCT_CATEGORY = gql`
         }
         price
         quantityStore
+        category {
+          name
+          alias
+        }
       }
       pagination {
         perPage
