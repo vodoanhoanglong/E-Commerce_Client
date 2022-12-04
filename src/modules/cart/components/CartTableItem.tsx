@@ -43,14 +43,14 @@ function CartTableItem({ item }: ICartTableItem) {
         }}
       >
         <ImgWrapper>
-          <img src={item.product.image} alt={item.product.name} />
+          <img src={item.product.images[0].url} alt={item.product.name} />
         </ImgWrapper>
         <Stack>
           <Typography variant="subtitle2" fontWeight="bold">
             {item.product.name}
           </Typography>
           <Typography variant="caption" fontWeight={500} color="grey">
-            {`available: ${item.product.qtyStock}`}
+            {`available: ${item.product.quantityStore}`}
           </Typography>
         </Stack>
       </TableCell>

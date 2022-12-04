@@ -1,10 +1,25 @@
+export interface ProductImage {
+  id?: string;
+  url: string;
+}
+export interface PaginationData {
+  totalElements: number;
+  currentPage: number;
+  totalPages: number;
+  perPage: number;
+}
 export interface Product {
   id: string;
   name: string;
   description: string;
-  image: string;
+  images: ProductImage[];
   price: number;
-  qtyStock: number;
+  quantityStore: number;
+}
+export interface Category {
+  alias: string;
+  name: string;
+  description: string;
 }
 
 export interface CartProduct {

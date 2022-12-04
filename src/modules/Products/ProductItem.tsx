@@ -1,25 +1,45 @@
 import { Card, CardActionArea, CardContent, CardMedia, Grid, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
+import slugify from "slugify";
 import { Product } from "~/models";
 import { publicRoutes } from "~/routes";
 import { currencyFormat } from "~/utils/formats";
-
-interface ProductItemProps {
+interface ProductProps {
   data: Product;
 }
 
-function ProductItem({ data }: ProductItemProps) {
+function ProductItem({ data }: ProductProps) {
   return (
     <Grid item xs={2}>
-      <Card sx={{ maxWidth: 215, minWidth: 210 }}>
-        <CardActionArea component={Link} to={publicRoutes.PRODUCT.path + `/${data.id}`} state={data}>
-          <CardMedia component="img" height="100%" image={data.image} />
+      <Card sx={{ maxWidth: "100%", minWidth: 250 }}>
+        <CardActionArea
+          component={Link}
+          to={publicRoutes.PRODUCT.path + `/${slugify(data.name, { lower: true })}`}
+          state={data}
+        >
+          <CardMedia component="img" height="100%" image={data.images[0].url} />
+
           <CardContent>
-            <Typography gutterBottom variant="body1" height={150}>
+            <Typography
+              gutterBottom
+              variant="body1"
+              maxWidth="100%"
+              height={100}
+              sx={{
+                overflow: "hidden",
+                textOverflow: "ellipsis",
+                display: "-webkit-box",
+                WebkitLineClamp: "4",
+                WebkitBoxOrient: "vertical",
+              }}
+            >
               {data.name}
             </Typography>
             <Typography variant="h6" color="#ff1744">
               {currencyFormat(data.price)} ₫
+            </Typography>
+            <Typography gutterBottom variant="body1" fontSize={13}>
+              Đã bán 100k
             </Typography>
           </CardContent>
         </CardActionArea>

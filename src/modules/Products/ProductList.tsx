@@ -1,17 +1,17 @@
 import { Grid, Pagination, Paper, Typography } from "@mui/material";
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent } from "react";
+import { PaginationData, Product } from "~/models";
 import ProductItem from "./ProductItem";
+interface ProductProps {
+  data: Product[];
+  pagination: PaginationData;
+  filterName: string;
+  setPageNumber: (value: number) => void;
+}
 
-function ProductList({ data }: any) {
-  const [pageNumber, setPageNumber] = useState(0);
-  const productsPerPage = 12;
-  const pagesVisited = pageNumber * productsPerPage;
+function ProductList({ data, pagination, filterName, setPageNumber }: ProductProps) {
+  const DisplayProducts = data.map((item: Product) => <ProductItem key={item.id} data={item} />);
 
-  const DisplayProducts = data
-    .slice(pagesVisited, pagesVisited + productsPerPage)
-    .map((item: any) => <ProductItem key={item.id} data={item} />);
-
-  const pageCount = Math.ceil(data.length / productsPerPage);
   const handleChange = (event: ChangeEvent<unknown>, value: number) => {
     setPageNumber(value - 1);
   };
@@ -21,15 +21,15 @@ function ProductList({ data }: any) {
       <Grid item xs={8}>
         <Paper>
           <Typography variant="h6" sx={{ p: 2 }}>
-            Đồ điện tử
+            {filterName}
           </Typography>
         </Paper>
       </Grid>
       {DisplayProducts}
       <Grid item xs={8}>
         <Pagination
-          count={pageCount}
-          page={pageNumber + 1}
+          count={pagination.totalPages}
+          page={pagination.currentPage + 1}
           onChange={handleChange}
           color="primary"
           sx={{ display: "flex", justifyContent: "center" }}
