@@ -26,6 +26,7 @@ const ImgWrapper = styled(Box)(({ theme }) => ({
 }));
 
 function CartTableItem({ item }: ICartTableItem) {
+  const { product, quantity, subTotal } = item;
   const dispatch = useAppDispatch();
 
   const handleUpdateQuantity = (quantity: number) => {
@@ -43,24 +44,27 @@ function CartTableItem({ item }: ICartTableItem) {
         }}
       >
         <ImgWrapper>
-          <img src={item.product.images[0].url} alt={item.product.name} />
+          <img
+            src={product.images.length > 0 ? product.images[0].url : "/static/illustrations/illustration_product.svg"}
+            alt={item.product.name}
+          />
         </ImgWrapper>
         <Stack>
           <Typography variant="subtitle2" fontWeight="bold">
-            {item.product.name}
+            {product.name}
           </Typography>
           <Typography variant="caption" fontWeight={500} color="grey">
-            {`available: ${item.product.quantityStore}`}
+            {`available: ${product.quantityStore}`}
           </Typography>
         </Stack>
       </TableCell>
-      <TableCell size="medium">{`${currencyFormat(item.product.price)}đ`}</TableCell>
+      <TableCell size="medium">{`${currencyFormat(product.price)}đ`}</TableCell>
       <TableCell size="medium" sx={{ width: "85px" }}>
-        <Counter value={item.quantity} onUpdateValue={handleUpdateQuantity} />
+        <Counter value={quantity} onUpdateValue={handleUpdateQuantity} />
       </TableCell>
-      <TableCell align="right" size="medium" sx={{ width: "150px" }}>{`${currencyFormat(item.subTotal)}đ`}</TableCell>
+      <TableCell align="right" size="medium" sx={{ width: "150px" }}>{`${currencyFormat(subTotal)}đ`}</TableCell>
       <TableCell size="medium">
-        <IconButton color="error" onClick={() => dispatch(removeFromCart(item.product))}>
+        <IconButton color="error" onClick={() => dispatch(removeFromCart(product))}>
           <Iconify icon="eva:close-fill" color="#DF3E30" />
         </IconButton>
       </TableCell>

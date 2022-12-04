@@ -17,7 +17,13 @@ function ProductItem({ data }: ProductProps) {
           to={publicRoutes.PRODUCT.path + `/${slugify(data.name, { lower: true })}`}
           state={data}
         >
-          <CardMedia component="img" height="100%" image={data.images[0].url} />
+          <CardMedia
+            component="img"
+            image={
+              data && data.images.length > 0 ? data.images[0].url : "/static/illustrations/illustration_product.svg"
+            }
+            sx={{ height: 200 }}
+          />
 
           <CardContent>
             <Typography

@@ -27,6 +27,7 @@ const ImageThumb = styled("img")(() => ({
 }));
 
 function CartWidgetItem({ data }: ICartWidgetItem) {
+  const { product, quantity, subTotal } = data;
   const dispatch = useAppDispatch();
   const handleUpdateQuantity = (quantity: number) => {
     dispatch(updateQuantity({ product: data.product, value: quantity }));
@@ -35,22 +36,22 @@ function CartWidgetItem({ data }: ICartWidgetItem) {
     <StyledListItem>
       <Stack direction="row" alignItems="center" justifyContent="space-between" spacing={2} sx={{ width: "100%" }}>
         <Stack direction="row" alignItems="center" spacing={2}>
-          <ImageThumb src={data.product.images[0].url} />
+          <ImageThumb
+            src={product.images.length > 0 ? product.images[0].url : "/static/illustrations/illustration_product.svg"}
+          />
           <Box sx={{ flexGrow: 0, overflow: "hidden", width: 250 }}>
             <Typography variant="subtitle2" noWrap>
-              {data.product.name}
+              {product.name}
             </Typography>
             <Typography variant="body2" sx={{ color: "text.secondary" }} noWrap>
-              {data.product.description}
+              {product.description}
             </Typography>
           </Box>
         </Stack>
-        <Counter value={data.quantity} onUpdateValue={handleUpdateQuantity} />
+        <Counter value={quantity} onUpdateValue={handleUpdateQuantity} />
         <Stack direction="row" alignItems="center" justifyContent="flex-end" spacing={1}>
-          <Typography variant="subtitle2" width={85} textAlign="right">{`${currencyFormat(
-            data.subTotal,
-          )}đ`}</Typography>
-          <IconButton color="error" onClick={() => dispatch(removeFromCart(data.product))}>
+          <Typography variant="subtitle2" width={85} textAlign="right">{`${currencyFormat(subTotal)}đ`}</Typography>
+          <IconButton color="error" onClick={() => dispatch(removeFromCart(product))}>
             <Iconify icon="eva:close-fill" color="#DF3E30" />
           </IconButton>
         </Stack>
