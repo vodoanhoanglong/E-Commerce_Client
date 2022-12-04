@@ -17,7 +17,7 @@ function ProductList({ data, pagination, filterName, setPageNumber }: ProductPro
   };
 
   return (
-    <Grid container spacing={1} columns={{ xs: 8 }}>
+    <Grid container spacing={2} columns={{ xs: 8 }}>
       <Grid item xs={8}>
         <Paper>
           <Typography variant="h6" sx={{ p: 2 }}>
