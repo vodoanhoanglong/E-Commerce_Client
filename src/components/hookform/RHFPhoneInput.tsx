@@ -19,6 +19,7 @@ function RHFPhoneInput({ name, label }: RHFPhoneInputProps) {
           label={label}
           defaultCountry={"VN"}
           helperText={error?.message}
+          autoComplete="off"
           error={!!error}
           sx={{
             "& .MuiOutlinedInput-root": {

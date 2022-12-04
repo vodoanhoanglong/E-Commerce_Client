@@ -3,8 +3,8 @@ interface BaseUserData {
   gender: string;
   address: string;
   phoneNumber: string;
-  avatar?: string;
   bod: Date;
+  avatar?: any;
 }
 export interface AuthToken {
   token: string;
@@ -19,4 +19,4 @@ export interface User extends BaseUserData {
   email: string;
 }
 
-export type RegisterForm = LoginForm & BaseUserData;
+export type RegisterForm = BaseUserData & LoginForm;
