@@ -1,14 +1,14 @@
 import { Box, IconButton, ListItem, Stack, Typography } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import { Iconify } from "~/components";
-import { CartProduct } from "~/models";
+import { CartItem } from "~/models";
 import { removeFromCart, updateQuantity } from "~/redux/features/cartSlice";
 import { useAppDispatch } from "~/redux/hooks";
 import { currencyFormat } from "~/utils/formats";
 import Counter from "./Counter";
 
 interface ICartWidgetItem {
-  data: CartProduct;
+  data: CartItem;
 }
 
 const StyledListItem = styled(ListItem)(({ theme }) => ({

@@ -2,11 +2,10 @@ export interface ProductImage {
   id?: string;
   url: string;
 }
-export interface PaginationData {
-  totalElements: number;
-  currentPage: number;
-  totalPages: number;
-  perPage: number;
+export interface Category {
+  alias: string;
+  name: string;
+  description?: string;
 }
 export interface Product {
   id: string;
@@ -15,15 +14,17 @@ export interface Product {
   images: ProductImage[];
   price: number;
   quantityStore: number;
-}
-export interface Category {
-  alias: string;
-  name: string;
-  description: string;
+  category: Category;
 }
 
-export interface CartProduct {
-  product: Product;
-  quantity: number;
-  subTotal: number;
+export interface PaginationData {
+  totalElements: number;
+  currentPage: number;
+  totalPages: number;
+  perPage: number;
+}
+
+export interface ProductList {
+  data: Product[];
+  pagination?: PaginationData;
 }

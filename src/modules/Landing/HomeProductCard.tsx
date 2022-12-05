@@ -1,5 +1,6 @@
 import { Box, Button, Stack, styled, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
+import slugify from "slugify";
 import { Product } from "~/models";
 import { addToCart } from "~/redux/features/cartSlice";
 import { useAppDispatch } from "~/redux/hooks";
@@ -45,17 +46,34 @@ function HomeProductCard({ product }: IProductCardProps) {
   return (
     <ProductWrapper>
       <Box sx={{ width: "100%", p: 1 }}>
-        <ProductImage src={product.images[0].url} alt="" />
+        <ProductImage
+          src={product.images.length > 0 ? product.images[0].url : "/static/illustrations/illustration_product.svg"}
+          alt=""
+        />
       </Box>
       <Box sx={{ p: 2 }}>
-        <Stack direction="row" alignItems="center" justifyContent="space-between">
-          <Typography variant="h6">{product.name}</Typography>
-          <Typography variant="subtitle1" fontWeight="bold">
+        <Stack marginBottom={1}>
+          <Typography
+            variant="subtitle1"
+            textOverflow="ellipsis"
+            noWrap
+            component={Link}
+            to={`${publicRoutes.PRODUCT.path}/${slugify(product.name, { lower: true })}`}
+            sx={{
+              textDecoration: "none",
+              color: "text.primary",
+              "&:hover": { color: "primary.main", textDecoration: "underline" },
+            }}
+            state={product}
+          >
+            {product.name}
+          </Typography>
+          <Typography variant="body2" fontWeight="bold" color="error.main">
             {currencyFormat(product.price)}đ
           </Typography>
         </Stack>
         <Box>
-          <Typography variant="subtitle2">
+          <Typography variant="subtitle2" fontWeight={500}>
             {product.description.length > MAX_LENGTH
               ? product.description.slice(0, MAX_LENGTH) + "..."
               : product.description}
