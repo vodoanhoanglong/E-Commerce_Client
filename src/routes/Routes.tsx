@@ -1,6 +1,7 @@
 import { createBrowserRouter, Navigate, RouteObject, RouterProvider } from "react-router-dom";
 import { AuthLayout, CartLayout, MainLayout } from "~/layouts";
-import { AboutPage, ContactPage, HomePage, LoginPage, Page404, ProductPage, RegisterPage } from "~/page";
+import ProfileLayout from "~/layouts/ProfileLayout";
+import { AboutPage, ContactPage, HomePage, LoginPage, Page404, ProductPage, ProfilePage, RegisterPage } from "~/page";
 import Checkout from "~/page/Checkout";
 import ProductDetail from "~/page/ProductDetail";
 import { authRoutes, publicRoutes } from "~/routes";
@@ -13,7 +14,7 @@ const routesConfig: RouteObject[] = [
     children: [
       {
         index: true,
-        element: <Navigate to="/home" />,
+        element: <Navigate to={publicRoutes.HOME.path} />,
       },
       {
         path: publicRoutes.HOME.path,
@@ -37,6 +38,15 @@ const routesConfig: RouteObject[] = [
           {
             path: publicRoutes.PRODUCT.children.DETAIL.path,
             element: <ProductDetail />,
+          },
+        ],
+      },
+      {
+        element: <ProfileLayout />,
+        children: [
+          {
+            path: publicRoutes.PROFILE.path,
+            element: <ProfilePage />,
           },
         ],
       },
