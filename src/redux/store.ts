@@ -1,15 +1,20 @@
 import { Action, configureStore, ThunkAction } from "@reduxjs/toolkit";
+import { persistReducer, persistStore } from "redux-persist";
+import storage from "redux-persist/lib/storage";
+import rootReducer from "./reducer";
 
-import authReducer from "./features/authSlice";
-import cartReducer from "./features/cartSlice";
-import checkoutReducer from "./features/checkoutSlice";
-export const store = configureStore({
-  reducer: {
-    auth: authReducer,
-    cart: cartReducer,
-    checkout: checkoutReducer,
-  },
+const persistConfig = {
+  key: "product",
+  storage,
+  blacklist: ["auth"],
+};
+
+const store = configureStore({
+  reducer: persistReducer(persistConfig, rootReducer),
 });
+
+export const persistor = persistStore(store);
+export default store;
 
 export type AppDispatch = typeof store.dispatch;
 export type RootState = ReturnType<typeof store.getState>;

@@ -14,7 +14,7 @@ export interface ITableHeadCell {
 
 const tableHeadCols: ITableHeadCell[] = [
   { display: "Sản phẩm", align: "left" },
-  { display: "Đơn giá", align: "left" },
+  { display: "Đơn giá", align: "center" },
   { display: "Số lượng", align: "left" },
   { display: "Thành tiền", align: "right" },
   { display: "", align: "right" },

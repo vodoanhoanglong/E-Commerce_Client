@@ -18,8 +18,9 @@ const TableRowStyled = styled(TableRow)(({ theme }) => ({
 }));
 
 const ImgWrapper = styled(Box)(({ theme }) => ({
-  width: 64,
-  height: 64,
+  flexShrink: 0,
+  width: 50,
+  height: 50,
   marginRight: theme.spacing(2),
   borderRadius: theme.shape.borderRadius,
   overflow: "hidden",
@@ -49,20 +50,22 @@ function CartTableItem({ item }: ICartTableItem) {
             alt={item.product.name}
           />
         </ImgWrapper>
-        <Stack>
-          <Typography variant="subtitle2" fontWeight="bold">
-            {product.name}
-          </Typography>
+        <Typography variant="body2" fontWeight="bold" textOverflow="ellipsis">
+          {product.name}
+        </Typography>
+      </TableCell>
+      <TableCell size="medium" align="right" sx={{ fontWeight: 500 }}>{`${currencyFormat(product.price)}đ`}</TableCell>
+      <TableCell size="medium" sx={{ minWidth: "85px" }}>
+        <Stack alignItems="center" spacing={0.5}>
+          <Counter value={quantity} onUpdateValue={handleUpdateQuantity} />
           <Typography variant="caption" fontWeight={500} color="grey">
             {`available: ${product.quantityStore}`}
           </Typography>
         </Stack>
       </TableCell>
-      <TableCell size="medium">{`${currencyFormat(product.price)}đ`}</TableCell>
-      <TableCell size="medium" sx={{ width: "85px" }}>
-        <Counter value={quantity} onUpdateValue={handleUpdateQuantity} />
-      </TableCell>
-      <TableCell align="right" size="medium" sx={{ width: "150px" }}>{`${currencyFormat(subTotal)}đ`}</TableCell>
+      <TableCell align="right" size="medium" sx={{ minWidth: "140px", fontWeight: 500 }}>{`${currencyFormat(
+        subTotal,
+      )}đ`}</TableCell>
       <TableCell size="medium" sx={{ minWidth: "72px" }}>
         <IconButton color="error" onClick={() => dispatch(removeFromCart(product))}>
           <Iconify icon="eva:close-fill" color="#DF3E30" />

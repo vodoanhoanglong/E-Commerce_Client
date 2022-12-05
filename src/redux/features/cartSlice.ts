@@ -1,10 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { CartItem } from "~/models";
 
-const cartItems: CartItem[] = JSON.parse(localStorage.getItem("cart") || "[]");
-
-const initialState = {
-  data: cartItems,
+const initialState: { data: CartItem[] } = {
+  data: [],
 };
 
 export const cartSlice = createSlice({
@@ -34,13 +32,11 @@ export const cartSlice = createSlice({
           },
         ];
       }
-      localStorage.setItem("cart", JSON.stringify(state.data.sort((a, b) => a.product.id.localeCompare(b.product.id))));
     },
 
     removeFromCart: (state, action) => {
       const product = action.payload;
       state.data = state.data.filter((e) => e.product.id !== product.id);
-      localStorage.setItem("cart", JSON.stringify(state.data.sort((a, b) => a.product.id.localeCompare(b.product.id))));
     },
 
     updateQuantity: (state, action) => {
@@ -50,7 +46,6 @@ export const cartSlice = createSlice({
         state.data[index].quantity = value;
         state.data[index].subTotal = product.price * state.data[index].quantity;
       }
-      localStorage.setItem("cart", JSON.stringify(state.data.sort((a, b) => a.product.id.localeCompare(b.product.id))));
     },
   },
 });
