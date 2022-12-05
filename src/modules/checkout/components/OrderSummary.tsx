@@ -1,4 +1,5 @@
 import { Box, CardContent, CardHeader, Divider, Stack, Typography } from "@mui/material";
+import { useMemo } from "react";
 import { PaperWrapper } from "~/components";
 import { useAppSelector } from "~/redux/hooks";
 import { currencyFormat } from "~/utils/formats";
@@ -9,7 +10,9 @@ interface ISummaryItem {
 }
 
 function OrderSummary() {
-  const checkoutData = useAppSelector((state) => state.checkout);
+  const { subTotal, discount, shipping } = useAppSelector((state) => state.checkout);
+
+  const total = useMemo(() => subTotal - discount + shipping, [subTotal, discount, shipping]);
 
   const SummaryItem = ({ title, value }: ISummaryItem) => (
     <Stack direction="row" justifyContent="space-between" alignItems="center" mb={2}>
@@ -33,9 +36,9 @@ function OrderSummary() {
       />
       <CardContent>
         <Box>
-          <SummaryItem title="Tạm tính" value={`${currencyFormat(checkoutData.subTotal)}đ`} />
-          <SummaryItem title="Giảm giá" value={`${currencyFormat(checkoutData.discount)}đ`} />
-          <SummaryItem title="Phí vận chuyển" value={checkoutData.shipping != 0 ? checkoutData.shipping : "free"} />
+          <SummaryItem title="Tạm tính" value={`${currencyFormat(subTotal)}đ`} />
+          <SummaryItem title="Giảm giá" value={`${currencyFormat(discount)}đ`} />
+          <SummaryItem title="Phí vận chuyển" value={shipping != 0 ? shipping : "free"} />
           <Divider sx={{ my: 2 }} />
           <Stack direction="row" justifyContent="space-between">
             <Typography variant="subtitle1" textTransform="capitalize" fontWeight={600} color="grey.700">
@@ -46,10 +49,10 @@ function OrderSummary() {
                 variant="subtitle1"
                 textTransform="capitalize"
                 textAlign="right"
-                fontWeight={500}
+                fontWeight={600}
                 color="error.main"
               >
-                {`${currencyFormat(90000)}đ`}
+                {`${currencyFormat(total)}đ`}
               </Typography>
               <Typography fontSize={12} color="grey.500">
                 (Giá đã bao gồm VAT nếu có)

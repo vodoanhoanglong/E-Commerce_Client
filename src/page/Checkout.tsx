@@ -26,7 +26,7 @@ function Checkout() {
   const cart = useAppSelector((state) => state.cart.data);
   const dispatch = useAppDispatch();
   useEffect(() => {
-    dispatch(getCart());
+    dispatch(getCart(cart));
   }, [cart]);
   return (
     <Page title="Thanh Toán">

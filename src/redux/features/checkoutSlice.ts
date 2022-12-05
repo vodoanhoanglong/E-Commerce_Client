@@ -14,8 +14,8 @@ export const checkoutSlice = createSlice({
   name: "checkout",
   initialState,
   reducers: {
-    getCart: (state) => {
-      state.cart = JSON.parse(localStorage.getItem("cart") || "[]");
+    getCart: (state, action) => {
+      state.cart = action.payload;
       state.totalItems = state.cart.reduce((acc, item) => acc + item.quantity, 0);
       state.subTotal = state.cart.reduce((acc, item) => acc + item.subTotal, 0);
     },
