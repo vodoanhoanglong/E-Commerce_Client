@@ -1,4 +1,10 @@
-import { CartProduct } from "./product";
+import { Product } from "./product";
+
+export interface CartItem {
+  product: Product;
+  quantity: number;
+  subTotal: number;
+}
 
 export interface BillAddress {
   fullName: string;
@@ -8,7 +14,7 @@ export interface BillAddress {
 }
 
 export interface CheckoutState {
-  cart: CartProduct[];
+  cart: CartItem[];
   activeStep: number;
   bill: BillAddress | null;
   subTotal: number;

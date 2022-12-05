@@ -1,10 +1,10 @@
 import { Table, TableBody } from "@mui/material";
-import { CartProduct } from "~/models";
+import { CartItem } from "~/models";
 import { CartTableItem } from "./components";
 import CartTableHeader from "./components/CartTableHeader";
 
 interface ICartTable {
-  cart: CartProduct[];
+  cart: CartItem[];
 }
 
 export interface ITableHeadCell {

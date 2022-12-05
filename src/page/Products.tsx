@@ -1,26 +1,21 @@
 import { useQuery } from "@apollo/client";
-import { Box, CircularProgress, styled } from "@mui/material";
+import { Box } from "@mui/material";
 import { Stack } from "@mui/system";
 import { useState } from "react";
 import { useLocation } from "react-router";
 import { Page } from "~/components";
 import { GET_PRODUCT_CATEGORY } from "~/graphql/queries";
+import { PreLoading } from "~/layouts/components";
 import BreadcrumbProduct from "~/modules/Products/BreadcrumbProduct";
 import ProductFilter from "~/modules/Products/ProductFilter";
 import ProductList from "~/modules/Products/ProductList";
-
-const LoadingWrapperStyle = styled("div")(() => ({
-  display: "flex",
-  flexDirection: "column",
-  justifyContent: "center",
-  alignItems: "center",
-}));
 
 function Products() {
   const location = useLocation();
   const categoryData = location.state;
   const [pageNumber, setPageNumber] = useState(0);
   const [filterId, setFilterId] = useState(categoryData ? categoryData.alias : []);
+
   const { loading, error, data } = useQuery(GET_PRODUCT_CATEGORY, {
     variables: {
       categoryAliases: filterId,
@@ -37,9 +32,7 @@ function Products() {
   return (
     <Page title="Sản phẩm">
       {loading ? (
-        <LoadingWrapperStyle>
-          <CircularProgress />
-        </LoadingWrapperStyle>
+        <PreLoading />
       ) : (
         <Box sx={{ marginInline: 10, marginBlock: 3 }}>
           <BreadcrumbProduct name={filterName} setFilterId={setFilterId} setFilterName={setFilterName} />

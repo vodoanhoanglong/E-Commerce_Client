@@ -1,13 +1,13 @@
 import { Box, IconButton, Stack, styled, TableCell, TableRow, Typography } from "@mui/material";
 import { Iconify } from "~/components";
-import { CartProduct } from "~/models";
+import { CartItem } from "~/models";
 import { removeFromCart, updateQuantity } from "~/redux/features/cartSlice";
 import { useAppDispatch } from "~/redux/hooks";
 import { currencyFormat } from "~/utils/formats";
 import Counter from "./Counter";
 
 interface ICartTableItem {
-  item: CartProduct;
+  item: CartItem;
 }
 
 const TableRowStyled = styled(TableRow)(({ theme }) => ({

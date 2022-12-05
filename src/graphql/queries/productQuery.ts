@@ -31,3 +31,25 @@ export const GET_PRODUCT_CATEGORY = gql`
     }
   }
 `;
+
+export const GET_SUGGESTED_PRODUCTS = gql`
+  query {
+    getProducts(filter: { categoryAliases: [], paginate: { page: 1, size: 5 } }) {
+      data {
+        id
+        name
+        description
+        images {
+          url
+        }
+        price
+        quantityStore
+        category {
+          name
+          alias
+          description
+        }
+      }
+    }
+  }
+`;
