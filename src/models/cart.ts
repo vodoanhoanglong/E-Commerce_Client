@@ -20,5 +20,6 @@ export interface CheckoutState {
   subTotal: number;
   shipping: number;
   discount: number;
+  paymentMethod: string;
   totalItems: number;
 }

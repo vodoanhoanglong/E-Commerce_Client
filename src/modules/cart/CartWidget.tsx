@@ -2,6 +2,7 @@ import { Badge, Box, Button, Divider, IconButton, List, ListSubheader, Stack, Ty
 import React, { Fragment, useMemo, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Iconify, MenuPopover, Scrollbar } from "~/components";
+import { CartItem } from "~/models";
 import { useAppSelector } from "~/redux/hooks";
 import { publicRoutes } from "~/routes";
 import { currencyFormat } from "~/utils/formats";
@@ -14,11 +15,11 @@ function CartWidget() {
   const [openPopper, setOpenPopper] = useState<EventTarget | null>(null);
 
   const updateTotal = useMemo(() => {
-    return cartItems.reduce((acc, item) => acc + item.subTotal, 0);
+    return cartItems.reduce((acc: number, item: CartItem) => acc + item.subTotal, 0);
   }, [cartItems]);
 
   const updateQty = useMemo(() => {
-    return cartItems.reduce((acc, item) => acc + item.quantity, 0);
+    return cartItems.reduce((acc: number, item: CartItem) => acc + item.quantity, 0);
   }, [cartItems]);
 
   return (
@@ -59,7 +60,7 @@ function CartWidget() {
           }
         >
           <Scrollbar sx={{ maxHeight: 325 }}>
-            {cartItems.map((item) => (
+            {cartItems.map((item: CartItem) => (
               <CartWidgetItem key={item.product.id} data={item} />
             ))}
           </Scrollbar>
