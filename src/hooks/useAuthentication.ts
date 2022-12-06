@@ -3,7 +3,7 @@ import moment from "moment";
 import { useState } from "react";
 import { useNavigate } from "react-router";
 import { useLocation } from "react-router-dom";
-import { LOGIN, REGISTER } from "~/graphql/mutations";
+import { authMutation } from "~/graphql/mutations";
 import { AuthToken, LoginForm, RegisterForm } from "~/models";
 import useImageUploader from "./useImageUploader";
 
@@ -13,8 +13,8 @@ export default function useAuthentication() {
   const { uploader, deleteFile } = useImageUploader();
   const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState("");
-  const [login] = useMutation<{ login: AuthToken }>(LOGIN);
-  const [register] = useMutation<{ createUser: AuthToken }>(REGISTER);
+  const [login] = useMutation<{ login: AuthToken }>(authMutation.LOGIN);
+  const [register] = useMutation<{ createUser: AuthToken }>(authMutation.REGISTER);
 
   const handleLogin = (value: LoginForm) => {
     setLoading(true);

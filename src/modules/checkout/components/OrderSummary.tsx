@@ -38,7 +38,7 @@ function OrderSummary() {
         <Box>
           <SummaryItem title="Tạm tính" value={`${currencyFormat(subTotal)}đ`} />
           <SummaryItem title="Giảm giá" value={`${currencyFormat(discount)}đ`} />
-          <SummaryItem title="Phí vận chuyển" value={shipping != 0 ? shipping : "free"} />
+          <SummaryItem title="Phí vận chuyển" value={shipping != 0 ? `${currencyFormat(shipping)}đ` : "free"} />
           <Divider sx={{ my: 2 }} />
           <Stack direction="row" justifyContent="space-between">
             <Typography variant="subtitle1" textTransform="capitalize" fontWeight={600} color="grey.700">

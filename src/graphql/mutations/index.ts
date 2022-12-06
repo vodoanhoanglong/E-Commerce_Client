@@ -1,1 +1,2 @@
-export * from "./authMutation";
+export * as authMutation from "./auth";
+export * as invoiceMutation from "./invoice";

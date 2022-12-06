@@ -7,6 +7,7 @@ const initialState: CheckoutState = {
   subTotal: 0,
   shipping: 0,
   discount: 0,
+  paymentMethod: "",
   totalItems: 0,
 };
 
@@ -28,8 +29,18 @@ export const checkoutSlice = createSlice({
     createBilling: (state, action) => {
       state.bill = action.payload;
     },
+    applyDiscount: (state, action) => {
+      state.discount = action.payload;
+    },
+    applyShipping: (state, action) => {
+      state.shipping = action.payload;
+    },
+    setPaymentMethod: (state, action) => {
+      state.paymentMethod = action.payload;
+    },
   },
 });
 
-export const { getCart, backStep, nextStep, createBilling } = checkoutSlice.actions;
+export const { getCart, backStep, nextStep, createBilling, applyShipping, applyDiscount, setPaymentMethod } =
+  checkoutSlice.actions;
 export default checkoutSlice.reducer;

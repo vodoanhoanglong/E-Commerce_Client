@@ -42,7 +42,13 @@ function CartPreview() {
       <Grid item xs={12} md={4}>
         <Stack spacing={1}>
           <OrderSummary />
-          <Button size="large" variant="contained" fullWidth onClick={() => dispatch(nextStep())}>
+          <Button
+            size="large"
+            variant="contained"
+            fullWidth
+            onClick={() => dispatch(nextStep())}
+            disabled={checkoutData.cart.length === 0}
+          >
             Mua Hàng
           </Button>
         </Stack>
