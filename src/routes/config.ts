@@ -28,6 +28,9 @@ export const publicRoutes = {
   CHECKOUT: {
     path: "/checkout",
   },
+  PROFILE: {
+    path: "/profile",
+  },
 };
 
 export const privateRoutes = {};
